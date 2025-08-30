@@ -1,0 +1,23 @@
+<!ELEMENT ResumeSet (Resume)+>
+
+<!ELEMENT Resume (#PCDATA | Personal_Info | Work_Experience | Education | Skills_Section | Additional_Info 
+                 | Designation | Companies_worked_at | Years_of_Experience)*>
+
+<!ELEMENT Personal_Info (#PCDATA | Name | Designation | Companies_worked_at | Location 
+                        | Email_Address | Degree | College_Name | Graduation_Year | Skills | Years_of_Experience)*>
+<!ELEMENT Work_Experience (#PCDATA | Designation | Companies_worked_at | Location | Skills | Years_of_Experience)*>
+<!ELEMENT Education (#PCDATA | College_Name | Degree | Graduation_Year | Location)*>
+<!ELEMENT Skills_Section (#PCDATA | Designation | Skills | Years_of_Experience)*>
+<!ELEMENT Additional_Info (#PCDATA | Name | Designation | Companies_worked_at | Location 
+                          | College_Name | Graduation_Year | Skills | Degree | Years_of_Experience)*>
+
+<!ELEMENT Name (#PCDATA)>
+<!ELEMENT Designation (#PCDATA)>
+<!ELEMENT Companies_worked_at (#PCDATA)>
+<!ELEMENT Location (#PCDATA)>
+<!ELEMENT Email_Address (#PCDATA)>
+<!ELEMENT College_Name (#PCDATA)>
+<!ELEMENT Graduation_Year (#PCDATA)>
+<!ELEMENT Skills (#PCDATA)>
+<!ELEMENT Degree (#PCDATA)>
+<!ELEMENT Years_of_Experience (#PCDATA)>

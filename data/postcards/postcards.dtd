@@ -1,0 +1,14 @@
+<!ELEMENT postcards (postcard+)>
+<!ELEMENT postcard (opening, message)>
+<!ATTLIST postcard photo CDATA #IMPLIED>
+
+<!ELEMENT opening (#PCDATA | date | sender | recipient)*>
+<!ELEMENT recipient (#PCDATA | name | address)*>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+
+<!ELEMENT date (#PCDATA)>
+<!ATTLIST date standard CDATA #REQUIRED>
+
+<!ELEMENT message (#PCDATA)>
+<!ELEMENT sender (#PCDATA)>

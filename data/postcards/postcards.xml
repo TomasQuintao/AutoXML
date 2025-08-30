@@ -1,0 +1,1550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE postais SYSTEM "postcards.dtd">
+
+<postcards>
+  <postcard photo="Los Angeles Beach">
+    <opening>
+      Postcard sent on <date standard="20230531">2023-march-31</date>
+      by <sender>Peter Harris</sender> to
+      <recipient><name>Alice Smith</name>,
+      <address>Liverpool</address></recipient>.
+    </opening>
+    <message>
+      Dear Aunt, we’ve just arrived for the holidays...
+      Kisses from your nephew Peter.
+    </message>
+  </postcard>
+
+  <postcard photo="">
+    <opening>
+      Postcard from <sender>Peter Kravinsky</sender>, dated <date standard="20200605">05 of June, 2020</date> sent to 
+      <recipient><name>Anthony Rogers</name>,
+      <address>Brighton</address></recipient>.
+    </opening>
+    <message>
+      Dear Anthony, I strongly recommend you to come here...
+      A hug, Peter.
+    </message>
+  </postcard>
+  
+  <postcard photo="Himalayas">
+    <opening>
+      Postcard from <date standard="20200605">26/08/2002</date> by <sender>Thomas Dresden</sender> sent to 
+      <recipient><name>Emma Watson</name>,
+      <address>Brighton</address></recipient>.
+    </opening>
+    <message>
+      Hey Tony! The view here is otherwordly, you should definitely smell this mountain air.
+      Regards, Tom.
+    </message>
+  </postcard>
+
+   <postcard photo="Paris Eiffel Tower">
+    <opening>
+      Postcard mailed on <date standard="20210715">July 15, 2021</date>
+      by <sender>Margaret Johnson</sender> to
+      <recipient><name>Robert Brown</name>,
+      <address>Edinburgh</address></recipient>.
+    </opening>
+    <message>
+      Dear Uncle Robert, the city of lights is even more beautiful than they say...
+      Love, Maggie.
+    </message>
+  </postcard>
+
+  <postcard photo="Grand Canyon">
+    <opening>
+      Postcard from <sender>Daniel Miller</sender>, written <date standard="20220903">3rd Sept 2022</date> to
+      <recipient><name>Sarah Wilson</name>,
+      <address>Manchester</address></recipient>.
+    </opening>
+    <message>
+      Sarah, you wouldn't believe how massive this canyon is! Photos don't do it justice.
+      Cheers, Dan.
+    </message>
+  </postcard>
+
+  <postcard photo="">
+    <opening>
+      Postcard sent <date standard="20201122">22-Nov-2020</date>
+      by <sender>Emily Clark</sender> to her
+      <recipient><name>James Taylor</name>,
+      <address>Bristol</address></recipient>.
+    </opening>
+    <message>
+      James, the weather here has been perfect for hiking every single day!
+      Best, Em.
+    </message>
+  </postcard>
+
+  <postcard photo="Sydney Opera House">
+    <opening>
+      Postcard from <date standard="20230410">10/04/2023</date> by <sender>Andrew White</sender> to
+      <recipient><name>Olivia Green</name>,
+      <address>Cardiff</address></recipient>.
+    </opening>
+    <message>
+      Olivia, the opera was spectacular last night! Thinking of you.
+      Warm regards, Andy.
+    </message>
+  </postcard>
+
+  <postcard photo="New York Skyline">
+    <opening>
+      Postcard dated <date standard="20211225">December 25, 2021</date>
+      from <sender>Jennifer Lee</sender> to
+      <recipient><name>Michael Davis</name>,
+      <address>Glasgow</address></recipient>.
+    </opening>
+    <message>
+      Michael, the Christmas lights here are magical! Wish you could see them.
+      Love, Jen.
+    </message>
+  </postcard>
+
+  <postcard photo="">
+    <opening>
+      Postcard from <sender>Richard Moore</sender>, <date standard="20200814">14 August 2020</date> to
+      <recipient><name>Patricia Adams</name>,
+      <address>Leeds</address></recipient>.
+    </opening>
+    <message>
+      Patricia, the conference was excellent but I miss home cooking already!
+      Yours, Rich.
+    </message>
+  </postcard>
+
+  <postcard photo="Santorini Sunset">
+    <opening>
+      Postcard sent on <date standard="20220630">30-06-2022</date>
+      by <sender>Sophia Martin</sender> to her
+      <recipient><name>William Scott</name>,
+      <address>Dublin</address></recipient>.
+    </opening>
+    <message>
+      Will, the sunsets here are like nothing I've ever seen before!
+      Missing you, Soph.
+    </message>
+  </postcard>
+
+  <postcard photo="Swiss Alps">
+    <opening>
+      Postcard from <date standard="20210220">20/02/2021</date> by <sender>George Walker</sender> to
+      <recipient><name>Elizabeth Young</name>,
+      <address>Birmingham</address></recipient>.
+    </opening>
+    <message>
+      Dear Liz, the skiing conditions are perfect this year. You'd love it here!
+      Best, George.
+    </message>
+  </postcard>
+
+  <postcard photo="Tokyo Tower">
+    <opening>
+      Postcard mailed <date standard="20231005">Oct 5, 2023</date>
+      from <sender>Kevin Hall</sender> to
+      <recipient><name>Amanda King</name>,
+      <address>Newcastle</address></recipient>.
+    </opening>
+    <message>
+      Amanda, Tokyo is even more exciting than we imagined! The food is incredible.
+      Cheers, Kev.
+    </message>
+  </postcard>
+
+  <postcard photo="">
+    <opening>
+      Postcard from <sender>Rachel Wright</sender>, dated <date standard="20210115">15 Jan 2021</date> to
+      <recipient><name>Christopher Allen</name>,
+      <address>Sheffield</address></recipient>.
+    </opening>
+    <message>
+      Chris, the museum exhibitions here are world class. You'd spend days here!
+      Warm wishes, Rachel.
+    </message>
+  </postcard>
+
+  <postcard photo="Venice Canals">
+    <opening>
+      Postcard sent <date standard="20220722">22nd July 2022</date>
+      by <sender>Benjamin Hill</sender> to his
+      <recipient><name>Victoria Cook</name>,
+      <address>Nottingham</address></recipient>.
+    </opening>
+    <message>
+      Victoria, gondola rides are as romantic as they say! The city is magical.
+      Love, Ben.
+    </message>
+  </postcard>
+
+  <postcard photo="Rio Carnival">
+    <opening>
+      Postcard from <date standard="20230218">18/02/2023</date> by <sender>Nicole Bell</sender> to
+      <recipient><name>Samuel Ward</name>,
+      <address>Southampton</address></recipient>.
+    </opening>
+    <message>
+      Sam, the energy at Carnival is absolutely electric! You'd love the music here.
+      Miss you, Nic.
+    </message>
+  </postcard>
+
+  <postcard photo="African Safari">
+    <opening>
+      Postcard mailed on <date standard="20220905">September 5, 2022</date>
+      from <sender>Timothy Reed</sender> to
+      <recipient><name>Diana Baker</name>,
+      <address>Portsmouth</address></recipient>.
+    </opening>
+    <message>
+      Diana, we saw lions today! The wildlife here is breathtaking.
+      Best, Tim.
+    </message>
+  </postcard>
+
+  <postcard photo="">
+    <opening>
+      Postcard from <sender>Laura Cooper</sender>, <date standard="20201110">10-Nov-2020</date> to
+      <recipient><name>Henry Evans</name>,
+      <address>Oxford</address></recipient>.
+    </opening>
+    <message>
+      Henry, the university library here is absolutely massive! Thought of you immediately.
+      Regards, Laura.
+    </message>
+  </postcard>
+
+  <postcard photo="Great Wall">
+    <opening>
+      Postcard sent <date standard="20230512">12 May 2023</date>
+      by <sender>Jason Morris</sender> to his
+      <recipient><name>Rebecca Parker</name>,
+      <address>Cambridge</address></recipient>.
+    </opening>
+    <message>
+      Bec, walked 10km on the Wall today! The views are worth every step.
+      Love, Jay.
+    </message>
+  </postcard>
+
+  <postcard photo="Northern Lights">
+    <opening>
+      Postcard from <date standard="20220315">15/03/2022</date> by <sender>Anna Foster</sender> to
+      <recipient><name>Paul Hughes</name>,
+      <address>York</address></recipient>.
+    </opening>
+    <message>
+      Paul, the auroras last night were spectacular! Like dancing green ghosts.
+      Warmly, Anna.
+    </message>
+  </postcard>
+
+  <postcard photo="Egypt Pyramids">
+    <opening>
+      Postcard mailed <date standard="20240105">Jan 5, 2024</date>
+      from <sender>Brian Nelson</sender> to
+      <recipient><name>Karen Carter</name>,
+      <address>Plymouth</address></recipient>.
+    </opening>
+    <message>
+      Karen, the pyramids are even more impressive in person! The heat takes getting used to though.
+      Cheers, Brian.
+    </message>
+  </postcard>
+
+  <postcard photo="">
+    <opening>
+      Postcard from <sender>Christine Mitchell</sender>, dated <date standard="20211210">10 Dec 2021</date> to
+      <recipient><name>Steven Collins</name>,
+      <address>Norwich</address></recipient>.
+    </opening>
+    <message>
+      Steve, the Christmas markets here are wonderful! The mulled wine is keeping me warm.
+      Love, Chris.
+    </message>
+  </postcard>
+
+  <postcard photo="Amazon Rainforest">
+    <opening>
+      Postcard sent on <date standard="20220808">08-Aug-2022</date>
+      by <sender>Patrick Stewart</sender> to his
+      <recipient><name>Janet Price</name>,
+      <address>Brighton</address></recipient>.
+    </opening>
+    <message>
+      Janet, the biodiversity here is incredible! Saw monkeys and toucans today.
+      Best, Pat.
+    </message>
+  </postcard>
+
+  <postcard photo="Dubai Skyline">
+    <opening>
+      Postcard from <date standard="20230228">28 Feb 2023</date> by <sender>Emma Richardson</sender> to
+      <recipient><name>Mark Bennett</name>,
+      <address>Belfast</address></recipient>.
+    </opening>
+    <message>
+      Mark, the Burj Khalifa is even taller than I imagined! The view is worth the elevator ride.
+      Warm wishes, Emma.
+    </message>
+  </postcard>
+  
+    <postcard photo="Berlin Office">
+    <opening>
+      Postcard sent on <date standard="20230912">12-Sept-2023</date>
+      by <sender>Jonathan Myers</sender> to
+      <recipient><name>Sarah Connor</name>,
+      <address>London</address></recipient>.
+    </opening>
+    <message>
+      Sarah, the client meeting went better than expected. They approved phase two! 
+      Will debrief when I'm back Thursday. - Jon
+    </message>
+  </postcard>
+
+  <postcard photo="">
+    <opening>
+      Postcard from <sender>Lisa Zhang</sender>, <date standard="20221018">18 Oct 2022</date> to
+      <recipient><name>Marketing Team</name>,
+      <address>Manchester</address></recipient>.
+    </opening>
+    <message>
+      Team, the trade show is packed - we've generated 47 qualified leads already. 
+      Prepare for follow-ups! - Lisa
+    </message>
+  </postcard>
+
+  <postcard photo="Tokyo Skyscrapers">
+    <opening>
+      Postcard mailed <date standard="20230522">22/05/2023</date>
+      from <sender>David Wilson</sender> to
+      <recipient><name>Technical Dept</name>,
+      <address>Birmingham</address></recipient>.
+    </opening>
+    <message>
+      The factory tour was insightful - we should adopt their QA process. 
+      Jetlag brutal but worth it. Report Monday. - DW
+    </message>
+  </postcard>
+
+  <postcard photo="">
+    <opening>
+      Postcard from <date standard="20240205">Feb 5, 2024</date> by <sender>Maria Gomez</sender> to
+      <recipient><name>Finance Committee</name>,
+      <address>Edinburgh</address></recipient>.
+    </opening>
+    <message>
+      Completed the audit - found several discrepancies we need to discuss. 
+      Flying back tomorrow. - M.
+    </message>
+  </postcard>
+
+  <postcard photo="Singapore Conference Center">
+    <opening>
+      Postcard sent <date standard="20231115">15-11-2023</date>
+      by <sender>Robert Chen</sender> to his
+      <recipient><name>James Wilson</name>,
+      <address>Leeds</address></recipient>.
+    </opening>
+    <message>
+      James, secured the APAC contract! Need you to prep the implementation team. 
+      Still negotiating payment terms. - Rob
+    </message>
+  </postcard>
+
+  <postcard photo="">
+    <opening>
+      Postcard from <sender>Emma Johnson</sender>, <date standard="20230130">30 Jan 2023</date> to
+      <recipient><name>HR Department</name>,
+      <address>Bristol</address></recipient>.
+    </opening>
+    <message>
+      Completed 3 interviews for the German office candidates. 
+      Strong preference for candidate #2. Details to follow. - EJ
+    </message>
+  </postcard>
+
+  <postcard photo="New York Stock Exchange">
+    <opening>
+      Postcard from <date standard="20220410">10/04/2022</date> by <sender>Michael Brown</sender> to
+      <recipient><name>Investor Relations</name>,
+      <address>Glasgow</address></recipient>.
+    </opening>
+    <message>
+      Roadshow complete - institutional interest stronger than projected. 
+      Q2 numbers will be crucial. - MB
+    </message>
+  </postcard>
+
+  <postcard photo="">
+    <opening>
+      Postcard mailed on <date standard="20230807">7 Aug 2023</date>
+      from <sender>Anita Patel</sender> to
+      <recipient><name>Operations Team</name>,
+      <address>Liverpool</address></recipient>.
+    </opening>
+    <message>
+      Warehouse inspection revealed several OSHA violations at the supplier. 
+      Recommend we pause shipments until resolved. - A.
+    </message>
+  </postcard>
+
+  <postcard photo="Dubai Construction Site">
+    <opening>
+      Postcard from <sender>Thomas Wright</sender>, <date standard="20221212">12-Dec-2022</date> to
+      <recipient><name>Project Managers</name>,
+      <address>Cardiff</address></recipient>.
+    </opening>
+    <message>
+      Site visit confirms 6-week delay due to material shortages. 
+      Requesting emergency budget meeting. - Tom
+    </message>
+  </postcard>
+
+  <postcard photo="">
+    <opening>
+      Postcard sent <date standard="20230620">20/06/2023</date>
+      by <sender>Olivia Martin</sender> to her
+      <recipient><name>R&amp;D Team</name>,
+      <address>Cambridge</address></recipient>.
+    </opening>
+    <message>
+      Tech summit yielded promising AI integration partners. 
+      Schedule demo meetings for next week? - Olivia
+    </message>
+  </postcard>
+
+  <postcard photo="Paris Office">
+    <opening>
+      Postcard from <date standard="20220905">05 Sept 2022</date> by <sender>Daniel Kim</sender> to
+      <recipient><name>Legal Team</name>,
+      <address>Belfast</address></recipient>.
+    </opening>
+    <message>
+      EU regulatory changes more extensive than anticipated. 
+      Need immediate review of attached documents. - DK
+    </message>
+  </postcard>
+
+  <postcard photo="">
+    <opening>
+      Postcard mailed <date standard="20240118">18 Jan 2024</date>
+      from <sender>Sophie Clarke</sender> to
+      <recipient><name>Sales Team</name>,
+      <address>Newcastle</address></recipient>.
+    </opening>
+    <message>
+      Closed the Phillips account! Celebratory drinks when I return. 
+      Prepare onboarding docs. - Sophie
+    </message>
+  </postcard>
+
+  <postcard photo="Shanghai Port">
+    <opening>
+      Postcard from <sender>Richard Ng</sender>, <date standard="20230315">15-Mar-2023</date> to
+      <recipient><name>Logistics</name>,
+      <address>Sheffield</address></recipient>.
+    </opening>
+    <message>
+      Shipping delays now estimated at 3 weeks due to customs backlog. 
+      Suggest air freight for priority orders. - RN
+    </message>
+  </postcard>
+
+  <postcard photo="">
+    <opening>
+      Postcard sent on <date standard="20221030">30 Oct 2022</date>
+      by <sender>Jennifer Adams</sender> to her
+      <recipient><name>CEO</name>,
+      <address>London</address></recipient>.
+    </opening>
+    <message>
+      Board meeting rescheduled to Thursday per chairman's request. 
+      Presentation materials ready for review. - Jen
+    </message>
+  </postcard>
+
+  <postcard photo="Mumbai Office">
+    <opening>
+      Postcard from <date standard="20220722">22/07/2022</date> by <sender>Arjun Mehta</sender> to
+      <recipient><name>IT Department</name>,
+      <address>Nottingham</address></recipient>.
+    </opening>
+    <message>
+      Outsourcing team exceeded all performance metrics. 
+      Recommend expanding contract as discussed. - Arjun
+    </message>
+  </postcard>
+
+  <postcard photo="">
+    <opening>
+      Postcard mailed <date standard="20231105">5 Nov 2023</date>
+      from <sender>Emily Wilson</sender> to
+      <recipient><name>Product Team</name>,
+      <address>Southampton</address></recipient>.
+    </opening>
+    <message>
+      Customer feedback overwhelmingly positive on beta features. 
+      Green light for full rollout. - EW
+    </message>
+  </postcard>
+
+  <postcard photo="Sydney Conference">
+    <opening>
+      Postcard from <sender>Paul Robinson</sender>, <date standard="20230214">14-Feb-2023</date> to
+      <recipient><name>Business Dev</name>,
+      <address>Portsmouth</address></recipient>.
+    </opening>
+    <message>
+      Made valuable contacts at fintech conference. 
+      8 solid leads for potential partnerships. - PR
+    </message>
+  </postcard>
+
+  <postcard photo="">
+    <opening>
+      Postcard sent <date standard="20240510">10 May 2024</date>
+      by <sender>Natalie Brooks</sender> to her
+      <recipient><name>Quality Control</name>,
+      <address>Oxford</address></recipient>.
+    </opening>
+    <message>
+      Factory audit complete - major improvements since last visit. 
+      Still minor issues in packaging area. - Nat
+    </message>
+  </postcard>
+
+  <postcard photo="Toronto Headquarters">
+    <opening>
+      Postcard from <date standard="20220918">18 Sept 2022</date> by <sender>Kevin Li</sender> to
+      <recipient><name>North America Team</name>,
+      <address>York</address></recipient>.
+    </opening>
+    <message>
+      Merger paperwork finally signed! Transition team arriving Monday. 
+      Prepare welcome packages. - KL
+    </message>
+  </postcard>
+
+  <postcard photo="">
+    <opening>
+      Postcard mailed on <date standard="20231201">1-Dec-2023</date>
+      from <sender>Rachel Green</sender> to
+      <recipient><name>All Staff</name>,
+      <address>Plymouth</address></recipient>.
+    </opening>
+    <message>
+      Annual strategy retreat productive - exciting plans for Q1! 
+      Detailed memo coming Friday. - RG
+    </message>
+  </postcard>
+  
+     <postcard photo="Abandoned Schoolhouse">
+    <opening>
+      Correspondence dated <date standard="20221103">03/11/22</date>
+      from <sender>Mr. Albert Graves</sender> to
+      <recipient><name>St. Mary's Alumni Association</name>,
+      <address>York</address></recipient>.
+    </opening>
+    <message>
+      I passed by our old school today. The chalkboards still bear fragments of lessons from that final June. The swings creak like ghosts of children's laughter. Fifty years vanish in the dust motes dancing through broken windows.
+      With heavy regards,
+      Albert
+    </message>
+  </postcard>
+
+  <postcard photo="Empty Dog Leash">
+    <opening>
+      Note written <date standard="20230314">14-Mar-2023</date>
+      by <sender>Mrs. Eunice Parker</sender> addressed to
+      <recipient><name>Animal Memorial Clinic</name>,
+      <address>Norwich</address></recipient>.
+    </opening>
+    <message>
+      Thank you for your kindness when we said goodbye to Max last Tuesday. His water bowl still sits by the door. The silence is louder than his barking ever was. The leash hangs unused, still shaped by his eager tugs.
+      Gratefully yours,
+      Eunice Parker
+    </message>
+  </postcard>
+
+  <postcard photo="Closed Library">
+    <opening>
+      Memorandum from <date standard="20240105">Jan 5, 2024</date>
+      sender <sender>Librarian G. Wilkins</sender> to
+      <recipient><name>County Council</name>,
+      <address>Leeds</address></recipient>.
+    </opening>
+    <message>
+      Today we boxed the last children's books. The storytime carpet bears permanent indentations from decades of tiny listeners. Without funding, this sanctuary of imagination becomes another casualty of "progress."
+      With professional disappointment,
+      G. Wilkins
+    </message>
+  </postcard>
+
+  <postcard photo="Faded Military Photo">
+    <opening>
+      Dispatch dated <date standard="20220530">30.05.2022</date>
+      from <sender>Captain R. Donovan (Ret.)</sender> to
+      <recipient><name>8th Battalion Veterans</name>,
+      <address>Plymouth</address></recipient>.
+    </opening>
+    <message>
+      Another Memorial Day passes. The photo of our platoon grows more yellow each year. So many faces now only exist in this fading image. The living grow fewer while the ghosts multiply.
+      In solemn remembrance,
+      Capt. Donovan
+    </message>
+  </postcard>
+
+  <postcard photo="Bankrupt Toy Store">
+    <opening>
+      Message postmarked <date standard="20231224">24-Dec-23</date>
+      sender <sender>Mr. H. Goldberg</sender> to
+      <recipient><name>Whittaker &amp; Sons</name>,
+      <address>Creditors Dept.</address></recipient>.
+    </opening>
+    <message>
+      Today I turned the key for the final time. Sixty-three years of childhood wonder reduced to liquidation stickers. The train set still circles emptily in the display window. No children came for our last Christmas.
+      Regretfully submitted,
+      H. Goldberg
+    </message>
+  </postcard>
+
+  <postcard photo="Retirement Home Piano">
+    <opening>
+      Correspondence dated <date standard="20220915">15th Sept 2022</date>
+      from <sender>Nurse A. Bennett</sender> to
+      <recipient><name>Maplewood Staff</name>,
+      <address>Brighton</address></recipient>.
+    </opening>
+    <message>
+      Mrs. Whitaker passed quietly last night. The piano sits unplayed now. No more Chopin drifting through the halls at teatime. Her room already smells of disinfectant instead of lavender.
+      With professional sympathy,
+      Nurse Bennett
+    </message>
+  </postcard>
+
+  <postcard photo="Dusty Typewriter">
+    <opening>
+      Letter composed <date standard="20230701">July 1, 2023</date>
+      by <sender>Editor T. Reeves</sender> to
+      <recipient><name>Printing Press Museum</name>,
+      <address>Dublin</address></recipient>.
+    </opening>
+    <message>
+      The newsroom is silent now. The typewriters we donated gather dust behind glass. No more clatter of deadlines, no ink-stained fingers. The digital world has no need for our obsolete passion.
+      With journalistic respect,
+      T. Reeves
+    </message>
+  </postcard>
+
+  <postcard photo="Empty Lifeboat">
+    <opening>
+      Report filed <date standard="20221008">08/10/22</date>
+      from <sender>Coast Guard Officer M. Evans</sender> to
+      <recipient><name>Maritime Archives</name>,
+      <address>Southampton</address></recipient>.
+    </opening>
+    <message>
+      The lifeboat returned alone today. We recovered no survivors this time. The harbor bells tolled seventeen times - once for each soul lost to the storm's hunger.
+      With professional sorrow,
+      Officer Evans
+    </message>
+  </postcard>
+
+  <postcard photo="Closed Hospital Ward">
+    <opening>
+      Memorandum dated <date standard="20230418">18-Apr-2023</date>
+      from <sender>Dr. L. Chen</sender> to
+      <recipient><name>Health Authority</name>,
+      <address>Birmingham</address></recipient>.
+    </opening>
+    <message>
+      Pediatrics Wing officially closed today. The mural of jungle animals seems to weep under peeling paint. Tiny handprints still mark the windows where children pressed against glass, watching birds we promised would mean spring's arrival.
+      With medical concern,
+      Dr. Chen
+    </message>
+  </postcard>
+
+  <postcard photo="Abandoned Greenhouse">
+    <opening>
+      Note written <date standard="20230228">28 Feb 2023</date>
+      by <sender>Groundskeeper J. O'Reilly</sender> to
+      <recipient><name>Botanical Society</name>,
+      <address>Glasgow</address></recipient>.
+    </opening>
+    <message>
+      The last orchid died yesterday. Broken glass litters the greenhouse floor like artificial rain. Forty years of cultivation surrendered to budget cuts. The heating system's final gasp sounded like a sigh.
+      With horticultural regret,
+      J. O'Reilly
+    </message>
+  </postcard>
+
+  <!-- Additional 30 examples would continue with similar closing greetings -->
+
+  <postcard photo="Retired Fire Truck">
+    <opening>
+      Dispatch dated <date standard="20240110">10/01/24</date>
+      from <sender>Chief W. Peterson</sender> to
+      <recipient><name>Station 17 Alumni</name>,
+      <address>Nottingham</address></recipient>.
+    </opening>
+    <message>
+      Old Engine 42 went to the scrapyard today. Its ladder still bears scars from the Harrison Street fire. The new trucks shine with technology but lack the soul of this warhorse that saved 143 lives.
+      With firefighting pride,
+      Chief Peterson
+    </message>
+  </postcard>
+
+  <postcard photo="Empty Jury Box">
+    <opening>
+      Court record <date standard="20220615">15 June 2022</date>
+      from <sender>Bailiff R. Johnson</sender> to
+      <recipient><name>County Courthouse</name>,
+      <address>Staff Records</address></recipient>.
+    </opening>
+    <message>
+      Judge Callahan's courtroom sat empty today. The verdict book closed for the final time. After 42 years, even the scales of justice grow too heavy to lift. The gavel's echo fades.
+      With judicial respect,
+      R. Johnson
+    </message>
+  </postcard>
+
+  <postcard photo="Silenced Church Bells">
+    <opening>
+      Parish notice <date standard="20230903">03-Sep-2023</date>
+      from <sender>Vicar E. Thompson</sender> to
+      <recipient><name>Diocesan Office</name>,
+      <address>Canterbury</address></recipient>.
+    </opening>
+    <message>
+      The bell tower stands mute after structural condemnation. Six centuries of summoning the faithful ended by rusted ironwork. The pigeons seem confused by the unnatural silence at noon.
+      With spiritual concern,
+      Vicar Thompson
+    </message>
+  </postcard>
+  
+    <postcard photo="Snowy City">
+    <opening>
+      Written <date standard="20230115">15th of January, 2023</date>
+      by <sender>Your son Amir</sender> to
+      <recipient><name>Dear Family</name>,
+      <address>Dhaka, Bangladesh</address></recipient>.
+    </opening>
+    <message>
+      Today I saw snow for the first time! It felt like magic dust covering Toronto. I tried making a snowball like in movies but my hands turned red from cold. The grocery store cashier laughed when I bought milk and bread like everyone warned. Baba, I wish you could see how trees become ice sculptures here. 
+      Missing home warmth,
+      Amir
+    </message>
+  </postcard>
+
+  <postcard photo="Factory Entrance">
+    <opening>
+      Sent <date standard="20220503">03-May-2022</date>
+      from <sender>Carlos</sender> to
+      <recipient><name>Mamá y Hermanos</name>,
+      <address>Guadalajara, Mexico</address></recipient>.
+    </opening>
+    <message>
+      First paycheck came today. Enclosed is $200 - please use half for Miguel's medicine. The factory is loud like home during carnival, but without music or joy. I share a room with 3 others above a laundromat. Strange to wash clothes while sleeping, no? At night we tell stories about Jalisco to remember.
+      Con amor,
+      Carlitos
+    </message>
+  </postcard>
+
+  <postcard photo="Graduation Cap">
+    <opening>
+      Dated <date standard="20230610">10/06/2023</date>
+      by <sender>Fatima</sender> to
+      <recipient><name>My Beloved Parents</name>,
+      <address>Lagos, Nigeria</address></recipient>.
+    </opening>
+    <message>
+      I DID IT! The nursing license arrived today. All those nights studying while cleaning hospital floors were worth it. When the director called me "Dr. Adebayo" I cried like a baby. Please tell Grandma I kept my promise. Next goal: bringing you here for graduation ceremony!
+      Your daughter,
+      Fatima
+    </message>
+  </postcard>
+
+  <postcard photo="Empty Apartment">
+    <opening>
+      Composed <date standard="20220912">12 Sept 2022</date>
+      from <sender>Wei</sender> to
+      <recipient><name>Mother</name>,
+      <address>Shenzhen, China</address></recipient>.
+    </opening>
+    <message>
+      The apartment echoes without your scolding voice, Mama. I burned the rice again today. No one tells me to wear thicker socks. Canadian people are kind but their smiles don't reach eyes like yours. The moon looks same here though - we still share that.
+      Lonely,
+      Xiao Wei
+    </message>
+  </postcard>
+
+  <postcard photo="Passport Stamp">
+    <opening>
+      Mailed <date standard="20231130">30-Nov-23</date>
+      by <sender>Jorge</sender> to
+      <recipient><name>Querida Familia</name>,
+      <address>Caracas, Venezuela</address></recipient>.
+    </opening>
+    <message>
+      After 3 years, my residency came through! No more hiding from la migra. Celebrate with arepas for me! I got construction supervisor job - hard hat has my name spelled right. Next step: saving for your visas. The struggle wasn't for nothing.
+      Esperándolos,
+      Jorge
+    </message>
+  </postcard>
+
+  <postcard photo="Hospital Bed">
+    <opening>
+      Written <date standard="20240214">Feb 14, 2024</date>
+      from <sender>Your Anna</sender> to
+      <recipient><name>Babushka</name>,
+      <address>Kyiv, Ukraine</address></recipient>.
+    </opening>
+    <message>
+      The baby came early but healthy - 2.8 kg! They let me name her Liliya after you. American doctors are confused why I cry when hearing Ukrainian lullabies. She has your nose, Babushka. When war ends, we'll picnic at Trubayiv Forest like before.
+      Your granddaughter,
+      Annushka
+    </message>
+  </postcard>
+
+  <postcard photo="Food Package">
+    <opening>
+      Sent <date standard="20220707">07/07/2022</date>
+      by <sender>Ahmed</sender> to
+      <recipient><name>Brothers</name>,
+      <address>Aleppo, Syria</address></recipient>.
+    </opening>
+    <message>
+      The Halal food package arrived today - first proper hummus in 6 months! I ate the whole container remembering Mama's recipe. Found a mosque where people speak Arabic. They say Germany gets easier after first winter. The cold enters bones here but at least no bombs.
+      Stay safe,
+      Ahmed
+    </message>
+  </postcard>
+
+  <postcard photo="Money Transfer Receipt">
+    <opening>
+      Dated <date standard="20230322">22-Mar-2023</date>
+      from <sender>Rosa</sender> to
+      <recipient><name>Papá</name>,
+      <address>Managua, Nicaragua</address></recipient>.
+    </opening>
+    <message>
+      $500 sent today - tear down that zinc roof before rainy season! I work two cleaning jobs but never as hard as you in fields. The señora's kids call me "nanny" though I'm younger than them. One day you'll visit my own apartment, promise.
+      Con sacrificio,
+      Rosita
+    </message>
+  </postcard>
+
+  <postcard photo="University Library">
+    <opening>
+      Composed <date standard="20231015">15 Oct 2023</date>
+      by <sender>Yusuf</sender> to
+      <recipient><name>Uncle</name>,
+      <address>Kabul, Afghanistan</address></recipient>.
+    </opening>
+    <message>
+      Uncle, I checked out books WITHOUT fearing Taliban today! Cambridge library has more volumes than our whole city. The professor said my refugee essay should be published. Strange - bombs took our home but gave me this chance. I'll make you proud.
+      Your scholar,
+      Yusuf
+    </message>
+  </postcard>
+
+  <postcard photo="Phone Booth">
+    <opening>
+      Written <date standard="20220405">05-Apr-2022</date>
+      from <sender>María</sender> to
+      <recipient><name>Mamí</name>,
+      <address>San Salvador, El Salvador</address></recipient>.
+    </opening>
+    <message>
+      I called but you weren't home. The phone card cost $10 for 3 minutes! Working 14 hours/day at the poultry plant to pay coyote debt. The foreman calls us "polleritas" - little chickens. At least real chickens don't know they'll be slaughtered, right? Joking. I'm okay.
+      Besos,
+      Marí
+    </message>
+  </postcard>
+
+  <postcard photo="Birthday Cake">
+    <opening>
+      Sent <date standard="20230920">20/09/2023</date>
+      by <sender>Priya</sender> to
+      <recipient><name>Papa</name>,
+      <address>Mumbai, India</address></recipient>.
+    </opening>
+    <message>
+      Today I baked gulab jamun for my American coworkers! They said "so sweet!" while drinking bitter coffee. I laughed remembering how you dip them in chai. My apartment smells like home when I cook, though the gas stove works differently here. Next year, we celebrate Diwali together, yes?
+      Your little chef,
+      Priya
+    </message>
+  </postcard>
+
+  <postcard photo="Construction Site">
+    <opening>
+      Dated <date standard="20221210">10 Dec 2022</date>
+      from <sender>Jian</sender> to
+      <recipient><name>Wife</name>,
+      <address>Chengdu, China</address></recipient>.
+    </opening>
+    <message>
+      The night shift at Amazon is cold but pays double. I wear two pairs socks like you packed. Saw a delivery driver hit by car last week - no insurance. Please don't tell mother. Only 11 more months until debt is cleared and I can return to you and Xiao.
+      Enduring,
+      Jian
+    </message>
+  </postcard>
+
+  <postcard photo="Citizenship Certificate">
+    <opening>
+      Mailed <date standard="20240801">01-Aug-2024</date>
+      by <sender>Mohamed</sender> to
+      <recipient><name>Family</name>,
+      <address>Cairo, Egypt</address></recipient>.
+    </opening>
+    <message>
+      I AM CANADIAN NOW! The judge said "Welcome home" and I cried like baby. After 7 years of taxi driving and exams, I hugged the flag. The certificate goes on wall where taxi license hung. Next summer - your visas inshallah! Start packing warm clothes.
+      With joy,
+      Mo
+    </message>
+  </postcard>
+
+  <postcard photo="Bus Station">
+    <opening>
+      Written <date standard="20230518">18th May 2023</date>
+      from <sender>Elena</sender> to
+      <recipient><name>Sister</name>,
+      <address>Bucharest, Romania</address></recipient>.
+    </opening>
+    <message>
+      Saw a gypsy violinist at the station today - played "Cântec de Leagăn" perfectly. I dropped 20 euros though can't afford it. The baby inside me kicked to the rhythm. You'll be auntie by Christmas! Florin doesn't know yet... some things are better from distance.
+      Secretly yours,
+      Elenuța
+    </message>
+  </postcard>
+
+  <postcard photo="Food Truck">
+    <opening>
+      Sent <date standard="20240715">15-Jul-2024</date>
+      by <sender>Diego</sender> to
+      <recipient><name>Primos</name>,
+      <address>Bogotá, Colombia</address></recipient>.
+    </opening>
+    <message>
+      THE TRUCK IS OURS! No more renting - "Arepas Don Miguel" is official. First customer was a homesick Venezuelan who kissed my hands. We play vallenatos loud like back home. Abuelita's recipe notebook sits by the grill like sacred text. Come visit - I'll sponsor visas!
+      With fried hope,
+      Diego
+    </message>
+  </postcard>
+
+  <postcard photo="Winter Coat">
+    <opening>
+      Dated <date standard="20221130">30 Nov 2022</date>
+      from <sender>Anh</sender> to
+      <recipient><name>Grandmother</name>,
+      <address>Hanoi, Vietnam</address></recipient>.
+    </opening>
+    <message>
+      Bought my first winter coat today - puffy like marshmallow! The saleswoman said "good for -30°C" like that's normal. My fingers still freeze waiting for bus at 5AM nail salon shift. Strange to miss Hanoi's heat and motorbike smoke. I send warmer socks next month.
+      Cold kisses,
+      Anh
+    </message>
+  </postcard>
+
+  <postcard photo="Deportation Notice">
+    <opening>
+      Composed <date standard="20230901">01/09/2023</date>
+      by <sender>Kwame</sender> to
+      <recipient><name>Father</name>,
+      <address>Accra, Ghana</address></recipient>.
+    </opening>
+    <message>
+      The court said no. After 8 years building London's skyscrapers, I'm "illegal." They let me stay until Christmas - cruel gift. Don't sell land to pay lawyer again. Maybe God wants me home. The shame hurts worse than handcuffs they'll use.
+      Your failure,
+      Kwame
+    </message>
+  </postcard>
+
+  <postcard photo="Wedding Rings">
+    <opening>
+      Mailed <date standard="20240622">22 June 2024</date>
+      from <sender>Layla</sender> to
+      <recipient><name>Parents</name>,
+      <address>Damascus, Syria</address></recipient>.
+    </opening>
+    <message>
+      Married Omar yesterday in civil ceremony. No zaffeh procession, just two witnesses from refugee center. His family sends blessings from Turkey. We combined traditions - I wore blue for Syrian brides, he gave German gold ring. Strange to build love atop so much loss.
+      Bittersweet,
+      Layla
+    </message>
+  </postcard>
+
+  <postcard photo="Tattoo Parlor">
+    <opening>
+      Written <date standard="20230214">14-Feb-2023</date>
+      by <sender>Pablo</sender> to
+      <recipient><name>Hermano</name>,
+      <address>Medellín, Colombia</address></recipient>.
+    </opening>
+    <message>
+      Got Mom's face tattooed over my MS13 marks today. The artist said "She's pretty" while erasing monsters. Pain was nothing compared to crossing deserts. Now when ICE looks at me, they'll see her first. Rehabilitation starts with skin, yes?
+      Changing,
+      Pablito
+    </message>
+  </postcard>
+
+  <postcard photo="First Paycheck">
+    <opening>
+      Sent <date standard="20250105">05 Jan 2025</date>
+      from <sender>Nadia</sender> to
+      <recipient><name>Mama</name>,
+      <address>Kiev, Ukraine</address></recipient>.
+    </opening>
+    <message>
+      First nursing paycheck came! Sending half for your basement apartment rent. The hospital hired me despite "accent." Patients say I have healing hands - like you always told me. Warsaw feels safer but my heart stays with you in bunkers. Come spring, I'll bring you here.
+      Your warrior,
+      Nadiyka
+    </message>
+  </postcard>
+  
+    <postcard photo="Cactus Garden">
+    <opening>
+      Sent <date standard="20230615">15-Jun-23</date>
+      from <sender>Aunt Martha</sender> to
+      <recipient><name>Niece Emily</name>,
+      <address>Portland, OR</address></recipient>.
+    </opening>
+    <message>
+      The Arizona heat is brutal but these cacti thrive! Found a variety that blooms at night. Reminds me of your college all-nighters. How's the new job?
+      Love,
+      Aunt Martha
+    </message>
+  </postcard>
+
+  <postcard photo="Vintage Typewriter">
+    <opening>
+      Written <date standard="20220903">03/09/22</date>
+      by <sender>Mr. Thompson</sender> to
+      <recipient><name>Book Club</name>,
+      <address>Springfield Library</address></recipient>.
+    </opening>
+    <message>
+      Found this 1940s Royal at a flea market! Needs new ribbon but keys work perfectly. Shall we use it for our next meeting minutes?
+      Regards,
+      D. Thompson
+    </message>
+  </postcard>
+
+  <postcard photo="Foggy Pier">
+    <opening>
+      Mailed <date standard="20231122">22 Nov 2023</date>
+      from <sender>Jake</sender> to
+      <recipient><name>Roommates</name>,
+      <address>Apartment 4B</address></recipient>.
+    </opening>
+    <message>
+      Conference is boring but the seafood here is amazing! Fog rolls in at 4pm like clockwork. Don't forget to water my fern!
+      Later,
+      Jake
+    </message>
+  </postcard>
+
+  <postcard photo="Abandoned Lighthouse">
+    <opening>
+      Posted <date standard="20240708">08-Jul-24</date>
+      by <sender>Urban Explorers Club</sender> to
+      <recipient><name>New Members</name>,
+      <address>Chapter 17</address></recipient>.
+    </opening>
+    <message>
+      Found this beauty off Route 9! Interior stairs unsafe but view from base incredible. Next meetup Sept 10th - bring flashlights.
+      - Pres. Carson
+    </message>
+  </postcard>
+
+  <postcard photo="Bakery Window">
+    <opening>
+      Dated <date standard="20230214">Feb 14, 2023</date>
+      from <sender>Grandma Rose</sender> to
+      <recipient><name>Liam</name>,
+      <address>College Dorm</address></recipient>.
+    </opening>
+    <message>
+      The new baker makes croissants almost as good as Paris! Saved you one in freezer for Thanksgiving. Study hard!
+      XOXO,
+      Grandma
+    </message>
+  </postcard>
+
+  <postcard photo="Train Tracks">
+    <opening>
+      Sent <date standard="20240501">01 May 2024</date>
+      by <sender>Uncle Pete</sender> to
+      <recipient><name>The Kids</name>,
+      <address>Lake House</address></recipient>.
+    </opening>
+    <message>
+      Found the old railroad spur we played on as boys! Tracks rusted but still straight. Perfect for summer photo shoot.
+      - Uncle P
+    </message>
+  </postcard>
+
+  <postcard photo="Antique Clock">
+    <opening>
+      Written <date standard="20221030">30.10.2022</date>
+      from <sender>Clock Repair</sender> to
+      <recipient><name>Mrs. Wilkins</name>,
+      <address>22 Maple St.</address></recipient>.
+    </opening>
+    <message>
+      Your grandfather clock is ready! Chimes perfectly on the hour. Stop by before Friday.
+      - H. Schmidt
+    </message>
+  </postcard>
+
+  <postcard photo="Community Garden">
+    <opening>
+      Posted <date standard="20230415">15-Apr-2023</date>
+      by <sender>Garden Committee</sender> to
+      <recipient><name>Plot #12</name>,
+      <address>Greenview Complex</address></recipient>.
+    </opening>
+    <message>
+      First tomatoes ripening! Your zucchini is overflowing - please harvest by weekend.
+      Happy gardening!
+    </message>
+  </postcard>
+
+  <postcard photo="Beach Sunset">
+    <opening>
+      Mailed <date standard="20230819">19/08/23</date>
+      from <sender>Sarah</sender> to
+      <recipient><name>Mom</name>,
+      <address>Home</address></recipient>.
+    </opening>
+    <message>
+      Found the perfect seashell for your collection! Weather perfect except for Tuesday's storm. Home Sunday.
+      Love you!
+    </message>
+  </postcard>
+
+  <postcard photo="Bookstore Cat">
+    <opening>
+      Sent <date standard="20240110">10 Jan 2024</date>
+      by <sender>Bookworm's Nook</sender> to
+      <recipient><name>Loyal Customers</name>,
+      <address>Main St. Area</address></recipient>.
+    </opening>
+    <message>
+      Mr. Whiskers had kittens! Three tiny book lovers born in the poetry section. Come meet them!
+      - Staff
+    </message>
+  </postcard>
+
+  <postcard photo="Mountain Trail">
+    <opening>
+      Dated <date standard="20220905">05-Sep-22</date>
+      from <sender>Hiking Club</sender> to
+      <recipient><name>Members</name>,
+      <address>Twin Peaks</address></recipient>.
+    </opening>
+    <message>
+      New trail marked on east ridge! Moderate difficulty, stunning views. Meet at 7am Saturday.
+      - Trailmaster
+    </message>
+  </postcard>
+
+  <postcard photo="Vinyl Records">
+    <opening>
+      Written <date standard="20230303">03/03/23</date>
+      by <sender>Dave</sender> to
+      <recipient><name>Music Buddies</name>,
+      <address>Garage Studio</address></recipient>.
+    </opening>
+    <message>
+      Scored original '69 Woodstock pressings at estate sale! Listening party Friday - bring snacks.
+      Rock on!
+    </message>
+  </postcard>
+
+  <postcard photo="Farmers Market">
+    <opening>
+      Posted <date standard="20240712">12 Jul 2024</date>
+      from <sender>Market Manager</sender> to
+      <recipient><name>Vendors</name>,
+      <address>Downtown Plaza</address></recipient>.
+    </opening>
+    <message>
+      New location approved! Setup starts 5am August 1st. Parking passes enclosed.
+      - M. Rodriguez
+    </message>
+  </postcard>
+
+  <postcard photo="Rainbow">
+    <opening>
+      Sent <date standard="20220522">22 May 2022</date>
+      by <sender>Grandpa Joe</sender> to
+      <recipient><name>Sophie</name>,
+      <address>Summer Camp</address></recipient>.
+    </opening>
+    <message>
+      Saw this rainbow and thought of you! Hope you're making friends and catching fireflies.
+      Love,
+      Grandpa
+    </message>
+  </postcard>
+
+  <postcard photo="Bicycle">
+    <opening>
+      Mailed <date standard="20231008">08-Oct-23</date>
+      from <sender>Bike Shop</sender> to
+      <recipient><name>Repair Customers</name>,
+      <address>Neighborhood</address></recipient>.
+    </opening>
+    <message>
+      Free tune-up week! Bring your bike in before winter. Limited slots available.
+      - Two Wheels
+    </message>
+  </postcard>
+
+  <postcard photo="Puzzle">
+    <opening>
+      Written <date standard="20240229">29 Feb 2024</date>
+      by <sender>Puzzle Club</sender> to
+      <recipient><name>Members</name>,
+      <address>Community Center</address></recipient>.
+    </opening>
+    <message>
+      New 5000-piece challenge puzzle set up! Come work on the sky section - all blue pieces!
+      - Club Pres.
+    </message>
+  </postcard>
+
+  <postcard photo="Bakery">
+    <opening>
+      Posted <date standard="20231224">24 Dec 2023</date>
+      from <sender>Jen</sender> to
+      <recipient><name>Neighbors</name>,
+      <address>Oak Street</address></recipient>.
+    </opening>
+    <message>
+      Holiday cookies delivered to your porch! Gluten-free batch marked with blue ribbons.
+      Merry Christmas!
+    </message>
+  </postcard>
+
+  <postcard photo="Fishing Pier">
+    <opening>
+      Sent <date standard="20220618">18/06/22</date>
+      by <sender>Dad</sender> to
+      <recipient><name>Sam</name>,
+      <address>College</address></recipient>.
+    </opening>
+    <message>
+      Caught a 12lb bass off the old pier! Released it but took photo for bragging rights. Summer break soon!
+      - Dad
+    </message>
+  </postcard>
+
+  <postcard photo="Coffee Shop">
+    <opening>
+      Dated <date standard="20230901">01-Sep-23</date>
+      from <sender>Java House</sender> to
+      <recipient><name>Regulars</name>,
+      <address>Downtown</address></recipient>.
+    </opening>
+    <message>
+      New Ethiopian roast arrived! First cup free for September birthdays. Open mic night returns Friday.
+      - Baristas
+    </message>
+  </postcard>
+
+  <postcard photo="Dog Park">
+    <opening>
+      Mailed <date standard="20240410">10 Apr 2024</date>
+      by <sender>Dog Walkers</sender> to
+      <recipient><name>Pet Owners</name>,
+      <address>Pine Ridge</address></recipient>.
+    </opening>
+    <message>
+      New agility course installed! Grand opening Saturday 9am. Biscuits for all pups!
+      Woof!
+    </message>
+  </postcard>
+  
+    <postcard photo="Rusty Swing Set">
+    <opening>
+      Found <date standard="20240718">18-Jul-24</date>
+      from <sender>Daniel Mercer</sender> to
+      <recipient><name>The Reynolds Family</name>,
+      <address>Formerly of 42 Maple Drive</address></recipient>.
+    </opening>
+    <message>
+      Discovered your daughter's height markings inside the closet. Left them untouched. The apple tree you planted still bears the sweetest fruit. Hope life has been kind to you all.
+      Wishing you continued joy,
+      Daniel (the new homeowner)
+    </message>
+  </postcard>
+
+  <postcard photo="Graduation Gown">
+    <opening>
+      Sent <date standard="20250610">10/06/25</date>
+      by <sender>María Guadalupe Hernández</sender> to
+      <recipient><name>Escuela Primaria Rural #17</name>,
+      <address>Oaxaca, Mexico</address></recipient>.
+    </opening>
+    <message>
+      Today I became Dr. Hernández! That scholarship you scraped together sent a village girl farther than any bus could. First paycheck will rebuild your leaking roof.
+      With eternal gratitude,
+      María
+    </message>
+  </postcard>
+
+  <postcard photo="Factory Time Clock">
+    <opening>
+      Notice posted <date standard="20241115">15 Nov 2024</date>
+      from <sender>Latisha Johnson, Union Steward</sender> to
+      <recipient><name>Third Shift Team</name>,
+      <address>Midwest Auto Plant</address></recipient>.
+    </opening>
+    <message>
+      We won the safety lawsuit! New guards being installed on Press #4 tomorrow. Jamal's accident wasn't in vain. His widow asked me to thank you all for fighting.
+      In solidarity,
+      Latisha
+    </message>
+  </postcard>
+
+  <postcard photo="Refugee Boat">
+    <opening>
+      Scrawled <date standard="20230902">02.09.23</date>
+      by <sender>Omar Al-Farsi</sender> to
+      <recipient><name>Captain Giovanni Russo</name>,
+      <address>Italian Coast Guard</address></recipient>.
+    </opening>
+    <message>
+      You pulled 38 of us from the sea that night. My wife rests in your waters, but our daughter took her first steps on your soil today. We named her Gioia after your ship.
+      Forever indebted,
+      Omar
+    </message>
+  </postcard>
+
+  <postcard photo="Retirement Watch">
+    <opening>
+      Delivered <date standard="20250330">30 Mar 2025</date>
+      from <sender>Officers of Precinct #42</sender> to
+      <recipient><name>Sergeant Patrick O'Malley</name>,
+      <address>Lakeview Cabin</address></recipient>.
+    </opening>
+    <message>
+      Your locker still smells like Irish Spring. Rookies ask about "that St. Paddy's '03 story." We kept your coffee-stained desk exactly as you left it. The fish can wait - come visit.
+      Your brothers in blue,
+      Diaz, Chen, and the crew
+    </message>
+  </postcard>
+
+  <postcard photo="Diner Counter">
+    <opening>
+      Left under plate <date standard="20240214">Feb 14, 2024</date>
+      from <sender>Walter Brennan</sender> to
+      <recipient><name>Jenny Kowalski</name>,
+      <address>Sunrise Diner</address></recipient>.
+    </opening>
+    <message>
+      You remembered my usual (black coffee, rye toast) on the day Margaret's lawyer served papers. That simple kindness kept a broken man going. The $100 tip is for all the times I couldn't.
+      Gratefully,
+      Walt from Booth 3
+    </message>
+  </postcard>
+
+  <postcard photo="Construction Crane">
+    <opening>
+      Report dated <date standard="20241005">05-Oct-24</date>
+      from <sender>James "Mac" MacAllister</sender> to
+      <recipient><name>Inspector Luis Gutierrez</name>,
+      <address>City Safety Office</address></recipient>.
+    </opening>
+    <message>
+      Fixed every harness issue you flagged. Showed the crew your cousin's accident photos - no more complaints about safety checks. You probably saved lives this week.
+      Stay vigilant,
+      Mac (55th St. site)
+    </message>
+  </postcard>
+
+  <postcard photo="Baby Shoes">
+    <opening>
+      Taped to box <date standard="20231201">01/12/23</date>
+      from <sender>Nurse Amy Washington</sender> to
+      <recipient><name>Tom and Priya Kapoor</name>,
+      <address>NICU Graduates</address></recipient>.
+    </opening>
+    <message>
+      These shoes that drowned your 2-pound miracle now fit! Saw your breast milk donation in our logbook. Little Ayaan from Bed 5 is thriving because of you. Come meet your biggest fans.
+      With admiration,
+      Nurse Amy
+    </message>
+  </postcard>
+
+  <postcard photo="Deported Veteran">
+    <opening>
+      Smuggled <date standard="20240804">04 Aug 2024</date>
+      by <sender>Carlos Mendez</sender> to
+      <recipient><name>VFW Post #107 Members</name>,
+      <address>Detroit, MI</address></recipient>.
+    </opening>
+    <message>
+      They took my Purple Heart but not the memories of you all. I've opened "Carlos' Auto Repair" in Tijuana. Still wake at 6am for phantom PT. Tell Rodriguez I found his lighter.
+      Until we meet again,
+      C.
+    </message>
+  </postcard>
+
+  <postcard photo="Closed Bookstore">
+    <opening>
+      Final sale <date standard="20250120">20 Jan 2025</date>
+      from <sender>Samuel Pasternak</sender> to
+      <recipient><name>Haddonfield Literary Society</name>,
+      <address>Hometown</address></recipient>.
+    </opening>
+    <message>
+      The last book sold was your childhood favorite "Charlotte's Web." The bank takes the keys tomorrow. Take whatever remains tonight - no charge. Stories deserve better than dumpsters.
+      Keep reading,
+      Sam
+    </message>
+  </postcard>
+
+  <postcard photo="Military Dog Tags">
+    <opening>
+      Returned <date standard="20240911">11-Sep-24</date>
+      from <sender>Nurse Kareem Jefferson</sender> to
+      <recipient><name>Sergeant Elijah Williams</name>,
+      <address>VA Hospital Room 712</address></recipient>.
+    </opening>
+    <message>
+      Found these in what remained of your uniform. The blood is gone but the shrapnel dents remain - like your stubbornness. PT at 3pm. I put Army stickers on your walker.
+      See you soon,
+      Nurse K.
+    </message>
+  </postcard>
+
+  <postcard photo="Immigrant Hands">
+    <opening>
+      Etched <date standard="20240501">May 1, 2024</date>
+      by <sender>The 7am Crew</sender> to
+      <recipient><name>New Guy from Guatemala</name>,
+      <address>Home Depot Lot</address></recipient>.
+    </opening>
+    <message>
+      Left gloves for you, hermano. Your palms bled yesterday but you didn't complain. Foreman pays Fridays now, not "mañana." Small victories add up. Ask Paco about his taco truck dream.
+      Your work family,
+      Miguel, Raj, and the boys
+    </message>
+  </postcard>
+
+  <postcard photo="Retirement Plaque">
+    <opening>
+      Unveiled <date standard="20240615">15/06/24</date>
+      from <sender>Mayor Alicia Torres</sender> to
+      <recipient><name>Edna Williams</name>,
+      <address>Route #17 Bus</address></recipient>.
+    </opening>
+    <message>
+      You drove me to school every day for 12 years. Today we named your bus stop "Edna's Corner." The seat with your sweater stays reserved. Tight lines out there!
+      Your favorite passenger,
+      Alicia
+    </message>
+  </postcard>
+
+  <postcard photo="Asylum Papers">
+    <opening>
+      Copied <date standard="20241020">20-Oct-24</date>
+      by <sender>Leila Abadi</sender> to
+      <recipient><name>Judge Evelyn Woodward</name>,
+      <address>Immigration Court</address></recipient>.
+    </opening>
+    <message>
+      Your signature changed everything. Yasmin starts school Monday with a pink backpack instead of hiding in bomb shelters. She wants to be a judge "like the nice lady."
+      With profound thanks,
+      Leila
+    </message>
+  </postcard>
+
+  <postcard photo="Empty Classroom">
+    <opening>
+      Left on desk <date standard="20250605">05 Jun 2025</date>
+      from <sender>Joseph "Joey" Marino</sender> to
+      <recipient><name>Mr. Sean Callahan</name>,
+      <address>Room 107</address></recipient>.
+    </opening>
+    <message>
+      You said algebra would save my life. It did - got me into electrician's school. Those detention slips made better references than anyone knew. I'm wiring homes for Habitat now.
+      Your reformed troublemaker,
+      Joey
+    </message>
+  </postcard>
+
+  <postcard photo="Last Paycheck">
+    <opening>
+      Stamped <date standard="20240731">31 Jul 2024</date>
+      from <sender>Doris Whitmore (HR)</sender> to
+      <recipient><name>Assembly Line Team</name>,
+      <address>Factory #7</address></recipient>.
+    </opening>
+    <message>
+      The robots arrive Monday. Enclosed are the cafeteria recipes - machines can't make meatloaf like ours. My 43 years here end with this note. Take care of each other.
+      With love,
+      Doris
+    </message>
+  </postcard>
+
+  <postcard photo="Adoption Papers">
+    <opening>
+      Finalized <date standard="20250105">05 Jan 2025</date>
+      by <sender>Caseworker Mei Lin</sender> to
+      <recipient><name>Aniyah Carter</name>,
+      <address>Foster Home #23</address></recipient>.
+    </opening>
+    <message>
+      Marcus' nightmares stopped calling you "temporary." The judge used the gold dinosaur sticker he picked. You're forever now. He insisted I send this courtroom photo.
+      Congratulations, Mom,
+      Mei
+    </message>
+  </postcard>
+
+  <postcard photo="Deportation Flight">
+    <opening>
+      Smuggled <date standard="20241210">10 Dec 2024</date>
+      from <sender>Javier Rios</sender> to
+      <recipient><name>Maria &amp; Leo (Apt 5C)</name>,
+      <address>Oakview Apartments</address></recipient>.
+    </opening>
+    <message>
+      They let me take nothing but this key. Please feed Gato - he likes the salmon treats. The ferns need water Sundays. If I cross back, first paycheck is yours.
+      Your grateful neighbor,
+      Javier
+    </message>
+  </postcard>
+
+  <postcard photo="Cancer Ribbon">
+    <opening>
+      Pinned <date standard="20240318">18 Mar 2024</date>
+      from <sender>Nurse Priya Kapoor</sender> to
+      <recipient><name>Lena Petrov</name>,
+      <address>5-Year Survivor</address></recipient>.
+    </opening>
+    <message>
+      Another clear scan! The toddler you comforted during chemo starts kindergarten this fall. She calls you "Auntie Brave." Come tell her about your nursing degree!
+      With joy,
+      Nurse Priya
+    </message>
+  </postcard>
+
+  <postcard photo="Closed Mine">
+    <opening>
+      Nailed <date standard="20240930">30 Sep 2024</date>
+      by <sender>Union President Hank Murphy</sender> to
+      <recipient><name>Blackrock Miners</name>,
+      <address>Last Shift</address></recipient>.
+    </opening>
+    <message>
+      Left Davy's lunch pail where the collapse happened. The coal dust in our lungs will outlast the pensions. Tell your grandkids we kept the lights on for 80 years.
+      With headlamps high,
+      Hank
+    </message>
+  </postcard>
+</postcards>

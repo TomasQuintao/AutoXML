@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='utf-8'?>
+<postcards>
+<postcard><opening>Mailed <date>22 Nov 2023</date>
+from <sender>Jake</sender> to
+<recipient><name>Roommates</name>,
+<address>Apartment 4B.</address></recipient></opening>
+<message>Conference is boring but the seafood here is amazing! Fog rolls in at 4pm like clockwork. Don't forget to water my fern!
+Later,
+Jake</message></postcard>
+
+<postcard><opening>Postcard sent on <date>2023-march-31</date>
+by <sender>Peter Harris</sender> to
+<recipient><name>Alice Smith</name>,
+<address>Liverpool</address></recipient>.</opening>
+<message>Dear Aunt, we’ve just arrived for the holidays...
+Kisses from your nephew Peter.</message></postcard>
+
+<postcard><opening>Dated <date>01-Sep-23</date>
+from <sender>Java House</sender> to
+<recipient><name>Regulars</name>,
+<address>Downtown</address></recipient>.</opening>
+<message>New Ethiopian roast arrived! First cup free for September birthdays. Open mic night returns Friday.
+- <sender>Baristas</sender></message></postcard>
+
+<postcard><opening>Postcard from <date>18/02/2023</date> by <sender>Nicole Bell</sender> to
+<recipient><name>Samuel Ward</name>,
+<address>Southampton.</address></recipient></opening>
+<message>Sam, the energy at Carnival is absolutely electric! You'd love the music here.
+Miss you, Nic.</message></postcard>
+
+<postcard><opening>Postcard mailed <date>5 Nov 2023</date>
+from <sender>Emily Wilson</sender> to
+<recipient><name>Product Team</name>,
+<address>Southampton</address></recipient>.</opening>
+<message>Customer feedback overwhelmingly positive on beta features. 
+Green light for full rollout. - <sender>EW</sender></message></postcard>
+
+<postcard><opening>Memorandum dated <date>18-Apr-2023</date>
+from <sender>Dr. L. Chen</sender> to
+<recipient><name>Health Authority</name>,
+<address>Birmingham</address></recipient>.</opening>
+<message>Pediatrics Wing officially closed today. The mural of jungle animals seems to weep under peeling paint. Tiny handprints still mark the windows where children pressed against glass, watching birds we promised would mean spring's arrival.
+With medical concern,
+Dr. Chen</message></postcard>
+
+<postcard><opening>Mailed <date>30-Nov-23</date>
+by <sender>Jorge</sender> to
+<recipient><name>Querida Familia</name>,
+<address>Caracas, Venezuela.</address></recipient></opening>
+<message>After 3 years, my residency came through! No more hiding from la migra. Celebrate with arepas for me! I got construction supervisor job - hard hat has my name spelled right. Next step: saving for your visas. The struggle wasn't for nothing.
+Esperándolos,
+Jorge</message></postcard>
+
+<postcard><opening>Mailed <date>10 Apr 2024</date>
+by <sender>Dog Walkers</sender> to
+<recipient><name>Pet Owners</name>,
+<address>Pine Ridge</address></recipient>.</opening>
+<message>New agility course installed! Grand opening Saturday 9am. Biscuits for all pups!
+Woof!</message></postcard>
+
+<postcard><opening>Postcard sent <date>12 May 2023</date>
+by <sender>Jason Morris</sender> to his
+<recipient><name>Rebecca Parker</name>,
+<address>Cambridge.</address></recipient></opening>
+<message>Bec, walked 10km on the Wall today! The views are worth every step.
+Love, Jay.</message></postcard>
+
+<postcard><opening>Returned <date>11-Sep-24</date>
+from <sender>Nurse Kareem Jefferson</sender> to
+<recipient><name>Sergeant Elijah Williams</name>,
+<address>VA Hospital Room 712.</address></recipient></opening>
+<message>Found these in what remained of your uniform. The blood is gone but the shrapnel dents remain - like your stubbornness. PT at 3pm. I put Army stickers on your walker.
+See you soon,
+Nurse K.</message></postcard>
+
+<postcard><opening>Mailed <date>22 June 2024</date>
+from <sender>Layla</sender> to
+<recipient><name>Parents</name>,
+<address>Damascus, Syria</address></recipient>.</opening>
+<message>Married Omar yesterday in civil ceremony. No zaffeh procession, just two witnesses from refugee center. His family sends blessings from Turkey. We combined traditions - I wore blue for Syrian brides, he gave German gold ring. Strange to build love atop so much loss.
+Bittersweet,
+Layla</message></postcard>
+
+<postcard><opening>Postcard from <date>18 Sept 2022</date> by <sender>Kevin Li</sender> to
+<recipient><name>North America Team</name>,
+<address>York</address></recipient>.</opening>
+<message>Merger paperwork finally signed! Transition team arriving Monday. 
+Prepare welcome packages. - KL</message></postcard>
+
+<postcard><opening>Postcard from <sender>Richard Ng</sender>, <date>15-Mar-2023</date> to
+<recipient><name>Logistics</name>,
+<address>Sheffield</address></recipient>.</opening>
+<message>Shipping delays now estimated at 3 weeks due to customs backlog. 
+Suggest air freight for priority orders. - RN</message></postcard>
+
+<postcard><opening>Sent <date>07/07/2022</date>
+by <sender>Ahmed</sender> to
+<recipient><name>Brothers</name>,
+<address>Aleppo, Syria</address></recipient>.</opening>
+<message>The Halal food package arrived today - first proper hummus in 6 months! I ate the whole container remembering Mama's recipe. Found a mosque where people speak Arabic. They say Germany gets easier after first winter. The cold enters bones here but at least no bombs.
+Stay safe,
+Ahmed</message></postcard>
+
+<postcard><opening>Correspondence dated <date>03/11/22</date>
+from <sender>Mr. Albert Graves</sender> to
+<recipient><name>St. Mary's Alumni Association</name>,
+<address>York</address></recipient>.</opening>
+<message>I passed by our old school today. The chalkboards still bear fragments of lessons from that final June. The swings creak like ghosts of children's laughter. Fifty years vanish in the dust motes dancing through broken windows.
+With heavy regards,
+Albert</message></postcard>
+
+<postcard><opening>Dated <date>22-Mar-2023</date>
+from <sender>Rosa</sender> to
+<recipient><name>Papá</name>,
+<address>Managua, Nicaragua</address></recipient>.</opening>
+<message>$500 sent today - tear down that zinc roof before rainy season! I work two cleaning jobs but never as hard as you in fields. The señora's kids call me "nanny" though I'm younger than them. One day you'll visit my own apartment, promise.
+Con sacrificio,
+Rosita</message></postcard>
+
+<postcard><opening>Report filed <date>08/10/22</date>
+from <sender>Coast Guard Officer M. Evans</sender> to
+<recipient><name>Maritime Archives</name>,
+<address>Southampton</address></recipient>.</opening>
+<message>The lifeboat returned alone today. We recovered no survivors this time. The harbor bells tolled seventeen times - once for each soul lost to the storm's hunger.
+With professional sorrow,
+Officer Evans</message></postcard>
+
+</postcards>
