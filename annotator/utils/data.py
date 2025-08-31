@@ -1,12 +1,12 @@
 import xml.etree.ElementTree as ET
 import re, sys, os
-
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+from platformdirs import user_data_dir
 
 def getData(datasetID: str):
     
-    dataset_path = os.path.join(PROJECT_ROOT, "data", datasetID)
-
+    projects_path = user_data_dir('Projects', 'AutoXML')
+    dataset_path = os.path.join(projects_path, datasetID)
+    
     dtd_file = os.path.join(dataset_path, f"{datasetID}.dtd")
     xml_file = os.path.join(dataset_path, f"{datasetID}.xml")
     raw_data_folder = os.path.join(dataset_path, f"raw_{datasetID}")
@@ -15,7 +15,8 @@ def getData(datasetID: str):
 
 def saveData(xml_tree, datasetID):
     
-    dataset_path = os.path.join(PROJECT_ROOT, "data", datasetID)
+    projects_path = user_data_dir('Projects', 'AutoXML')
+    dataset_path = os.path.join(projects_path, datasetID)
     
     output_file = os.path.join(dataset_path, f"output_{datasetID}.xml")
     
