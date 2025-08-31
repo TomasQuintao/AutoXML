@@ -4,7 +4,7 @@ import xml.etree.ElementTree as ET
 from utils.dtd_validator import validate_xml
 from utils.data import getData, saveData, xml2spans
 from agent_dspy import genAgent
-from annotator_dspy import annotator
+from annotator import annotator
 
 # TODO: Verify validity of xml output against dtd, correct OR warn user
 
