@@ -1,6 +1,6 @@
 import argparse
 from project_ops import createProject, listProjects
-#from annotate import annotateProject
+from pipeline import runPipeline
 
 def main():
     parser = argparse.ArgumentParser(description="AutoXML CLI")
@@ -19,9 +19,10 @@ def main():
     list_parser = subparsers.add_parser("list", help="List all projects")
 
     # Annotate project
-    # annotate_parser = subparsers.add_parser("annotate", help="Annotate an existing project")
-    # annotate_parser.add_argument("project_dir")
-    # annotate_parser.add_argument("--type", default="default")
+    annotate_parser = subparsers.add_parser("annotate", help="Annotate raw text in an existing project")
+    annotate_parser.add_argument("datasetID")
+    annotate_parser.add_argument("modelID")  
+    annotate_parser.add_argument("--example_shots", type=int, default=3)
 
     args = parser.parse_args()
 
@@ -30,8 +31,8 @@ def main():
                       outdir=args.outdir, overwrite=args.overwrite)
     elif args.command == "list":
         listProjects()
-    # elif args.command == "annotate":
-        # annotateProject(args.project_dir, annotation_type=args.type)
+    elif args.command == "annotate":
+        runPipeline(args.datasetID, args.modelID, example_shots=args.example_shots)
 
 if __name__ == "__main__":
     main()

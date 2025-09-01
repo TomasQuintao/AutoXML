@@ -8,7 +8,7 @@ from annotator import annotator
 
 # TODO: Verify validity of xml output against dtd, correct OR warn user
 
-def main(datasetID, example_shots, modelID):
+def runPipeline(datasetID, modelID, example_shots=3):
     
     dtd_file, xml_file, raw_data_folder = getData(datasetID)
  
@@ -33,6 +33,5 @@ def main(datasetID, example_shots, modelID):
     
     final_file = saveData(xml_tree, datasetID)
     
+    print(f"\nXML annotated output saved to: {final_file}")
     return final_file
-
-main("postcards", 3, 'together_ai/meta-llama/Llama-3.3-70B-Instruct-Turbo')
