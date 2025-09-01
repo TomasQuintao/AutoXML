@@ -10,7 +10,8 @@ def getDoc(datasetID, index):
     
     projects_dir = user_data_dir('Projects', 'AutoXML')
     dataset_dir = os.path.join(projects_dir, datasetID)
-    xml_path = os.path.join(dataset_dir, f"{datasetID}.xml")
+    #xml_path = os.path.join(dataset_dir, f"{datasetID}.xml")
+    xml_path = os.path.join(dataset_dir, f"display.xml")
     
     tree = ET.parse(xml_path)
     root = tree.getroot()

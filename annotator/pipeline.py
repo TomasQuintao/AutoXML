@@ -6,7 +6,8 @@ from utils.data import getData, saveData, xml2spans
 from agent_dspy import genAgent
 from annotator import annotator
 
-# TODO: Verify validity of xml output against dtd, correct OR warn user
+# TODO: - Verify validity of xml output against dtd, correct OR warn user
+#       - Decide if there is a verification fo the xml aginas dtd now that creatProject does it
 
 def runPipeline(datasetID, modelID, example_shots=3):
     

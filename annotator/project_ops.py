@@ -1,7 +1,9 @@
 from platformdirs import user_data_dir
 import os, shutil, webbrowser, subprocess, socket, time, re, threading
+import xml.etree.ElementTree as ET
 
 from utils.port_tools import wait_for_port
+from utils.dtd_validator import validate_xml
 
 def createProject(datasetID, dtd_file, xml_file, raw_data_folder, outdir='default', overwrite=False):
     
@@ -26,7 +28,32 @@ def createProject(datasetID, dtd_file, xml_file, raw_data_folder, outdir='defaul
                    " Set flag --overwrite to overwrite the existing project.")
             raise FileExistsError(msg)
     
+    (valid, msg) = validate_xml(dtd_file, xml_file)
+    if not valid:
+        raise ValueError(f"XML validation failed: {msg}")
+    
     os.makedirs(project_dir, exist_ok=False)
+    
+    tree = ET.parse(xml_file)
+    root = tree.getroot()
+    tag = root[0].tag
+    
+    # Creating a file containing all data with 
+    # indication of annotation
+    for doc in root:
+        doc.set('state', 'ready')
+    
+    for file in os.listdir(raw_data_folder):
+        with open(os.path.join(raw_data_folder, file), "r", encoding="utf-8") as f:
+            text = f.read()
+        
+        doc = ET.Element(tag)
+        doc.text = text
+        doc.set('state', 'raw')
+        
+        root.append(doc)
+    
+    tree.write(os.path.join(project_dir, f"display.xml"), encoding="utf-8", xml_declaration=True)
     
     shutil.copy(xml_file, os.path.join(project_dir, f"{datasetID}.xml"))
     shutil.copy(dtd_file, os.path.join(project_dir, f"{datasetID}.dtd"))
