@@ -1,5 +1,5 @@
 import argparse
-from project_ops import createProject, listProjects
+from project_ops import createProject, listProjects, openProject
 from pipeline import runPipeline
 
 def main():
@@ -23,16 +23,25 @@ def main():
     annotate_parser.add_argument("datasetID")
     annotate_parser.add_argument("modelID")  
     annotate_parser.add_argument("--example_shots", type=int, default=3)
+    
+    # Open project
+    open_parser = subparsers.add_parser("open", help="Open a project in browser")
+    open_parser.add_argument("datasetID", help="Project dataset ID")
 
     args = parser.parse_args()
 
     if args.command == "create":
         createProject(args.datasetID, args.dtd_file, args.xml_file, args.raw_data_folder,
                       outdir=args.outdir, overwrite=args.overwrite)
+    
     elif args.command == "list":
         listProjects()
+        
     elif args.command == "annotate":
         runPipeline(args.datasetID, args.modelID, example_shots=args.example_shots)
+        
+    elif args.command == "open":
+        openProject(args.datasetID)
 
 if __name__ == "__main__":
     main()

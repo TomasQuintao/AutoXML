@@ -1,6 +1,7 @@
 from platformdirs import user_data_dir
-import os, shutil
+import os, shutil, webbrowser, subprocess, socket, time, re, threading
 
+from utils.port_tools import wait_for_port
 
 def createProject(datasetID, dtd_file, xml_file, raw_data_folder, outdir='default', overwrite=False):
     
@@ -52,10 +53,46 @@ def listProjects():
     print(f"(Located at: {outdir})")
     
     return outdir
-    
-# createProject("postcards",
-              # r"C:\Users\tomas\Documents\Tese\AutoXML\data\postcards\postcards.dtd",
-              # r"C:\Users\tomas\Documents\Tese\AutoXML\data\postcards\postcards.xml",
-              # r"C:\Users\tomas\Documents\Tese\AutoXML\data\postcards\raw_postcards",
-              # overwrite=True
-             # )
+            
+## TODO: Show the output of the server running
+def openProject(datasetID):
+    """Launch Flask app and open the browser for a project."""
+    # Start Flask server in a subprocess and capture stdout
+    process = subprocess.Popen(
+        ["py", "interface.py"], 
+        stdout=subprocess.PIPE, 
+        stderr=subprocess.STDOUT, 
+        text=True
+    )
+
+    host, port = None, None
+
+    # Parse Flask server output to get host and port
+    for line in iter(process.stdout.readline, ''):
+        print(line, end='')
+        match = re.search(r"Running on http://([\d\.]+):(\d+)", line)
+        
+        if match:
+            host, port = match.group(1), int(match.group(2))
+            break
+
+    if host is None or port is None:
+        print("Could not detect Flask server host and port.")
+        process.terminate()
+        return
+
+    try:
+        # Wait until Flask server is ready
+        wait_for_port(host, port)
+        
+        url = f"http://{host}:{port}/Projects/{datasetID}"
+        webbrowser.open(url)
+        print(f"Opening project '{datasetID}' at {url}")
+        
+    except TimeoutError as e:
+        print(e)
+        process.terminate()
+        return
+
+    # Keep process alive until manually closed
+    process.wait()
