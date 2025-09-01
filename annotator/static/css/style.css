@@ -42,7 +42,7 @@ h3 {
 }
 
 .button-bar {
-    display: flex;
+    /*display: flex;
     justify-content: space-between; /* Pushes buttons apart */
     margin-bottom: 1px;           /* Adds spacing before the text box */
 	align-items: center;
