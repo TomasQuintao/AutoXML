@@ -34,6 +34,24 @@ def createProject(datasetID, dtd_file, xml_file, raw_data_folder, outdir='defaul
     print(f"Project <{datasetID}> created. Saved to:\n{project_dir}")
     
     return project_dir
+
+
+def listProjects():
+    
+    outdir = user_data_dir('Projects', 'AutoXML')
+    
+    projects = os.listdir(outdir)
+    
+    if (len(projects) > 0):
+        print("Projects:")
+        for project in projects:
+            print(f" ->{project}")
+    else:
+        print("No projects yet. Use autoxml create to start a project.")
+    
+    print(f"(Located at: {outdir})")
+    
+    return outdir
     
 # createProject("postcards",
               # r"C:\Users\tomas\Documents\Tese\AutoXML\data\postcards\postcards.dtd",

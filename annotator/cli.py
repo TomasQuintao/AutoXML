@@ -1,5 +1,5 @@
 import argparse
-from create_project import createProject
+from project_ops import createProject, listProjects
 #from annotate import annotateProject
 
 def main():
@@ -14,6 +14,9 @@ def main():
     create_parser.add_argument("raw_data_folder")
     create_parser.add_argument("--outdir", default="default")
     create_parser.add_argument("--overwrite", action="store_true")
+    
+    # List projects
+    list_parser = subparsers.add_parser("list", help="List all projects")
 
     # Annotate project
     # annotate_parser = subparsers.add_parser("annotate", help="Annotate an existing project")
@@ -25,6 +28,8 @@ def main():
     if args.command == "create":
         createProject(args.datasetID, args.dtd_file, args.xml_file, args.raw_data_folder,
                       outdir=args.outdir, overwrite=args.overwrite)
+    elif args.command == "list":
+        listProjects()
     # elif args.command == "annotate":
         # annotateProject(args.project_dir, annotation_type=args.type)
 
