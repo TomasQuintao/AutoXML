@@ -3,24 +3,28 @@ import xml.etree.ElementTree as ET
 
 from utils.dtd_validator import validate_xml
 from utils.data import prepareData, saveData, xml2spans
+from utils.config_info import getModel
 from agent_dspy import genAgent
 from annotator import annotator
 
 # TODO: - Verify validity of xml output against dtd, correct OR warn user
 #       - Decide if there is a verification fo the xml aginas dtd now that creatProject does it
 
-def runPipeline(datasetID, modelID, example_shots=3):
+def runPipeline(datasetID, modelID='default', example_shots=3):
+    
+    # Get default model from the config
+    if modelID == 'default':
+        modelID = getModel()
     
     dtd_file, train_xml, raw_xml = prepareData(datasetID)
-    exit()
- 
+    
     with open(dtd_file, 'r', encoding='utf-8') as f:
         dtd = f.read()
     
-    (valid, msg) = validate_xml(dtd_file, train_xml)
-    if (valid == False):
-        return f"Error: {msg}"
-
+    # (valid, msg) = validate_xml(dtd_file, train_xml)
+    # if not valid:
+        # raise ValueError(f"XML validation failed: {msg}")
+    
     pairs = xml2spans(train_xml, example_shots)
 
     examples = [

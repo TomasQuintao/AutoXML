@@ -42,10 +42,17 @@ def saveData(xml_tree, datasetID):
     
     projects_path = user_data_dir('Projects', 'AutoXML')
     dataset_path = os.path.join(projects_path, datasetID)
+    output_file = os.path.join(dataset_path, f"{datasetID}.xml")
     
-    output_file = os.path.join(dataset_path, f"output_{datasetID}.xml")
+    tree = ET.parse(output_file)
+    root = tree.getroot()
     
-    xml_tree.write(output_file, encoding="utf-8", xml_declaration=True)
+    for doc in xml_tree.getroot():
+        index = int(doc.get('id'))
+        root[index] = doc
+    
+    tree = ET.ElementTree(root)
+    tree.write(output_file, encoding="utf-8", xml_declaration=True)
     
     return output_file
 

@@ -5,7 +5,7 @@ from dtd_parser.functions import parseDTD, assignLayer
 
 # TODO: Use the parsed DTD
 
-def annotator(agent, data_folder, dtd_file):
+def annotator(agent, raw_xml, dtd_file):
     
     with open(dtd_file, "r", encoding="utf-8") as f:
         dtd = f.read()
@@ -14,17 +14,22 @@ def annotator(agent, data_folder, dtd_file):
     root_name = dtd_tree['root']['tag']
     doc_name = dtd_tree['root']['children'][0]
     
+    raw_tree = ET.parse(raw_xml)
+    raw_root = raw_tree.getroot()
+    
+    # New xml to store the annotations
     root = ET.Element(root_name)
     root.text = "\n"
 
-    files = sorted(os.listdir(data_folder), key=lambda x: int(re.search(r"\d+", x).group()))
+    #files = sorted(os.listdir(data_folder), key=lambda x: int(re.search(r"\d+", x).group()))
     
-    # Open each text file in the folder and use the model to generate annotations
-    for name in files:
-        with open(os.path.join(data_folder, name), "r", encoding="utf-8") as f:
-            text = f.read()
+    # Get each doc from the raw_xml and use the model to generate annotations
+    for doc in raw_root:
+        text = "".join(doc.itertext())
         
         element = ET.Element(doc_name)
+        element.set('id', doc.get('id'))
+        element.set('state', 'raw')
         
         agent_prediction = agent(text)
         spans = agent_prediction.spans
