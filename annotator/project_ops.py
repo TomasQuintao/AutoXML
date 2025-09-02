@@ -1,5 +1,5 @@
 from platformdirs import user_data_dir
-import os, shutil, webbrowser, subprocess, socket, time, re, threading
+import os, shutil, webbrowser, subprocess, socket, time, re, threading, configparser
 import xml.etree.ElementTree as ET
 
 from utils.port_tools import wait_for_port
@@ -13,6 +13,7 @@ def createProject(datasetID, dtd_file, xml_file, raw_data_folder, outdir='defaul
     
     project_dir = os.path.join(outdir, datasetID)
     
+    # Check if the files exist
     if not os.path.isfile(dtd_file):
         raise FileNotFoundError(f"DTD file not found: {dtd_file}")
     if not os.path.isfile(xml_file):
@@ -20,6 +21,7 @@ def createProject(datasetID, dtd_file, xml_file, raw_data_folder, outdir='defaul
     if not os.path.isdir(raw_data_folder):
         raise FileNotFoundError(f"Raw data folder not found: {raw_data_folder}")
     
+    # Check if the project already exists
     if os.path.exists(project_dir):
         if overwrite:
             shutil.rmtree(project_dir)
@@ -28,6 +30,7 @@ def createProject(datasetID, dtd_file, xml_file, raw_data_folder, outdir='defaul
                    " Set flag --overwrite to overwrite the existing project.")
             raise FileExistsError(msg)
     
+    # Check if xml respects the DTD
     (valid, msg) = validate_xml(dtd_file, xml_file)
     if not valid:
         raise ValueError(f"XML validation failed: {msg}")
@@ -133,3 +136,23 @@ def openProject(datasetID):
 
     # Keep process alive until manually closed
     process.wait()
+
+def setModel(modelID):
+    config_dir = user_data_dir('Config', 'AutoXML')
+    os.makedirs(config_dir, exist_ok=True)  # ensure directory exists
+
+    config_path = os.path.join(config_dir, 'config.ini')
+    config = configparser.ConfigParser()
+    
+    if os.path.exists(config_path):
+        config.read(config_path)
+
+    if "Models" not in config:
+        config["Models"] = {}
+
+    config["Models"]["default"] = modelID
+
+    with open(config_path, "w") as configfile:
+        config.write(configfile)
+
+    print(f"Config updated: default model set to {modelID}")
