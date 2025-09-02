@@ -40,8 +40,11 @@ def createProject(datasetID, dtd_file, xml_file, raw_data_folder, outdir='defaul
     
     # Creating a file containing all data with 
     # indication of annotation
+    count = 0
     for doc in root:
+        doc.set('id', str(count))
         doc.set('state', 'ready')
+        count += 1
     
     for file in os.listdir(raw_data_folder):
         with open(os.path.join(raw_data_folder, file), "r", encoding="utf-8") as f:
@@ -49,15 +52,17 @@ def createProject(datasetID, dtd_file, xml_file, raw_data_folder, outdir='defaul
         
         doc = ET.Element(tag)
         doc.text = text
+        doc.set('id', str(count))
         doc.set('state', 'raw')
+        count += 1
         
         root.append(doc)
     
-    tree.write(os.path.join(project_dir, f"display.xml"), encoding="utf-8", xml_declaration=True)
-    
-    shutil.copy(xml_file, os.path.join(project_dir, f"{datasetID}.xml"))
+    tree.write(os.path.join(project_dir, f"{datasetID}.xml"), encoding="utf-8", xml_declaration=True)
     shutil.copy(dtd_file, os.path.join(project_dir, f"{datasetID}.dtd"))
-    shutil.copytree(raw_data_folder, os.path.join(project_dir, f"raw_{datasetID}"))
+    
+    #shutil.copy(xml_file, os.path.join(project_dir, f"original.xml"))
+    #shutil.copytree(raw_data_folder, os.path.join(project_dir, f"raw_{datasetID}"))
 
     print(f"Project <{datasetID}> created. Saved to:\n{project_dir}")
     
@@ -79,11 +84,16 @@ def listProjects():
     
     print(f"(Located at: {outdir})")
     
-    return outdir
+    return projects
             
 ## TODO: Show the output of the server running
 def openProject(datasetID):
     """Launch Flask app and open the browser for a project."""
+    
+    if datasetID not in listProjects():
+        raise FileNotFoundError(f"Project '{datasetID}' does not exist." 
+                                " Use command 'create' to start a project")
+    
     # Start Flask server in a subprocess and capture stdout
     process = subprocess.Popen(
         ["py", "interface.py"], 

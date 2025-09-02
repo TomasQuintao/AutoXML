@@ -2,16 +2,41 @@ import xml.etree.ElementTree as ET
 import re, sys, os
 from platformdirs import user_data_dir
 
-def getData(datasetID: str):
+def prepareData(datasetID: str):
     
     projects_path = user_data_dir('Projects', 'AutoXML')
     dataset_path = os.path.join(projects_path, datasetID)
     
     dtd_file = os.path.join(dataset_path, f"{datasetID}.dtd")
     xml_file = os.path.join(dataset_path, f"{datasetID}.xml")
-    raw_data_folder = os.path.join(dataset_path, f"raw_{datasetID}")
+    #raw_data_folder = os.path.join(dataset_path, f"raw_{datasetID}")
     
-    return dtd_file, xml_file, raw_data_folder
+    tree = ET.parse(xml_file)
+    root = tree.getroot()
+    
+    train_root = ET.Element(root.tag)
+    raw_root = ET.Element(root.tag)
+    
+    # Separating train data from raw data
+    for doc in root:
+        
+        if (doc.attrib['state'] == 'ready'):
+            train_root.append(doc)
+            
+        elif (doc.attrib['state'] == 'raw'):
+            doc.tail = "\n\n"
+            raw_root.append(doc)
+    
+    train_tree = ET.ElementTree(train_root)
+    raw_tree = ET.ElementTree(raw_root)
+    
+    train_xml = os.path.join(dataset_path, f"train.xml")
+    raw_xml = os.path.join(dataset_path, f"raw.xml")
+    
+    train_tree.write(train_xml, encoding="utf-8", xml_declaration=True)
+    raw_tree.write(raw_xml, encoding="utf-8", xml_declaration=True)
+    
+    return dtd_file, train_xml, raw_xml
 
 def saveData(xml_tree, datasetID):
     
