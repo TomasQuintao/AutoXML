@@ -17,6 +17,7 @@ def main():
     
     # List projects
     list_parser = subparsers.add_parser("list", help="List all projects")
+    list_parser.add_argument("--no_display", action="store_false", dest="display")
 
     # Annotate project
     annotate_parser = subparsers.add_parser("annotate", help="Annotate raw text in an existing project")
@@ -39,7 +40,7 @@ def main():
                       outdir=args.outdir, overwrite=args.overwrite)
     
     elif args.command == "list":
-        listProjects()
+        listProjects(display=args.display)
         
     elif args.command == "annotate":
         runPipeline(args.datasetID, modelID=args.modelID, example_shots=args.example_shots)

@@ -72,20 +72,21 @@ def createProject(datasetID, dtd_file, xml_file, raw_data_folder, outdir='defaul
     return project_dir
 
 
-def listProjects():
+def listProjects(display=True):
     
     outdir = user_data_dir('Projects', 'AutoXML')
     
     projects = os.listdir(outdir)
     
-    if (len(projects) > 0):
-        print("Projects:")
-        for project in projects:
-            print(f" ->{project}")
-    else:
-        print("No projects yet. Use autoxml create to start a project.")
-    
-    print(f"(Located at: {outdir})")
+    if display:
+        if (len(projects) > 0):
+            print("Projects:")
+            for project in projects:
+                print(f" ->{project}")
+        else:
+            print("No projects yet. Use autoxml create to start a project.")
+        
+        print(f"(Located at: {outdir})")
     
     return projects
             
@@ -93,7 +94,7 @@ def listProjects():
 def openProject(datasetID):
     """Launch Flask app and open the browser for a project."""
     
-    if datasetID not in listProjects():
+    if datasetID not in listProjects(display=False):
         raise FileNotFoundError(f"Project '{datasetID}' does not exist." 
                                 " Use command 'create' to start a project")
     
