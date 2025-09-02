@@ -1,9 +1,13 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 from platformdirs import user_data_dir
 import xml.etree.ElementTree as ET
 import os
 
 app = Flask(__name__)
+
+@app.route("/Projects/<datasetID>")
+def project_view(datasetID):
+    return render_template("project_view.html", datasetID=datasetID, file_index=0)
 
 @app.route("/Projects/<datasetID>/file/<int:index>")
 def getDoc(datasetID, index):
@@ -23,9 +27,13 @@ def getDoc(datasetID, index):
 
     return {"text": content, "index": index, "total": len(root)}
 
-@app.route("/Projects/<datasetID>")
-def project_view(datasetID):
-    return render_template("project_view.html", datasetID=datasetID, file_index=0)
+@app.route("/Projects/<datasetID>/save/<int:index>", methods=["POST"])
+def saveDoc(datasetID, index):
+    data = request.get_json()
+    print(data, type(data))
+    
+    
+    return jsonify({"success": True, "message": f"File {index} updated"}), 200
 
 if __name__ == "__main__":
     app.run(debug=True)

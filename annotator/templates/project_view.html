@@ -19,11 +19,11 @@
 	<div class="button-bar">
         <button id="prev-btn">Previous</button>
         <button id="next-btn">Next</button>
-		<button id="state-btn">Save</button>
+		<button id="save-btn">Save</button>
     </div>
 
-    <div id="text-display">
-        <pre><code id="xml-code" class="xml" contenteditable="true"></code></pre>
+    <div id="text-display" data-dataset="{{ datasetID }}" data-file-index="{{ file_index }}">
+        <pre><code id="xml-code" class="xml" contenteditable="true" spellcheck="false"></code></pre>
     </div>
 	
 	<h3 id="file-name">
@@ -31,116 +31,7 @@
 		of <span id="total-files"></span>
 	</h3>
 	
-	<label for="label-select">Apply Label:</label>
-	<select id="label-select">
-		<option value="">--Choose Label--</option>
-		<option value="label1">Label 1</option>
-		<option value="label2">Label 2</option>
-		<option value="label3">Label 3</option>
-	</select>
+	<script type="module" src="{{ url_for('static', filename='js/script.js') }}"></script>
 
-    <script>
-		// TODO: The page freezes when the buttons are spammed
-		let datasetID = "{{ datasetID }}";
-		let fileIndex = {{ file_index }};
-
-		const fileNameEl = document.getElementById("file-name");
-		const fileNumberInput = document.getElementById("file-number-input");
-		const totalFilesEl = document.getElementById("total-files");
-		const prevBtn = document.getElementById("prev-btn");
-		const nextBtn = document.getElementById("next-btn");
-		const codeEl = document.getElementById("xml-code");
-		const labelSelect = document.getElementById("label-select");
-
-		let totalFiles = 0;
-		let isLoading = false;
-
-		async function loadDoc(index) {
-			if (isLoading) return;
-
-			isLoading = true;
-			prevBtn.disabled = true;
-			nextBtn.disabled = true;
-			fileNumberInput.disabled = true;
-
-			try {
-				const res = await fetch(`/Projects/${datasetID}/file/${index}`);
-				if (!res.ok) throw new Error("Failed to fetch file");
-
-				const data = await res.json();
-
-				codeEl.textContent = data.text;
-
-				if ('requestIdleCallback' in window) {
-					requestIdleCallback(() => hljs.highlightElement(codeEl));
-				} else {
-					setTimeout(() => hljs.highlightElement(codeEl), 0);
-				}
-
-				fileIndex = data.index;
-				totalFiles = data.total;
-
-				// Update the input box and total
-				fileNumberInput.value = fileIndex + 1; // 1-based
-				totalFilesEl.textContent = totalFiles;
-
-			} catch (err) {
-				console.error(err);
-				alert("Error loading file");
-			} finally {
-				prevBtn.disabled = false;
-				nextBtn.disabled = false;
-				fileNumberInput.disabled = false;
-				isLoading = false;
-			}
-		}
-
-		// Navigation buttons
-		prevBtn.onclick = () => loadDoc(fileIndex - 1);
-		nextBtn.onclick = () => loadDoc(fileIndex + 1);
-		
-		//selecting text and labeling
-		labelSelect.addEventListener("change", () => {
-			const labelValue = labelSelect.value;
-			if (!labelValue) return;  // do nothing if default selected
-
-			const selection = window.getSelection();
-			if (!selection.rangeCount) return;
-			const range = selection.getRangeAt(0);
-
-			if (!codeEl.contains(range.commonAncestorContainer)) return;
-
-			const selectedText = selection.toString();
-			if (!selectedText) return;
-
-			// Create a <label> element with the chosen class/value
-			const span = document.createElement("label");
-			span.textContent = selectedText;
-			span.className = labelValue;
-
-			range.deleteContents();
-			range.insertNode(span);
-
-			// Clear selection
-			selection.removeAllRanges();
-
-			// Reset dropdown
-			labelSelect.value = "";
-		});
-
-		// Jump to file when pressing Enter in the input
-		fileNumberInput.addEventListener("keydown", (e) => {
-			if (e.key === "Enter") {
-				let val = parseInt(fileNumberInput.value);
-				if (!isNaN(val)) {
-					val = Math.max(1, Math.min(val, totalFiles)); // clamp
-					loadDoc(val - 1); // convert to 0-based
-				}
-			}
-		});
-
-		loadDoc(fileIndex);
-
-	</script>
 </body>
 </html>

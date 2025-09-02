@@ -71,7 +71,6 @@ def createProject(datasetID, dtd_file, xml_file, raw_data_folder, outdir='defaul
     
     return project_dir
 
-
 def listProjects(display=True):
     
     outdir = user_data_dir('Projects', 'AutoXML')

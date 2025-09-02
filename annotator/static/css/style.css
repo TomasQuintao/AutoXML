@@ -61,31 +61,25 @@ pre {
     border-radius: 4px;
 }
 
+button:disabled {
+    background-color: #999;  /* gray */
+    cursor: not-allowed;     /* show "disabled" cursor */
+    color: #eee;             /* lighter text */
+}
+
 button {
     margin: 2px;
     padding: 5px 5px;
     cursor: pointer;
 
-    /* New dark blue styling */
     background-color: #1e3a8a; /* dark blue */
     color: white;
     border: none;
     border-radius: 8px;
     font-weight: bold;
     font-family: Arial, sans-serif;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.1s ease, box-shadow 0.2s ease, background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #3b5ba3; /* lighter blue on hover */
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+button:hover:enabled {
+    background-color: #3b5ba3; /* lighter blue only if enabled */
 }
-
-button:active {
-    background-color: #162b70; /* slightly darker when clicked */
-    transform: translateY(1px);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-}
-
