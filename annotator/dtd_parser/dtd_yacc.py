@@ -33,9 +33,13 @@ quantifier : '*' | '+' | '?'
 options : options '|' TAG 
         | '|' TAG  
 
-att_content : TAG att_type att_value_declaration
+att_content : att_content attrib
+			: attrib
+
+attrib : TAG att_type att_value_declaration
 
 att_type : CDATA
+		 | ID
 
 att_value_declaration : IMPLIED
                       | REQUIRED
@@ -46,11 +50,17 @@ def p_declarations(p):
     declarations : declarations declaration
                  | declaration
     """
-    if(len(p)==3):
-        p[0] = p[1] | p[2] 
-    else:
+    if (len(p)==2):
         p[0] = p[1]
+    else:
+        key = list(p[2].keys())[0]
         
+        if (key[0]=='_' and key in p[1]):
+            p[1][key] += p[2][key]
+            p[0] = p[1]
+        else:
+            p[0] = p[1] | p[2]
+
 def p_declaration(p):
     """
     declaration : '<' '!' ELEMENT TAG content '>'
@@ -123,15 +133,27 @@ def p_quantifier(p):
         p[0] = p[1]
     else:
         p[0] = '_'
-        
+
 def p_att_content(p):
-    "att_content : TAG att_type att_value_declaration"
+    """
+    att_content : att_content attrib
+                | attrib
+    """
+    if (len(p)==3):
+        p[0] = p[1] + [p[2]]
+    else:
+        p[0] = [p[1]]
+       
+def p_attrib(p):
+    "attrib : TAG att_type att_value_declaration"
     
     p[0] = {'name': p[1], 'type': p[2], 'value_declaration': p[3]}
 
 def p_att_type(p):
-    "att_type : CDATA"
-    
+    """
+    att_type : CDATA
+             | ID
+    """    
     p[0] = p[1]
 
 def p_att_value_declaration(p):

@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = "ATTLIST CDATA COMMENT ELEMENT IMPLIED PCDATA REQUIRED TAG\ndeclarations : declarations declaration\n             | declaration\n\ndeclaration : '<' '!' ELEMENT TAG content '>'\n            | '<' '!' ATTLIST TAG att_content '>'\n\ncontent : child\n        | '(' PCDATA options ')' '*'\n        | '(' PCDATA ')' quantifier\n\noptions : options '|' TAG \n        | '|' TAG \nchild : '(' childElems ')' quantifier\nchildElems : childElems ',' childElem\n           | childElems '|' childElem\n           | childElem\n\nchildElem : child\n          | leaf\nleaf : TAG quantifier\nquantifier : '*' \n           | '+' \n           | '?'\n           | empty\natt_content : TAG att_type att_value_declarationatt_type : CDATA\natt_value_declaration : IMPLIED\n                      | REQUIRED\nempty :"
+_lr_signature = "ATTLIST CDATA COMMENT ELEMENT ID IMPLIED PCDATA REQUIRED TAG\ndeclarations : declarations declaration\n             | declaration\n\ndeclaration : '<' '!' ELEMENT TAG content '>'\n            | '<' '!' ATTLIST TAG att_content '>'\n\ncontent : child\n        | '(' PCDATA options ')' '*'\n        | '(' PCDATA ')' quantifier\n\noptions : options '|' TAG \n        | '|' TAG \nchild : '(' childElems ')' quantifier\nchildElems : childElems ',' childElem\n           | childElems '|' childElem\n           | childElem\n\nchildElem : child\n          | leaf\nleaf : TAG quantifier\nquantifier : '*' \n           | '+' \n           | '?'\n           | empty\n\natt_content : att_content attrib\n            | attrib\nattrib : TAG att_type att_value_declaration\natt_type : CDATA\n         | ID\n\natt_value_declaration : IMPLIED\n                      | REQUIRED\nempty :"
     
-_lr_action_items = {'<':([0,1,2,4,15,25,],[3,3,-2,-1,-3,-4,]),'$end':([1,2,4,15,25,],[0,-2,-1,-3,-4,]),'!':([3,],[5,]),'ELEMENT':([5,],[6,]),'ATTLIST':([5,],[7,]),'TAG':([6,7,9,12,16,28,30,31,41,],[8,9,13,22,22,43,22,22,48,]),'(':([8,12,16,30,31,],[12,16,16,16,16,]),'>':([10,11,14,27,29,33,34,35,36,37,38,39,42,44,47,],[15,-5,25,-25,-25,-17,-18,-19,-20,-21,-23,-24,-7,-10,-6,]),'PCDATA':([12,],[17,]),'CDATA':([13,],[24,]),')':([17,18,19,20,21,22,26,29,32,33,34,35,36,43,44,45,46,48,],[27,29,-13,-14,-15,-25,40,-25,-16,-17,-18,-19,-20,-9,-10,-11,-12,-8,]),'|':([17,18,19,20,21,22,26,29,32,33,34,35,36,43,44,45,46,48,],[28,31,-13,-14,-15,-25,41,-25,-16,-17,-18,-19,-20,-9,-10,-11,-12,-8,]),',':([18,19,20,21,22,29,32,33,34,35,36,44,45,46,],[30,-13,-14,-15,-25,-25,-16,-17,-18,-19,-20,-10,-11,-12,]),'*':([22,27,29,40,],[33,33,33,47,]),'+':([22,27,29,],[34,34,34,]),'?':([22,27,29,],[35,35,35,]),'IMPLIED':([23,24,],[38,-22,]),'REQUIRED':([23,24,],[39,-22,]),}
+_lr_action_items = {'<':([0,1,2,4,16,27,],[3,3,-2,-1,-3,-4,]),'$end':([1,2,4,16,27,],[0,-2,-1,-3,-4,]),'!':([3,],[5,]),'ELEMENT':([5,],[6,]),'ATTLIST':([5,],[7,]),'TAG':([6,7,9,12,14,15,17,28,31,33,34,40,41,42,44,],[8,9,13,23,13,-22,23,-21,46,23,23,-23,-26,-27,51,]),'(':([8,12,17,33,34,],[12,17,17,17,17,]),'>':([10,11,14,15,28,30,32,36,37,38,39,40,41,42,45,47,50,],[16,-5,27,-22,-21,-28,-28,-17,-18,-19,-20,-23,-26,-27,-7,-10,-6,]),'PCDATA':([12,],[18,]),'CDATA':([13,],[25,]),'ID':([13,],[26,]),')':([18,19,20,21,22,23,29,32,35,36,37,38,39,46,47,48,49,51,],[30,32,-13,-14,-15,-28,43,-28,-16,-17,-18,-19,-20,-9,-10,-11,-12,-8,]),'|':([18,19,20,21,22,23,29,32,35,36,37,38,39,46,47,48,49,51,],[31,34,-13,-14,-15,-28,44,-28,-16,-17,-18,-19,-20,-9,-10,-11,-12,-8,]),',':([19,20,21,22,23,32,35,36,37,38,39,47,48,49,],[33,-13,-14,-15,-28,-28,-16,-17,-18,-19,-20,-10,-11,-12,]),'*':([23,30,32,43,],[36,36,36,50,]),'+':([23,30,32,],[37,37,37,]),'?':([23,30,32,],[38,38,38,]),'IMPLIED':([24,25,26,],[41,-24,-25,]),'REQUIRED':([24,25,26,],[42,-24,-25,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'declarations':([0,],[1,]),'declaration':([0,1,],[2,4,]),'content':([8,],[10,]),'child':([8,12,16,30,31,],[11,20,20,20,20,]),'att_content':([9,],[14,]),'childElems':([12,16,],[18,18,]),'childElem':([12,16,30,31,],[19,19,45,46,]),'leaf':([12,16,30,31,],[21,21,21,21,]),'att_type':([13,],[23,]),'options':([17,],[26,]),'quantifier':([22,27,29,],[32,42,44,]),'empty':([22,27,29,],[36,36,36,]),'att_value_declaration':([23,],[37,]),}
+_lr_goto_items = {'declarations':([0,],[1,]),'declaration':([0,1,],[2,4,]),'content':([8,],[10,]),'child':([8,12,17,33,34,],[11,21,21,21,21,]),'att_content':([9,],[14,]),'attrib':([9,14,],[15,28,]),'childElems':([12,17,],[19,19,]),'childElem':([12,17,33,34,],[20,20,48,49,]),'leaf':([12,17,33,34,],[22,22,22,22,]),'att_type':([13,],[24,]),'options':([18,],[29,]),'quantifier':([23,30,32,],[35,45,47,]),'empty':([23,30,32,],[39,39,39,]),'att_value_declaration':([24,],[40,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,29 +27,32 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> declarations","S'",1,None,None,None),
-  ('declarations -> declarations declaration','declarations',2,'p_declarations','dtd_yacc.py',46),
-  ('declarations -> declaration','declarations',1,'p_declarations','dtd_yacc.py',47),
-  ('declaration -> < ! ELEMENT TAG content >','declaration',6,'p_declaration','dtd_yacc.py',56),
-  ('declaration -> < ! ATTLIST TAG att_content >','declaration',6,'p_declaration','dtd_yacc.py',57),
-  ('content -> child','content',1,'p_content','dtd_yacc.py',65),
-  ('content -> ( PCDATA options ) *','content',5,'p_content','dtd_yacc.py',66),
-  ('content -> ( PCDATA ) quantifier','content',4,'p_content','dtd_yacc.py',67),
-  ('options -> options | TAG','options',3,'p_options','dtd_yacc.py',79),
-  ('options -> | TAG','options',2,'p_options','dtd_yacc.py',80),
-  ('child -> ( childElems ) quantifier','child',4,'p_child','dtd_yacc.py',88),
-  ('childElems -> childElems , childElem','childElems',3,'p_childElems','dtd_yacc.py',94),
-  ('childElems -> childElems | childElem','childElems',3,'p_childElems','dtd_yacc.py',95),
-  ('childElems -> childElem','childElems',1,'p_childElems','dtd_yacc.py',96),
-  ('childElem -> child','childElem',1,'p_childElem','dtd_yacc.py',105),
-  ('childElem -> leaf','childElem',1,'p_childElem','dtd_yacc.py',106),
-  ('leaf -> TAG quantifier','leaf',2,'p_leaf','dtd_yacc.py',111),
-  ('quantifier -> *','quantifier',1,'p_quantifier','dtd_yacc.py',117),
-  ('quantifier -> +','quantifier',1,'p_quantifier','dtd_yacc.py',118),
-  ('quantifier -> ?','quantifier',1,'p_quantifier','dtd_yacc.py',119),
-  ('quantifier -> empty','quantifier',1,'p_quantifier','dtd_yacc.py',120),
-  ('att_content -> TAG att_type att_value_declaration','att_content',3,'p_att_content','dtd_yacc.py',128),
-  ('att_type -> CDATA','att_type',1,'p_att_type','dtd_yacc.py',133),
-  ('att_value_declaration -> IMPLIED','att_value_declaration',1,'p_att_value_declaration','dtd_yacc.py',139),
-  ('att_value_declaration -> REQUIRED','att_value_declaration',1,'p_att_value_declaration','dtd_yacc.py',140),
-  ('empty -> <empty>','empty',0,'p_empty','dtd_yacc.py',146),
+  ('declarations -> declarations declaration','declarations',2,'p_declarations','dtd_yacc.py',50),
+  ('declarations -> declaration','declarations',1,'p_declarations','dtd_yacc.py',51),
+  ('declaration -> < ! ELEMENT TAG content >','declaration',6,'p_declaration','dtd_yacc.py',64),
+  ('declaration -> < ! ATTLIST TAG att_content >','declaration',6,'p_declaration','dtd_yacc.py',65),
+  ('content -> child','content',1,'p_content','dtd_yacc.py',73),
+  ('content -> ( PCDATA options ) *','content',5,'p_content','dtd_yacc.py',74),
+  ('content -> ( PCDATA ) quantifier','content',4,'p_content','dtd_yacc.py',75),
+  ('options -> options | TAG','options',3,'p_options','dtd_yacc.py',87),
+  ('options -> | TAG','options',2,'p_options','dtd_yacc.py',88),
+  ('child -> ( childElems ) quantifier','child',4,'p_child','dtd_yacc.py',96),
+  ('childElems -> childElems , childElem','childElems',3,'p_childElems','dtd_yacc.py',102),
+  ('childElems -> childElems | childElem','childElems',3,'p_childElems','dtd_yacc.py',103),
+  ('childElems -> childElem','childElems',1,'p_childElems','dtd_yacc.py',104),
+  ('childElem -> child','childElem',1,'p_childElem','dtd_yacc.py',113),
+  ('childElem -> leaf','childElem',1,'p_childElem','dtd_yacc.py',114),
+  ('leaf -> TAG quantifier','leaf',2,'p_leaf','dtd_yacc.py',119),
+  ('quantifier -> *','quantifier',1,'p_quantifier','dtd_yacc.py',125),
+  ('quantifier -> +','quantifier',1,'p_quantifier','dtd_yacc.py',126),
+  ('quantifier -> ?','quantifier',1,'p_quantifier','dtd_yacc.py',127),
+  ('quantifier -> empty','quantifier',1,'p_quantifier','dtd_yacc.py',128),
+  ('att_content -> att_content attrib','att_content',2,'p_att_content','dtd_yacc.py',137),
+  ('att_content -> attrib','att_content',1,'p_att_content','dtd_yacc.py',138),
+  ('attrib -> TAG att_type att_value_declaration','attrib',3,'p_attrib','dtd_yacc.py',146),
+  ('att_type -> CDATA','att_type',1,'p_att_type','dtd_yacc.py',152),
+  ('att_type -> ID','att_type',1,'p_att_type','dtd_yacc.py',153),
+  ('att_value_declaration -> IMPLIED','att_value_declaration',1,'p_att_value_declaration','dtd_yacc.py',159),
+  ('att_value_declaration -> REQUIRED','att_value_declaration',1,'p_att_value_declaration','dtd_yacc.py',160),
+  ('empty -> <empty>','empty',0,'p_empty','dtd_yacc.py',166),
 ]

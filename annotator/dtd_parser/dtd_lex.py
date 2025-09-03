@@ -4,7 +4,8 @@ import ply.lex as lex
 reserved = {
    'ELEMENT' : 'ELEMENT',
    'ATTLIST' : 'ATTLIST',
-   'CDATA' : 'CDATA'
+   'CDATA' : 'CDATA',
+   'ID' : 'ID'
 }
 
 tokens = [
@@ -18,7 +19,6 @@ tokens = [
 literals = ['<', '>', '!', '?', '(', ')', '|', '+', '*', '-', ',', '#']
 
 t_PCDATA = r"\#PCDATA"
-t_CDATA = r"\#CDATA"
 t_IMPLIED = r"\#IMPLIED"
 t_REQUIRED = r"\#REQUIRED"
 

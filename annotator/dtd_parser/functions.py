@@ -26,7 +26,26 @@ def parseDTD(dtd):
     info['root']['tag'] = root_tag
             
     return info
+
+def add_attrib(dtd_file, element, name, att_type, value_decl, outpath="default"):
     
+    # dtd[element]['attributes'].append({'name': name, 
+                                       # 'type': att_type, 
+                                       # 'value_declaration': value_decl})
+                                       
+    with open(dtd_file, 'r', encoding='utf-8') as f:
+        dtd = f.read()
+        
+    dtd += f"\n<!ATTLIST {element} {name} {att_type} {value_decl}>"
+        
+    if (outpath=="default"):
+        outpath = dtd_file
+        
+    with open(outpath, 'w', encoding='utf-8') as f:
+        f.write(dtd)
+    
+    return outpath
+
 def get_labels(dtd):
     doc_tag = dtd['root']['children'][0]
     
@@ -71,3 +90,5 @@ def parentsOf(label, dtd):
                 parents.append(key)
    
     return parents 
+    
+    
