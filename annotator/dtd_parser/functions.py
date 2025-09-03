@@ -27,16 +27,13 @@ def parseDTD(dtd):
             
     return info
 
-def add_attrib(dtd_file, element, name, att_type, value_decl, outpath="default"):
-    
-    # dtd[element]['attributes'].append({'name': name, 
-                                       # 'type': att_type, 
-                                       # 'value_declaration': value_decl})
-                                       
+def add_attributes(dtd_file, element, attributes, outpath="default"):
+
     with open(dtd_file, 'r', encoding='utf-8') as f:
         dtd = f.read()
-        
-    dtd += f"\n<!ATTLIST {element} {name} {att_type} {value_decl}>"
+    
+    for (name, att_type, value_decl) in attributes:
+        dtd += f"\n<!ATTLIST {element} {name} {att_type} {value_decl}>"
         
     if (outpath=="default"):
         outpath = dtd_file

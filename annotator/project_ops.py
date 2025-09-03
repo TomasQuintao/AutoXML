@@ -4,6 +4,7 @@ import xml.etree.ElementTree as ET
 
 from utils.port_tools import wait_for_port
 from utils.dtd_validator import validate_xml
+from dtd_parser.functions import add_attributes
 
 def createProject(datasetID, dtd_file, xml_file, raw_data_folder, outdir='default', overwrite=False):
     
@@ -62,13 +63,17 @@ def createProject(datasetID, dtd_file, xml_file, raw_data_folder, outdir='defaul
         root.append(doc)
     
     tree.write(os.path.join(project_dir, f"{datasetID}.xml"), encoding="utf-8", xml_declaration=True)
-    shutil.copy(dtd_file, os.path.join(project_dir, f"{datasetID}.dtd"))
     
-    #shutil.copy(xml_file, os.path.join(project_dir, f"original.xml"))
-    #shutil.copytree(raw_data_folder, os.path.join(project_dir, f"raw_{datasetID}"))
+    # Adding the id and state attributes to the dtd
+    dtd_path = os.path.join(project_dir, f"{datasetID}.dtd")
+    add_attributes(
+                   dtd_file,
+                   tag,
+                   [('id', 'CDATA', '#REQUIRED'), ('state', 'CDATA', '#REQUIRED')],
+                   outpath=dtd_path
+                   )
 
     print(f"Project <{datasetID}> created. Saved to:\n{project_dir}")
-    
     return project_dir
 
 def listProjects(display=True):
