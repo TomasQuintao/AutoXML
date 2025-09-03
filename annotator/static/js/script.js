@@ -10,6 +10,7 @@ const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");
 const saveBtn = document.getElementById("save-btn")
 const codeEl = document.getElementById("xml-code");
+const dropdown = document.getElementById("label-dropdown")
 const logs = document.getElementById("logs")
 
 let totalFiles = 0;
@@ -23,6 +24,7 @@ codeEl.addEventListener("input", () => {
 	saveBtn.disabled = codeEl.textContent === originalText
 });
 
+// Function to load a new document
 async function loadDoc(index) {
 	if (isLoading) return;
 
@@ -39,11 +41,7 @@ async function loadDoc(index) {
 
 		codeEl.textContent = data.text;
 
-		if ('requestIdleCallback' in window) {
-			requestIdleCallback(() => hljs.highlightElement(codeEl));
-		} else {
-			setTimeout(() => hljs.highlightElement(codeEl), 0);
-		}
+		highlightCode(codeEl)
 
 		fileIndex = data.index;
 		totalFiles = data.total;
@@ -65,6 +63,8 @@ async function loadDoc(index) {
 		isLoading = false;
 	}
 }
+
+loadDoc(fileIndex);
 
 // Saving the edited content
 saveBtn.onclick = async () => {
@@ -106,4 +106,117 @@ fileNumberInput.addEventListener("keydown", (e) => {
 	}
 });
 
-loadDoc(fileIndex);
+// SELECTING LABELS WITH DROPDOWN
+
+// Show dropdown when text is selected
+codeEl.addEventListener("mouseup", () => {
+    const selection = window.getSelection();
+	
+	// check if selection is not empty
+    if (selection.rangeCount === 0) {
+        dropdown.style.display = "none";
+        return;
+    }
+	
+	// check if selection is inside the xml display
+    const range = selection.getRangeAt(0);
+    if (!codeEl.contains(range.commonAncestorContainer)) {
+        dropdown.style.display = "none";
+        return;
+    }
+	
+	// check if selection has more than whiteSpace
+    const text = selection.toString().trim();
+    if (!text) {
+        dropdown.style.display = "none";
+        return;
+    }
+
+    // Position dropdown near selection
+    const rect = range.getBoundingClientRect();
+    dropdown.style.left = rect.left + window.scrollX + "px";
+    dropdown.style.top = rect.bottom + window.scrollY + "px";
+    dropdown.style.display = "block";
+	
+	// Remember the current range
+    dropdown.currentRange = range;
+	
+	// focus keyboard on dropdown
+	dropdown.focus()
+	dropdown.size = dropdown.options.length; //expand options
+});
+
+// Hide dropdown if user clicks outside
+document.addEventListener("mousedown", (e) => {
+    if (!dropdown.contains(e.target)) {
+        dropdown.style.display = "none";
+		dropdown.size = 0; //colapse options
+    }
+});
+
+// When user selects a label (click or Enter) add a tag to the text
+// Function to wrap selected text
+function wrapSelection(label) {
+    if (!dropdown.currentRange || !label) return;
+
+    const range = dropdown.currentRange;
+    const selectedText = range.toString();
+
+    const tagNode = document.createTextNode(`<${label}>${selectedText}</${label}>`);
+    range.deleteContents();
+    range.insertNode(tagNode);
+
+    // Reset dropdown
+    //dropdown.selectedIndex = 0;
+    dropdown.style.display = "none";
+    dropdown.size = 0;
+	
+	// Close selection
+	const selection = window.getSelection();
+	selection.removeAllRanges();
+	
+	// Update codeEL to enable save buttton
+    codeEl.dispatchEvent(new Event("input"));
+    dropdown.currentRange = null;
+	codeEl.focus()
+	
+	highlightCode(codeEl)
+}
+
+// Handle click on an option on dropdown
+dropdown.addEventListener("click", (e) => {
+    const selectedOption = dropdown.options[dropdown.selectedIndex];
+    if (selectedOption && selectedOption.value) {
+        wrapSelection(selectedOption.value);
+    }
+});
+
+// Handle **Enter key**
+dropdown.addEventListener("keydown", (e) => {
+	
+	const allowedKeys = ["Enter", "ArrowUp", "ArrowDown"];
+	
+    if (e.key === "Enter") {
+        e.preventDefault();
+        const selectedOption = dropdown.options[dropdown.selectedIndex];
+        if (selectedOption && selectedOption.value) {
+            wrapSelection(selectedOption.value);
+        }
+    }
+	
+	// If any other key is pressed, close dropdown and return focus
+    if (!allowedKeys.includes(e.key)) {
+        dropdown.style.display = "none";
+        dropdown.size = 0;
+        codeEl.focus(); // return focus to editor
+    }
+});
+
+// Function to higlight the xml
+function highlightCode(el) {
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => hljs.highlightElement(el));
+    } else {
+        setTimeout(() => hljs.highlightElement(el), 0);
+    }
+}
