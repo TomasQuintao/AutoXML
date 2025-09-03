@@ -80,11 +80,16 @@ saveBtn.onclick = async () => {
         if (!res.ok) throw new Error("Failed to save");
 
         const data = await res.json();
-        logs.textContent += data.message
+        logs.textContent = data.message;// + "\n";
 
         // Reset baseline text
-        originalText = editedText;
-        saveBtn.disabled = true;
+        //originalText = editedText;
+        //saveBtn.disabled = true;
+		if (data.success) {
+			console.log("loading...");
+			await loadDoc(fileIndex);
+		}
+		
     } catch (err) {
         console.error(err);
         alert("Error saving changes");
@@ -142,7 +147,7 @@ codeEl.addEventListener("mouseup", () => {
     dropdown.currentRange = range;
 	
 	// focus keyboard on dropdown
-	dropdown.focus()
+	dropdown.focus();
 	dropdown.size = dropdown.options.length; //expand options
 });
 
@@ -178,9 +183,9 @@ function wrapSelection(label) {
 	// Update codeEL to enable save buttton
     codeEl.dispatchEvent(new Event("input"));
     dropdown.currentRange = null;
-	codeEl.focus()
+	codeEl.focus();
 	
-	highlightCode(codeEl)
+	highlightCode(codeEl);
 }
 
 // Handle click on an option on dropdown

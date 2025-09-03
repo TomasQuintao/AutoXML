@@ -41,11 +41,13 @@
 	
 	
 	<!-- Dropdown for labeling -->
+	<!-- Dropdown for labeling -->
 	<select id="label-dropdown">
-		<option value="person">Person</option>
-		<option value="place">Place</option>
-		<option value="date">Date</option>
+	  {% for label in labels %}
+		<option value="{{ label }}">{{ label.capitalize() }}</option>
+	  {% endfor %}
 	</select>
+
 	
 	<script type="module" src="{{ url_for('static', filename='js/script.js') }}"></script>
 

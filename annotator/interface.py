@@ -4,13 +4,25 @@ import xml.etree.ElementTree as ET
 import os
 
 from utils.dtd_validator import validate_xml
-from dtd_parser.functions import parseDTD
+from dtd_parser.functions import parseDTD, get_labels
 
 app = Flask(__name__)
 
 @app.route("/Projects/<datasetID>")
 def project_view(datasetID):
-    return render_template("project_view.html", datasetID=datasetID, file_index=0)
+    
+    projects_dir = user_data_dir('Projects', 'AutoXML')
+    dataset_dir = os.path.join(projects_dir, datasetID)
+    dtd_path = os.path.join(dataset_dir, f"{datasetID}.dtd")
+    
+    dtd_tree = parseDTD(dtd_path)
+    
+    return render_template(
+        "project_view.html", 
+        datasetID=datasetID, 
+        file_index=0,
+        labels=get_labels(dtd_tree)
+        )
 
 @app.route("/Projects/<datasetID>/file/<int:index>")
 def getDoc(datasetID, index):
@@ -46,7 +58,8 @@ def saveDoc(datasetID, index):
     dtd_tree = parseDTD(dtd_path)
     root_tag = dtd_tree['root']['tag']
     
-    edited_xml = f"<{root_tag}>{data['text']}</{root_tag}>"
+    new_doc_string = data['text']
+    edited_xml = f"<{root_tag}>{new_doc_string}</{root_tag}>"
     
     with open(xml_check, 'w', encoding='utf-8') as f:
         f.write(edited_xml)
@@ -58,16 +71,34 @@ def saveDoc(datasetID, index):
             log = "Valid XML."
         else:
             log = "Invalid XML:\n" + "\n".join(str(e) for e in msg)
+            
     except Exception as e:
         valid = False
         log = f"Failed XML validation: {e}"
     
-    if valid:
-        message = f"File {index} updated.\n"
-    else:
-        message = f"Failed save.\n{log}"
+    if not valid:
+        return jsonify({"success": False, "message": f"Failed save.\n{log}"}), 200
     
-    return jsonify({"success": valid, "message": message}), 200
+    new_doc = ET.fromstring(new_doc_string)
+    new_text = "".join(new_doc.itertext())
+    index = int(new_doc.get('id'))
+    
+    tree = ET.parse(xml_path)
+    root = tree.getroot()
+    doc = root[index]
+    text = "".join(doc.itertext())
+    
+    # Guaranteeing the text remains unchanged
+    if new_text != text:
+        return jsonify({"success": False, "message": f"Failed save. Original text was altered."}), 200
+        
+    new_doc.set('state', 'ready')
+    root[index] = new_doc
+    
+    new_tree = ET.ElementTree(root)
+    new_tree.write(xml_path, encoding="utf-8", xml_declaration=True)
+    
+    return jsonify({"success": True, "message": f"File {index} updated."}), 200
 
 if __name__ == "__main__":
     app.run(debug=True)

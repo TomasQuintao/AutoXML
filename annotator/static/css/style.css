@@ -20,6 +20,13 @@ h3 {
 	text-align: center;
 }
 
+.hljs-name {
+  color: blue !important;
+}
+
+.hljs-tag {
+  color: blue !important;
+}
 
 #file-name {
     margin-bottom: 10px;
@@ -42,6 +49,7 @@ h3 {
 }
 
 #log-box {
+    white-space: pre-line;
     border: 1px solid #999;
     padding: 10px;
     height: 400px;
