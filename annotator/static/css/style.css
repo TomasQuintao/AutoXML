@@ -27,6 +27,11 @@ h3 {
     color: #555;
 }
 
+.main-container {
+    display: flex;
+    gap: 20px; /* space between text and log */
+}
+
 #text-display {
     max-width: 800px;
     font-size: 16px;        /* bigger text */
@@ -34,6 +39,17 @@ h3 {
     font-family: "Courier New", Courier, monospace;  /* monospace font */
     background-color: #f9f9f9;  /* light background for readability */
 	margin: 0 auto; /* center the box */
+}
+
+#log-box {
+    border: 1px solid #999;
+    padding: 10px;
+    height: 400px;
+	max-width: 275px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    font-family: monospace;
+    font-size: 14px;
 }
 
 #file-number-input {

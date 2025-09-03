@@ -10,6 +10,7 @@ const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");
 const saveBtn = document.getElementById("save-btn")
 const codeEl = document.getElementById("xml-code");
+const logs = document.getElementById("logs")
 
 let totalFiles = 0;
 let isLoading = false;
@@ -79,7 +80,7 @@ saveBtn.onclick = async () => {
         if (!res.ok) throw new Error("Failed to save");
 
         const data = await res.json();
-        console.log("Saved:", data);
+        logs.textContent += data.message
 
         // Reset baseline text
         originalText = editedText;

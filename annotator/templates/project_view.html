@@ -15,16 +15,24 @@
 </head>
 <body>
     <h1>Project > {{ datasetID }}</h1>
-
+	
+	
 	<div class="button-bar">
         <button id="prev-btn">Previous</button>
         <button id="next-btn">Next</button>
 		<button id="save-btn">Save</button>
     </div>
-
-    <div id="text-display" data-dataset="{{ datasetID }}" data-file-index="{{ file_index }}">
-        <pre><code id="xml-code" class="xml" contenteditable="true" spellcheck="false"></code></pre>
-    </div>
+	
+	<div class="main-container">
+		<div id="text-display" data-dataset="{{ datasetID }}" data-file-index="{{ file_index }}">
+			<pre><code id="xml-code" class="xml" contenteditable="true" spellcheck="false"></code></pre>
+		</div>
+		
+		<div id="log-box">
+			<h4>Logs</h4>
+			<div id="logs"></div>
+		</div>
+	</div>
 	
 	<h3 id="file-name">
 		File <input type="number" id="file-number-input" min="1">
