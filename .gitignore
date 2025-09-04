@@ -12,3 +12,4 @@ venv/
 *.log
 
 desktop.ini
+test.py
