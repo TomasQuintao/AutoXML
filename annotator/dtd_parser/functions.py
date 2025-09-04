@@ -13,11 +13,8 @@ def parseDTD(dtd):
     # Storing the attributes in the corresponding element and finding the root
     all_children = []
     for key in list(info.keys()): #The list allows deleting keys from the dict
-        if key[0]=='_':
-           info[key[1:]]['attributes'] = info[key]
-           del info[key]
-        
-        elif info[key]['content_type'] != 'text_only':
+
+        if info[key]['content_type'] != 'text_only':
             all_children += info[key]['children']
     
     for key in info:

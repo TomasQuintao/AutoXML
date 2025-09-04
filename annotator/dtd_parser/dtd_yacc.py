@@ -10,7 +10,7 @@ declarations : declarations declaration
       
 declaration : '<' '!' ELEMENT TAG content '>'
             | '<' '!' ATTLIST TAG att_content '>'
-            | entity
+            | '<' '!' ENTITY TAG ent_content '>'
 
 content : child
         | '(' PCDATA options ) '*'
@@ -43,6 +43,7 @@ att_type : CDATA
 
 att_value_declaration : IMPLIED
                       | REQUIRED
+                      | FIXED
 """
 
 def p_declarations(p):
@@ -62,12 +63,8 @@ def p_declarations(p):
             p[0] = p[1] | p[2]
 
 def p_declaration(p):
-    """
-    declaration : '<' '!' ELEMENT TAG content '>'
-                | '<' '!' ATTLIST TAG att_content '>'
-    """
-    if(p[3]=='ATTLIST'):
-        p[4] = '_' + p[4]
+    "declaration : '<' '!' ELEMENT TAG content '>'"
+
     p[0] = {p[4]: p[5]}
 
 def p_content(p):
@@ -83,16 +80,6 @@ def p_content(p):
         p[0] = {'content_type': 'mixed', 'children': p[3]}
     else:
         p[0] = {'content_type': 'text_only'}
-
-def p_options(p):
-    """
-    options : options '|' TAG 
-            | '|' TAG 
-    """
-    if(len(p)==4):
-        p[0] = p[1] + [p[3]]
-    else:
-        p[0] = [p[2]]
 
 def p_child(p):
     "child : '(' childElems ')' quantifier"
@@ -134,35 +121,15 @@ def p_quantifier(p):
     else:
         p[0] = '_'
 
-def p_att_content(p):
+def p_options(p):
     """
-    att_content : att_content attrib
-                | attrib
+    options : options '|' TAG 
+            | '|' TAG 
     """
-    if (len(p)==3):
-        p[0] = p[1] + [p[2]]
+    if(len(p)==4):
+        p[0] = p[1] + [p[3]]
     else:
-        p[0] = [p[1]]
-       
-def p_attrib(p):
-    "attrib : TAG att_type att_value_declaration"
-    
-    p[0] = {'name': p[1], 'type': p[2], 'value_declaration': p[3]}
-
-def p_att_type(p):
-    """
-    att_type : CDATA
-             | ID
-    """    
-    p[0] = p[1]
-
-def p_att_value_declaration(p):
-    """
-    att_value_declaration : IMPLIED
-                          | REQUIRED
-    """
-    p[0] = p[1]
-    
+        p[0] = [p[2]]   
     
 def p_empty(p):
     'empty :'

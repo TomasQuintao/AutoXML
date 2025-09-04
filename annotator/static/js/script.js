@@ -54,11 +54,15 @@ async function loadDoc(index) {
 		totalFilesEl.textContent = totalFiles;
 		stateBox.textContent = state.toUpperCase()
 		
-		if (state==="ready") stateBox.style.backgroundColor = "#4CAF50"; // red;
-		else if (state==="raw") stateBox.style.backgroundColor = "#F44336"; // red
-		
+		if (state==="ready") {
+			stateBox.style.backgroundColor = "#4CAF50"; // green;
+			saveBtn.disabled = true
+		}
+		else if (state==="raw") {
+			stateBox.style.backgroundColor = "#F44336"; // red
+			saveBtn.disabled = false
+		}
 		originalText = data.text;
-		saveBtn.disabled = true
 
 	} catch (err) {
 		console.error(err);

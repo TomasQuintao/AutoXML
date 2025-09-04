@@ -2,30 +2,36 @@ import ply.yacc as yacc
 import ply.lex as lex
 
 reserved = {
-   'ELEMENT' : 'ELEMENT',
-   'ATTLIST' : 'ATTLIST',
-   'CDATA' : 'CDATA',
-   'ID' : 'ID'
+   'ELEMENT' : 'ELEMENT'
 }
 
 tokens = [
           "TAG",
           "PCDATA",
-          "IMPLIED",
-          "REQUIRED",
-          "COMMENT"
+          "COMMENT",
+          "ENTDECL",
+          "ATTDECL"
          ] + list(reserved.values())
 
-literals = ['<', '>', '!', '?', '(', ')', '|', '+', '*', '-', ',', '#']
+literals = ['<', '>', '!', '?', '(', ')', '"',
+            '|', '+', '*', '-', ',', '#']
 
 t_PCDATA = r"\#PCDATA"
-t_IMPLIED = r"\#IMPLIED"
-t_REQUIRED = r"\#REQUIRED"
 
 def t_TAG(t):
     r'\w+'
     t.type = reserved.get(t.value,'TAG')  # Check for reserved words
     return t
+
+def t_ENTDECL(t):
+    r'<!ENTITY[^>]+>'
+    t.lexer.lineno += t.value.count('\n')
+    pass
+
+def t_ATTDECL(t):
+    r'<!ATTLIST[^>]+>'
+    t.lexer.lineno += t.value.count('\n')
+    pass
     
 def t_COMMENT(t):
     r'<!--(.|\n)*?-->'
@@ -38,7 +44,6 @@ def t_newline(t):
     
 t_ignore = ' \t'
 
-
 def t_error(t):
     print(f"Ilegal character '{t.value[0]}' on line {t.lexer.lineno}")
     t.lexer.skip(1)
@@ -46,10 +51,40 @@ def t_error(t):
 lexer = lex.lex()
 
 
-# with open(r"C:\Users\worten\Documents\UNI\Mestrado\Tese\Experimenttal\ResumeSectionTEST\ResumeSection.dtd",
-                 # 'r', encoding='utf-8') as f:
-    # dtd = f.read()        
+dtd = """<!ENTITY AUTHOR "John Doe">
+<!ENTITY COMPANY "JD Power Tools, Inc.">
+<!ENTITY EMAIL "jd@jd-tools.com">
 
+<!ELEMENT CATALOG (PRODUCT+)>
+
+<!ELEMENT PRODUCT
+(SPECIFICATIONS+,OPTIONS?,PRICE+,NOTES?)>
+<!ATTLIST PRODUCT
+NAME CDATA #IMPLIED
+CATEGORY (HandTool|Table|Shop-Professional) "HandTool"
+PARTNUM CDATA #IMPLIED
+PLANT (Pittsburgh|Milwaukee|Chicago) "Chicago"
+INVENTORY (InStock|Backordered|Discontinued) "InStock">
+
+<!ELEMENT SPECIFICATIONS (#PCDATA)>
+<!ATTLIST SPECIFICATIONS
+WEIGHT CDATA #IMPLIED
+POWER CDATA #IMPLIED>
+
+<!ELEMENT OPTIONS (#PCDATA)>
+<!ATTLIST OPTIONS
+FINISH (Metal|Polished|Matte) "Matte"
+ADAPTER (Included|Optional|NotApplicable) "Included"
+CASE (HardShell|Soft|NotApplicable) "HardShell">
+
+<!ELEMENT PRICE (#PCDATA)>
+<!ATTLIST PRICE
+MSRP CDATA #IMPLIED
+WHOLESALE CDATA #IMPLIED
+STREET CDATA #IMPLIED
+SHIPPING CDATA #IMPLIED>
+
+<!ELEMENT NOTES (#PCDATA)>"""
 
 # lexer.input(dtd)
 

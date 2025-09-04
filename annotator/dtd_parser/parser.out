@@ -2,7 +2,9 @@ Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
 Unused terminals:
 
+    ATTDECL
     COMMENT
+    ENTDECL
 
 Grammar
 
@@ -10,71 +12,56 @@ Rule 0     S' -> declarations
 Rule 1     declarations -> declarations declaration
 Rule 2     declarations -> declaration
 Rule 3     declaration -> < ! ELEMENT TAG content >
-Rule 4     declaration -> < ! ATTLIST TAG att_content >
-Rule 5     content -> child
-Rule 6     content -> ( PCDATA options ) *
-Rule 7     content -> ( PCDATA ) quantifier
-Rule 8     options -> options | TAG
-Rule 9     options -> | TAG
-Rule 10    child -> ( childElems ) quantifier
-Rule 11    childElems -> childElems , childElem
-Rule 12    childElems -> childElems | childElem
-Rule 13    childElems -> childElem
-Rule 14    childElem -> child
-Rule 15    childElem -> leaf
-Rule 16    leaf -> TAG quantifier
-Rule 17    quantifier -> *
-Rule 18    quantifier -> +
-Rule 19    quantifier -> ?
-Rule 20    quantifier -> empty
-Rule 21    att_content -> att_content attrib
-Rule 22    att_content -> attrib
-Rule 23    attrib -> TAG att_type att_value_declaration
-Rule 24    att_type -> CDATA
-Rule 25    att_type -> ID
-Rule 26    att_value_declaration -> IMPLIED
-Rule 27    att_value_declaration -> REQUIRED
-Rule 28    empty -> <empty>
+Rule 4     content -> child
+Rule 5     content -> ( PCDATA options ) *
+Rule 6     content -> ( PCDATA ) quantifier
+Rule 7     child -> ( childElems ) quantifier
+Rule 8     childElems -> childElems , childElem
+Rule 9     childElems -> childElems | childElem
+Rule 10    childElems -> childElem
+Rule 11    childElem -> child
+Rule 12    childElem -> leaf
+Rule 13    leaf -> TAG quantifier
+Rule 14    quantifier -> *
+Rule 15    quantifier -> +
+Rule 16    quantifier -> ?
+Rule 17    quantifier -> empty
+Rule 18    options -> options | TAG
+Rule 19    options -> | TAG
+Rule 20    empty -> <empty>
 
 Terminals, with rules where they appear
 
-!                    : 3 4
-(                    : 6 7 10
-)                    : 6 7 10
-*                    : 6 17
-+                    : 18
-,                    : 11
-<                    : 3 4
->                    : 3 4
-?                    : 19
-ATTLIST              : 4
-CDATA                : 24
+!                    : 3
+(                    : 5 6 7
+)                    : 5 6 7
+*                    : 5 14
++                    : 15
+,                    : 8
+<                    : 3
+>                    : 3
+?                    : 16
+ATTDECL              : 
 COMMENT              : 
 ELEMENT              : 3
-ID                   : 25
-IMPLIED              : 26
-PCDATA               : 6 7
-REQUIRED             : 27
-TAG                  : 3 4 8 9 16 23
+ENTDECL              : 
+PCDATA               : 5 6
+TAG                  : 3 13 18 19
 error                : 
-|                    : 8 9 12
+|                    : 9 18 19
 
 Nonterminals, with rules where they appear
 
-att_content          : 4 21
-att_type             : 23
-att_value_declaration : 23
-attrib               : 21 22
-child                : 5 14
-childElem            : 11 12 13
-childElems           : 10 11 12
+child                : 4 11
+childElem            : 8 9 10
+childElems           : 7 8 9
 content              : 3
 declaration          : 1 2
 declarations         : 1 0
-empty                : 20
-leaf                 : 15
-options              : 6 8
-quantifier           : 7 10 16
+empty                : 17
+leaf                 : 12
+options              : 5 18
+quantifier           : 6 7 13
 
 Parsing method: LALR
 
@@ -84,7 +71,6 @@ state 0
     (1) declarations -> . declarations declaration
     (2) declarations -> . declaration
     (3) declaration -> . < ! ELEMENT TAG content >
-    (4) declaration -> . < ! ATTLIST TAG att_content >
 
     <               shift and go to state 3
 
@@ -96,7 +82,6 @@ state 1
     (0) S' -> declarations .
     (1) declarations -> declarations . declaration
     (3) declaration -> . < ! ELEMENT TAG content >
-    (4) declaration -> . < ! ATTLIST TAG att_content >
 
     <               shift and go to state 3
 
@@ -113,7 +98,6 @@ state 2
 state 3
 
     (3) declaration -> < . ! ELEMENT TAG content >
-    (4) declaration -> < . ! ATTLIST TAG att_content >
 
     !               shift and go to state 5
 
@@ -129,118 +113,67 @@ state 4
 state 5
 
     (3) declaration -> < ! . ELEMENT TAG content >
-    (4) declaration -> < ! . ATTLIST TAG att_content >
 
     ELEMENT         shift and go to state 6
-    ATTLIST         shift and go to state 7
 
 
 state 6
 
     (3) declaration -> < ! ELEMENT . TAG content >
 
-    TAG             shift and go to state 8
+    TAG             shift and go to state 7
 
 
 state 7
 
-    (4) declaration -> < ! ATTLIST . TAG att_content >
+    (3) declaration -> < ! ELEMENT TAG . content >
+    (4) content -> . child
+    (5) content -> . ( PCDATA options ) *
+    (6) content -> . ( PCDATA ) quantifier
+    (7) child -> . ( childElems ) quantifier
 
-    TAG             shift and go to state 9
+    (               shift and go to state 10
 
+    content                        shift and go to state 8
+    child                          shift and go to state 9
 
 state 8
 
-    (3) declaration -> < ! ELEMENT TAG . content >
-    (5) content -> . child
-    (6) content -> . ( PCDATA options ) *
-    (7) content -> . ( PCDATA ) quantifier
-    (10) child -> . ( childElems ) quantifier
+    (3) declaration -> < ! ELEMENT TAG content . >
 
-    (               shift and go to state 12
+    >               shift and go to state 11
 
-    content                        shift and go to state 10
-    child                          shift and go to state 11
 
 state 9
 
-    (4) declaration -> < ! ATTLIST TAG . att_content >
-    (21) att_content -> . att_content attrib
-    (22) att_content -> . attrib
-    (23) attrib -> . TAG att_type att_value_declaration
+    (4) content -> child .
 
-    TAG             shift and go to state 13
+    >               reduce using rule 4 (content -> child .)
 
-    att_content                    shift and go to state 14
-    attrib                         shift and go to state 15
 
 state 10
 
-    (3) declaration -> < ! ELEMENT TAG content . >
+    (5) content -> ( . PCDATA options ) *
+    (6) content -> ( . PCDATA ) quantifier
+    (7) child -> ( . childElems ) quantifier
+    (8) childElems -> . childElems , childElem
+    (9) childElems -> . childElems | childElem
+    (10) childElems -> . childElem
+    (11) childElem -> . child
+    (12) childElem -> . leaf
+    (7) child -> . ( childElems ) quantifier
+    (13) leaf -> . TAG quantifier
 
-    >               shift and go to state 16
+    PCDATA          shift and go to state 13
+    (               shift and go to state 12
+    TAG             shift and go to state 18
 
+    childElems                     shift and go to state 14
+    childElem                      shift and go to state 15
+    child                          shift and go to state 16
+    leaf                           shift and go to state 17
 
 state 11
-
-    (5) content -> child .
-
-    >               reduce using rule 5 (content -> child .)
-
-
-state 12
-
-    (6) content -> ( . PCDATA options ) *
-    (7) content -> ( . PCDATA ) quantifier
-    (10) child -> ( . childElems ) quantifier
-    (11) childElems -> . childElems , childElem
-    (12) childElems -> . childElems | childElem
-    (13) childElems -> . childElem
-    (14) childElem -> . child
-    (15) childElem -> . leaf
-    (10) child -> . ( childElems ) quantifier
-    (16) leaf -> . TAG quantifier
-
-    PCDATA          shift and go to state 18
-    (               shift and go to state 17
-    TAG             shift and go to state 23
-
-    childElems                     shift and go to state 19
-    childElem                      shift and go to state 20
-    child                          shift and go to state 21
-    leaf                           shift and go to state 22
-
-state 13
-
-    (23) attrib -> TAG . att_type att_value_declaration
-    (24) att_type -> . CDATA
-    (25) att_type -> . ID
-
-    CDATA           shift and go to state 25
-    ID              shift and go to state 26
-
-    att_type                       shift and go to state 24
-
-state 14
-
-    (4) declaration -> < ! ATTLIST TAG att_content . >
-    (21) att_content -> att_content . attrib
-    (23) attrib -> . TAG att_type att_value_declaration
-
-    >               shift and go to state 27
-    TAG             shift and go to state 13
-
-    attrib                         shift and go to state 28
-
-state 15
-
-    (22) att_content -> attrib .
-
-    >               reduce using rule 22 (att_content -> attrib .)
-    TAG             reduce using rule 22 (att_content -> attrib .)
-
-
-state 16
 
     (3) declaration -> < ! ELEMENT TAG content > .
 
@@ -248,361 +181,294 @@ state 16
     $end            reduce using rule 3 (declaration -> < ! ELEMENT TAG content > .)
 
 
+state 12
+
+    (7) child -> ( . childElems ) quantifier
+    (8) childElems -> . childElems , childElem
+    (9) childElems -> . childElems | childElem
+    (10) childElems -> . childElem
+    (11) childElem -> . child
+    (12) childElem -> . leaf
+    (7) child -> . ( childElems ) quantifier
+    (13) leaf -> . TAG quantifier
+
+    (               shift and go to state 12
+    TAG             shift and go to state 18
+
+    childElems                     shift and go to state 14
+    childElem                      shift and go to state 15
+    child                          shift and go to state 16
+    leaf                           shift and go to state 17
+
+state 13
+
+    (5) content -> ( PCDATA . options ) *
+    (6) content -> ( PCDATA . ) quantifier
+    (18) options -> . options | TAG
+    (19) options -> . | TAG
+
+    )               shift and go to state 20
+    |               shift and go to state 21
+
+    options                        shift and go to state 19
+
+state 14
+
+    (7) child -> ( childElems . ) quantifier
+    (8) childElems -> childElems . , childElem
+    (9) childElems -> childElems . | childElem
+
+    )               shift and go to state 22
+    ,               shift and go to state 23
+    |               shift and go to state 24
+
+
+state 15
+
+    (10) childElems -> childElem .
+
+    )               reduce using rule 10 (childElems -> childElem .)
+    ,               reduce using rule 10 (childElems -> childElem .)
+    |               reduce using rule 10 (childElems -> childElem .)
+
+
+state 16
+
+    (11) childElem -> child .
+
+    )               reduce using rule 11 (childElem -> child .)
+    ,               reduce using rule 11 (childElem -> child .)
+    |               reduce using rule 11 (childElem -> child .)
+
+
 state 17
 
-    (10) child -> ( . childElems ) quantifier
-    (11) childElems -> . childElems , childElem
-    (12) childElems -> . childElems | childElem
-    (13) childElems -> . childElem
-    (14) childElem -> . child
-    (15) childElem -> . leaf
-    (10) child -> . ( childElems ) quantifier
-    (16) leaf -> . TAG quantifier
+    (12) childElem -> leaf .
 
-    (               shift and go to state 17
-    TAG             shift and go to state 23
+    )               reduce using rule 12 (childElem -> leaf .)
+    ,               reduce using rule 12 (childElem -> leaf .)
+    |               reduce using rule 12 (childElem -> leaf .)
 
-    childElems                     shift and go to state 19
-    childElem                      shift and go to state 20
-    child                          shift and go to state 21
-    leaf                           shift and go to state 22
 
 state 18
 
-    (6) content -> ( PCDATA . options ) *
-    (7) content -> ( PCDATA . ) quantifier
-    (8) options -> . options | TAG
-    (9) options -> . | TAG
+    (13) leaf -> TAG . quantifier
+    (14) quantifier -> . *
+    (15) quantifier -> . +
+    (16) quantifier -> . ?
+    (17) quantifier -> . empty
+    (20) empty -> .
+
+    *               shift and go to state 26
+    +               shift and go to state 27
+    ?               shift and go to state 28
+    )               reduce using rule 20 (empty -> .)
+    ,               reduce using rule 20 (empty -> .)
+    |               reduce using rule 20 (empty -> .)
+
+    quantifier                     shift and go to state 25
+    empty                          shift and go to state 29
+
+state 19
+
+    (5) content -> ( PCDATA options . ) *
+    (18) options -> options . | TAG
 
     )               shift and go to state 30
     |               shift and go to state 31
 
-    options                        shift and go to state 29
-
-state 19
-
-    (10) child -> ( childElems . ) quantifier
-    (11) childElems -> childElems . , childElem
-    (12) childElems -> childElems . | childElem
-
-    )               shift and go to state 32
-    ,               shift and go to state 33
-    |               shift and go to state 34
-
 
 state 20
 
-    (13) childElems -> childElem .
+    (6) content -> ( PCDATA ) . quantifier
+    (14) quantifier -> . *
+    (15) quantifier -> . +
+    (16) quantifier -> . ?
+    (17) quantifier -> . empty
+    (20) empty -> .
 
-    )               reduce using rule 13 (childElems -> childElem .)
-    ,               reduce using rule 13 (childElems -> childElem .)
-    |               reduce using rule 13 (childElems -> childElem .)
+    *               shift and go to state 26
+    +               shift and go to state 27
+    ?               shift and go to state 28
+    >               reduce using rule 20 (empty -> .)
 
+    quantifier                     shift and go to state 32
+    empty                          shift and go to state 29
 
 state 21
 
-    (14) childElem -> child .
+    (19) options -> | . TAG
 
-    )               reduce using rule 14 (childElem -> child .)
-    ,               reduce using rule 14 (childElem -> child .)
-    |               reduce using rule 14 (childElem -> child .)
+    TAG             shift and go to state 33
 
 
 state 22
 
-    (15) childElem -> leaf .
+    (7) child -> ( childElems ) . quantifier
+    (14) quantifier -> . *
+    (15) quantifier -> . +
+    (16) quantifier -> . ?
+    (17) quantifier -> . empty
+    (20) empty -> .
 
-    )               reduce using rule 15 (childElem -> leaf .)
-    ,               reduce using rule 15 (childElem -> leaf .)
-    |               reduce using rule 15 (childElem -> leaf .)
+    *               shift and go to state 26
+    +               shift and go to state 27
+    ?               shift and go to state 28
+    >               reduce using rule 20 (empty -> .)
+    )               reduce using rule 20 (empty -> .)
+    ,               reduce using rule 20 (empty -> .)
+    |               reduce using rule 20 (empty -> .)
 
+    quantifier                     shift and go to state 34
+    empty                          shift and go to state 29
 
 state 23
 
-    (16) leaf -> TAG . quantifier
-    (17) quantifier -> . *
-    (18) quantifier -> . +
-    (19) quantifier -> . ?
-    (20) quantifier -> . empty
-    (28) empty -> .
+    (8) childElems -> childElems , . childElem
+    (11) childElem -> . child
+    (12) childElem -> . leaf
+    (7) child -> . ( childElems ) quantifier
+    (13) leaf -> . TAG quantifier
 
-    *               shift and go to state 36
-    +               shift and go to state 37
-    ?               shift and go to state 38
-    )               reduce using rule 28 (empty -> .)
-    ,               reduce using rule 28 (empty -> .)
-    |               reduce using rule 28 (empty -> .)
+    (               shift and go to state 12
+    TAG             shift and go to state 18
 
-    quantifier                     shift and go to state 35
-    empty                          shift and go to state 39
+    childElem                      shift and go to state 35
+    child                          shift and go to state 16
+    leaf                           shift and go to state 17
 
 state 24
 
-    (23) attrib -> TAG att_type . att_value_declaration
-    (26) att_value_declaration -> . IMPLIED
-    (27) att_value_declaration -> . REQUIRED
+    (9) childElems -> childElems | . childElem
+    (11) childElem -> . child
+    (12) childElem -> . leaf
+    (7) child -> . ( childElems ) quantifier
+    (13) leaf -> . TAG quantifier
 
-    IMPLIED         shift and go to state 41
-    REQUIRED        shift and go to state 42
+    (               shift and go to state 12
+    TAG             shift and go to state 18
 
-    att_value_declaration          shift and go to state 40
+    childElem                      shift and go to state 36
+    child                          shift and go to state 16
+    leaf                           shift and go to state 17
 
 state 25
 
-    (24) att_type -> CDATA .
+    (13) leaf -> TAG quantifier .
 
-    IMPLIED         reduce using rule 24 (att_type -> CDATA .)
-    REQUIRED        reduce using rule 24 (att_type -> CDATA .)
+    )               reduce using rule 13 (leaf -> TAG quantifier .)
+    ,               reduce using rule 13 (leaf -> TAG quantifier .)
+    |               reduce using rule 13 (leaf -> TAG quantifier .)
 
 
 state 26
 
-    (25) att_type -> ID .
+    (14) quantifier -> * .
 
-    IMPLIED         reduce using rule 25 (att_type -> ID .)
-    REQUIRED        reduce using rule 25 (att_type -> ID .)
+    )               reduce using rule 14 (quantifier -> * .)
+    ,               reduce using rule 14 (quantifier -> * .)
+    |               reduce using rule 14 (quantifier -> * .)
+    >               reduce using rule 14 (quantifier -> * .)
 
 
 state 27
 
-    (4) declaration -> < ! ATTLIST TAG att_content > .
+    (15) quantifier -> + .
 
-    <               reduce using rule 4 (declaration -> < ! ATTLIST TAG att_content > .)
-    $end            reduce using rule 4 (declaration -> < ! ATTLIST TAG att_content > .)
+    )               reduce using rule 15 (quantifier -> + .)
+    ,               reduce using rule 15 (quantifier -> + .)
+    |               reduce using rule 15 (quantifier -> + .)
+    >               reduce using rule 15 (quantifier -> + .)
 
 
 state 28
 
-    (21) att_content -> att_content attrib .
+    (16) quantifier -> ? .
 
-    >               reduce using rule 21 (att_content -> att_content attrib .)
-    TAG             reduce using rule 21 (att_content -> att_content attrib .)
+    )               reduce using rule 16 (quantifier -> ? .)
+    ,               reduce using rule 16 (quantifier -> ? .)
+    |               reduce using rule 16 (quantifier -> ? .)
+    >               reduce using rule 16 (quantifier -> ? .)
 
 
 state 29
 
-    (6) content -> ( PCDATA options . ) *
-    (8) options -> options . | TAG
+    (17) quantifier -> empty .
 
-    )               shift and go to state 43
-    |               shift and go to state 44
+    )               reduce using rule 17 (quantifier -> empty .)
+    ,               reduce using rule 17 (quantifier -> empty .)
+    |               reduce using rule 17 (quantifier -> empty .)
+    >               reduce using rule 17 (quantifier -> empty .)
 
 
 state 30
 
-    (7) content -> ( PCDATA ) . quantifier
-    (17) quantifier -> . *
-    (18) quantifier -> . +
-    (19) quantifier -> . ?
-    (20) quantifier -> . empty
-    (28) empty -> .
+    (5) content -> ( PCDATA options ) . *
 
-    *               shift and go to state 36
-    +               shift and go to state 37
-    ?               shift and go to state 38
-    >               reduce using rule 28 (empty -> .)
+    *               shift and go to state 37
 
-    quantifier                     shift and go to state 45
-    empty                          shift and go to state 39
 
 state 31
 
-    (9) options -> | . TAG
+    (18) options -> options | . TAG
 
-    TAG             shift and go to state 46
+    TAG             shift and go to state 38
 
 
 state 32
 
-    (10) child -> ( childElems ) . quantifier
-    (17) quantifier -> . *
-    (18) quantifier -> . +
-    (19) quantifier -> . ?
-    (20) quantifier -> . empty
-    (28) empty -> .
+    (6) content -> ( PCDATA ) quantifier .
 
-    *               shift and go to state 36
-    +               shift and go to state 37
-    ?               shift and go to state 38
-    >               reduce using rule 28 (empty -> .)
-    )               reduce using rule 28 (empty -> .)
-    ,               reduce using rule 28 (empty -> .)
-    |               reduce using rule 28 (empty -> .)
+    >               reduce using rule 6 (content -> ( PCDATA ) quantifier .)
 
-    quantifier                     shift and go to state 47
-    empty                          shift and go to state 39
 
 state 33
 
-    (11) childElems -> childElems , . childElem
-    (14) childElem -> . child
-    (15) childElem -> . leaf
-    (10) child -> . ( childElems ) quantifier
-    (16) leaf -> . TAG quantifier
+    (19) options -> | TAG .
 
-    (               shift and go to state 17
-    TAG             shift and go to state 23
+    )               reduce using rule 19 (options -> | TAG .)
+    |               reduce using rule 19 (options -> | TAG .)
 
-    childElem                      shift and go to state 48
-    child                          shift and go to state 21
-    leaf                           shift and go to state 22
 
 state 34
 
-    (12) childElems -> childElems | . childElem
-    (14) childElem -> . child
-    (15) childElem -> . leaf
-    (10) child -> . ( childElems ) quantifier
-    (16) leaf -> . TAG quantifier
+    (7) child -> ( childElems ) quantifier .
 
-    (               shift and go to state 17
-    TAG             shift and go to state 23
+    >               reduce using rule 7 (child -> ( childElems ) quantifier .)
+    )               reduce using rule 7 (child -> ( childElems ) quantifier .)
+    ,               reduce using rule 7 (child -> ( childElems ) quantifier .)
+    |               reduce using rule 7 (child -> ( childElems ) quantifier .)
 
-    childElem                      shift and go to state 49
-    child                          shift and go to state 21
-    leaf                           shift and go to state 22
 
 state 35
 
-    (16) leaf -> TAG quantifier .
+    (8) childElems -> childElems , childElem .
 
-    )               reduce using rule 16 (leaf -> TAG quantifier .)
-    ,               reduce using rule 16 (leaf -> TAG quantifier .)
-    |               reduce using rule 16 (leaf -> TAG quantifier .)
+    )               reduce using rule 8 (childElems -> childElems , childElem .)
+    ,               reduce using rule 8 (childElems -> childElems , childElem .)
+    |               reduce using rule 8 (childElems -> childElems , childElem .)
 
 
 state 36
 
-    (17) quantifier -> * .
+    (9) childElems -> childElems | childElem .
 
-    )               reduce using rule 17 (quantifier -> * .)
-    ,               reduce using rule 17 (quantifier -> * .)
-    |               reduce using rule 17 (quantifier -> * .)
-    >               reduce using rule 17 (quantifier -> * .)
+    )               reduce using rule 9 (childElems -> childElems | childElem .)
+    ,               reduce using rule 9 (childElems -> childElems | childElem .)
+    |               reduce using rule 9 (childElems -> childElems | childElem .)
 
 
 state 37
 
-    (18) quantifier -> + .
+    (5) content -> ( PCDATA options ) * .
 
-    )               reduce using rule 18 (quantifier -> + .)
-    ,               reduce using rule 18 (quantifier -> + .)
-    |               reduce using rule 18 (quantifier -> + .)
-    >               reduce using rule 18 (quantifier -> + .)
+    >               reduce using rule 5 (content -> ( PCDATA options ) * .)
 
 
 state 38
 
-    (19) quantifier -> ? .
+    (18) options -> options | TAG .
 
-    )               reduce using rule 19 (quantifier -> ? .)
-    ,               reduce using rule 19 (quantifier -> ? .)
-    |               reduce using rule 19 (quantifier -> ? .)
-    >               reduce using rule 19 (quantifier -> ? .)
-
-
-state 39
-
-    (20) quantifier -> empty .
-
-    )               reduce using rule 20 (quantifier -> empty .)
-    ,               reduce using rule 20 (quantifier -> empty .)
-    |               reduce using rule 20 (quantifier -> empty .)
-    >               reduce using rule 20 (quantifier -> empty .)
-
-
-state 40
-
-    (23) attrib -> TAG att_type att_value_declaration .
-
-    >               reduce using rule 23 (attrib -> TAG att_type att_value_declaration .)
-    TAG             reduce using rule 23 (attrib -> TAG att_type att_value_declaration .)
-
-
-state 41
-
-    (26) att_value_declaration -> IMPLIED .
-
-    >               reduce using rule 26 (att_value_declaration -> IMPLIED .)
-    TAG             reduce using rule 26 (att_value_declaration -> IMPLIED .)
-
-
-state 42
-
-    (27) att_value_declaration -> REQUIRED .
-
-    >               reduce using rule 27 (att_value_declaration -> REQUIRED .)
-    TAG             reduce using rule 27 (att_value_declaration -> REQUIRED .)
-
-
-state 43
-
-    (6) content -> ( PCDATA options ) . *
-
-    *               shift and go to state 50
-
-
-state 44
-
-    (8) options -> options | . TAG
-
-    TAG             shift and go to state 51
-
-
-state 45
-
-    (7) content -> ( PCDATA ) quantifier .
-
-    >               reduce using rule 7 (content -> ( PCDATA ) quantifier .)
-
-
-state 46
-
-    (9) options -> | TAG .
-
-    )               reduce using rule 9 (options -> | TAG .)
-    |               reduce using rule 9 (options -> | TAG .)
-
-
-state 47
-
-    (10) child -> ( childElems ) quantifier .
-
-    >               reduce using rule 10 (child -> ( childElems ) quantifier .)
-    )               reduce using rule 10 (child -> ( childElems ) quantifier .)
-    ,               reduce using rule 10 (child -> ( childElems ) quantifier .)
-    |               reduce using rule 10 (child -> ( childElems ) quantifier .)
-
-
-state 48
-
-    (11) childElems -> childElems , childElem .
-
-    )               reduce using rule 11 (childElems -> childElems , childElem .)
-    ,               reduce using rule 11 (childElems -> childElems , childElem .)
-    |               reduce using rule 11 (childElems -> childElems , childElem .)
-
-
-state 49
-
-    (12) childElems -> childElems | childElem .
-
-    )               reduce using rule 12 (childElems -> childElems | childElem .)
-    ,               reduce using rule 12 (childElems -> childElems | childElem .)
-    |               reduce using rule 12 (childElems -> childElems | childElem .)
-
-
-state 50
-
-    (6) content -> ( PCDATA options ) * .
-
-    >               reduce using rule 6 (content -> ( PCDATA options ) * .)
-
-
-state 51
-
-    (8) options -> options | TAG .
-
-    )               reduce using rule 8 (options -> options | TAG .)
-    |               reduce using rule 8 (options -> options | TAG .)
+    )               reduce using rule 18 (options -> options | TAG .)
+    |               reduce using rule 18 (options -> options | TAG .)
 
