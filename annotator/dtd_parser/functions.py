@@ -1,3 +1,5 @@
+import re
+
 from .dtd_yacc import dtd_parser
 
 def parseDTD(dtd):
@@ -27,10 +29,13 @@ def parseDTD(dtd):
             
     return info
 
-def add_attributes(dtd_file, element, attributes, outpath="default"):
+def fix_attributes(dtd_file, element, attributes, outpath="default"):
 
     with open(dtd_file, 'r', encoding='utf-8') as f:
         dtd = f.read()
+    
+    values = r"#(FIXED|REQUIRED)"
+    dtd = re.sub(values, "#IMPLIED", dtd)
     
     for (name, att_type, value_decl) in attributes:
         dtd += f"\n<!ATTLIST {element} {name} {att_type} {value_decl}>"
