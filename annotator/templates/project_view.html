@@ -21,13 +21,15 @@
         <button id="prev-btn">Previous</button>
         <button id="next-btn">Next</button>
 		<button id="save-btn">Save</button>
+		
+		<div id="state-box"></div>
     </div>
 	
 	<div class="main-container">
 		<div id="text-display" data-dataset="{{ datasetID }}" data-file-index="{{ file_index }}">
-			<pre><code id="xml-code" class="xml" contenteditable="true" spellcheck="false"></code></pre>
+			<pre><code id="xml-code" class="xml" spellcheck="false"></code></pre>
 		</div>
-		
+		<!-- contenteditable="true" -->
 		<div id="log-box">
 			<h4>Logs</h4>
 			<div id="logs"></div>

@@ -37,10 +37,11 @@ def getDoc(datasetID, index):
     # Allow loop around
     index = index % len(root)
     doc = root[index]
+    state = doc.get('state')
     
     content = ET.tostring(doc, encoding='unicode')
 
-    return {"text": content, "index": index, "total": len(root)}
+    return {"text": content, "index": index, "total": len(root), "state": state}
 
 @app.route("/Projects/<datasetID>/save/<int:index>", methods=["POST"])
 def saveDoc(datasetID, index):

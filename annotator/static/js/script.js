@@ -10,11 +10,13 @@ const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");
 const saveBtn = document.getElementById("save-btn")
 const codeEl = document.getElementById("xml-code");
-const dropdown = document.getElementById("label-dropdown")
-const logs = document.getElementById("logs")
+const dropdown = document.getElementById("label-dropdown");
+const logs = document.getElementById("logs");
+const stateBox = document.getElementById("state-box");
 
 let totalFiles = 0;
 let isLoading = false;
+let state = "ready"
 
 // Save button only enabled when the content changes
 saveBtn.disabled = true
@@ -45,10 +47,15 @@ async function loadDoc(index) {
 
 		fileIndex = data.index;
 		totalFiles = data.total;
+		state = data.state
 
-		// Update the input box and total
+		// Update the input box and total and state box
 		fileNumberInput.value = fileIndex + 1; // 1-based
 		totalFilesEl.textContent = totalFiles;
+		stateBox.textContent = state.toUpperCase()
+		
+		if (state==="ready") stateBox.style.backgroundColor = "#4CAF50"; // red;
+		else if (state==="raw") stateBox.style.backgroundColor = "#F44336"; // red
 		
 		originalText = data.text;
 		saveBtn.disabled = true
@@ -196,7 +203,7 @@ dropdown.addEventListener("click", (e) => {
     }
 });
 
-// Handle **Enter key**
+// Handle **Enter key** on dropdown
 dropdown.addEventListener("keydown", (e) => {
 	
 	const allowedKeys = ["Enter", "ArrowUp", "ArrowDown"];
@@ -216,6 +223,69 @@ dropdown.addEventListener("keydown", (e) => {
         codeEl.focus(); // return focus to editor
     }
 });
+
+// Deleting tags when clicking
+codeEl.addEventListener("click", (e) => {
+    if (!e.target.classList.contains("hljs-tag")) return;
+
+    const clickedTag = e.target.textContent.trim();
+    const tagName = clickedTag.match(/^<\/?\s*([^\s>]+)/)[1];
+    const isOpening = !clickedTag.startsWith("</");
+
+    // Get all tag spans
+    const tags = Array.from(codeEl.querySelectorAll(".hljs-tag"));
+
+    let correspondingTag = null;
+	let counter = 0;
+    if (isOpening) {
+        // Find the next closing tag with the same name
+        for (let i = tags.indexOf(e.target) + 1; i < tags.length; i++) {
+            const next_text = tags[i].textContent.trim();
+            if (next_text.startsWith(`</${tagName}`)) {
+				if (counter>0) counter--;
+				else {
+					correspondingTag = tags[i];
+					break;
+				}
+            }
+			if (next_text.startsWith(`<${tagName}`)) {counter++;}
+        }
+    } else {
+        // Find the previous opening tag with the same name
+        for (let i = tags.indexOf(e.target) - 1; i >= 0; i--) {
+            const next_text = tags[i].textContent.trim();
+            if (next_text.startsWith(`<${tagName}`)) {
+				if (counter>0) counter--;
+				else {
+					correspondingTag = tags[i];
+					break;
+				}
+            }
+			if (next_text.startsWith(`</${tagName}`)) {counter++;}
+        }
+    }
+
+    console.log("Clicked tag:", clickedTag);
+    if (correspondingTag) {
+		console.log("Corresponding tag:", correspondingTag.textContent);
+		removeTag(e.target, correspondingTag);
+	} 
+});
+
+// Function to remove tags from the text
+function removeTag(openTag, closeTag) {
+    // Remove the clicked/opening tag
+    openTag.remove();
+
+    // Remove the corresponding tag if it exists
+    if (closeTag) closeTag.remove();
+
+    // Trigger input event to enable save button
+    codeEl.dispatchEvent(new Event("input"));
+
+    // Optionally, re-highlight
+    //highlightCode(codeEl);
+}
 
 // Function to higlight the xml
 function highlightCode(el) {
