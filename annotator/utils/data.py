@@ -102,13 +102,19 @@ def get_position(element, tag_list):
    
     return tag_list
 
-def stripTags(xml_file, string_output=False):
+def stripTags(xml, string_output=False):
     
-    with open(xml_file, 'r', encoding='utf-8') as file:
-        xml = file.read() 
+    if (xml[-4:] == ".xml"):
+        with open(xml, 'r', encoding='utf-8') as file:
+            xml = file.read() 
     
-    text = xml[39:]
-    declaration = xml[:39]
+    declaration = ""
+    for line in xml.splitlines():
+        if (line[:2] == "<!" or line[:2] == "<?"):
+            declaration += line + '\n'
+    
+    start = len(declaration)
+    text = xml[start:]
     
     # Jumping leading and trailing whitespaces
     open_tag = r"(<[^\/][^>]*>)"
