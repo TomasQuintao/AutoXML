@@ -6,11 +6,9 @@ from utils.port_tools import wait_for_port
 from utils.dtd_validator import validate_xml
 from dtd_parser.functions import fix_attributes
 
-def createProject(datasetID, dtd_file, xml_file, raw_data_folder, outdir='default', overwrite=False):
+def createProject(datasetID, dtd_file, xml_file, raw_data_folder, overwrite=False):
     
-    if (outdir == 'default'):
-        
-        outdir = user_data_dir('Projects', 'AutoXML')
+    outdir = user_data_dir('Projects', 'AutoXML')
     
     project_dir = os.path.join(outdir, datasetID)
     

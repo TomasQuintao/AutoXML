@@ -11,7 +11,7 @@ from utils.data import prepareData, saveData, stripTags
 #                       OR
 # - Give the user warnings of the non conforming tags
 
-def infer(datasetID, model_list):
+def merge(datasetID, model_list):
     
     if datasetID not in listProjects(display=False):
         raise FileNotFoundError(f"Project '{datasetID}' does not exist." 
@@ -273,4 +273,3 @@ def order_spans(spans, order):
     # Não sei se vale a pena fazer isto
     pass
     
-infer("resumes", ["ner", "ner"]) 

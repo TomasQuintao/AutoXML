@@ -43,5 +43,3 @@ def trainModel(datasetID, layer, model):
     )
     
     return output_path
-    
-trainModel("resumes", 1, 'ner')

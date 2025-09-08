@@ -5,8 +5,13 @@ import re, sys, spacy, os
 
 from dtd_parser.functions import parseDTD, assignLayer
 from utils.data import prepareData, stripTags
+from project_ops import listProjects
 
 def prepareTrainData(datasetID):
+    
+    if datasetID not in listProjects(display=False):
+        raise FileNotFoundError(f"Project '{datasetID}' does not exist." 
+                                " Use command 'create' to start a project")
     
     dtd_file, train_xml, _ = prepareData(datasetID)
     
@@ -152,4 +157,3 @@ def saveDocBin(train_data, nlp, out_file, doc_id=0):
     
     return log
 
-prepareTrainData("resumes")
