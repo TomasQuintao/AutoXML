@@ -131,9 +131,9 @@ def layers2xml(text, layered_spans, layer, root):
             nested_elems = []
             new_elems = []
             for p_elem in previous_elements:
-                if (p_elem[1] >= span.start_char and p_elem[2] <= span.end_char):
+                if (p_elem[1] >= start and p_elem[2] <= end):
                     nested_elems.append(p_elem)
-                else:
+                elif (p_elem[2] <= start or p_elem[1] >= end): # Does not add overlapping spans
                     new_elems.append(p_elem)
             previous_elements = new_elems     
             
