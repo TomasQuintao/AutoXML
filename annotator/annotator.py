@@ -102,7 +102,7 @@ def layers2xml(text, layered_spans, layer, root):
             for p_elem in previous_elements:
                 if (p_elem[1] >= span['start'] and p_elem[2] <= span['end']):
                     nested_elems.append(p_elem)
-                else:
+                elif (p_elem[2] <= span['start'] or p_elem[1] >= span['end']):
                     new_elems.append(p_elem)
             previous_elements = new_elems     
             

@@ -87,7 +87,7 @@ def prepareTrainData(datasetID):
     
 def extract_tags(document):
     
-    clean_xml(document)
+    #clean_xml(document)
     
     tag_list = []
     

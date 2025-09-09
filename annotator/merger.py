@@ -67,7 +67,7 @@ def merge(datasetID, model_list):
         element = ET.fromstring(element_string)
         
         element.tail = "\n\n"
-        
+
         root.append(element)
         
     tree = ET.ElementTree(root)
