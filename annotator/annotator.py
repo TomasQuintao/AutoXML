@@ -3,7 +3,8 @@ import re, os
 
 from dtd_parser.functions import parseDTD, assignLayer
 
-# TODO: Use the parsed DTD
+# TODO: - Use the parsed DTD
+#       - keep overlapping spans of the same layer in some way, maybe change adjust index
 
 def annotator(agent, raw_xml, dtd_file):
     
@@ -71,6 +72,8 @@ def fillElement(full_text, spans, dtd_tree, doc_element):
         
     # Ensure proper nesting
     #layered_spans = ensure_nesting(layered_spans, dtd, l)
+    
+    layered_spans = delete_overlaps(layered_spans)
     
     doc_element = layers2xml(full_text, layered_spans, l, doc_element)
 
@@ -156,7 +159,33 @@ def layers2xml(text, layered_spans, layer, root):
             root.append(elem) 
     
     return root
-  
+
+def delete_overlaps(layered_spans):
+    
+    for layer in layered_spans:
+        spans = layered_spans[layer]
+        
+        append_list = [True] * len(spans)
+        for i, span in enumerate(spans):
+            if (not append_list[i]): continue
+            
+            text, start, end = span['text'], span['start'], span['end']
+            
+            for j, next_span in enumerate(spans):
+                if (not append_list[j] or i==j): continue
+                
+                if ((start >= next_span['start'] and start <= next_span['end'])
+                    or (end >= next_span['start'] and end <= next_span['end'])
+                ):
+                    if (len(text)<len(next_span['text'])):
+                        append_list[i] = False
+                    else:
+                        append_list[j] = False
+        
+        layered_spans[layer] = [sp for i, sp in enumerate(spans) if append_list[i]]
+    return layered_spans
+
+ 
 # Assuming the parent layers are more probable to be correct, might be dubious <:|
 def ensure_nesting(layered_spans, dtd, last_layer):
     
