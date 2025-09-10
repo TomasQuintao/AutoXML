@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-import re, os
+import re, os, sys
 
 from dtd_parser.functions import parseDTD, assignLayer
 
@@ -25,6 +25,8 @@ def annotator(agent, raw_xml, dtd_file):
     #files = sorted(os.listdir(data_folder), key=lambda x: int(re.search(r"\d+", x).group()))
     
     # Get each doc from the raw_xml and use the model to generate annotations
+    total = len(raw_root)
+    i=0
     for doc in raw_root:
         text = "".join(doc.itertext())
         
@@ -43,6 +45,15 @@ def annotator(agent, raw_xml, dtd_file):
         element.tail = "\n\n"
         
         root.append(element)
+        
+        # Outputs visual progress
+        bar = "█" * i + "-" * (total - i)
+        sys.stdout.write(f"\r|{bar}| {i}/{total}")
+        sys.stdout.flush()
+        i+=1
+    bar = "█" * i + "-" * (total - i)
+    sys.stdout.write(f"\r|{bar}| {i}/{total}")
+    sys.stdout.flush()
 
     tree = ET.ElementTree(root)
         
