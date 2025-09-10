@@ -1,21 +1,36 @@
 from rapidfuzz import fuzz
 import re
 
-# WARNING: If correctIndex takes too long, 
+# WARNING: - If correctIndex takes too long, 
 # change adjustMargins to stop after the ratio decreases n times
+# - It's assumed that the spans come ordered
 
 def correctIndex(spans, doc, threshold=0.85):
     """Finds the most similar same size string for each span
        in the doc, and then adjusts the margins if needed"""
     
     new_spans = []
+    previous_start, previous_end = (0,0)
+    false_start, false_end = (0,0)
     for span in spans:
         
         string = span['text']
-        (start, end) = findIndex(string, span['start'], doc, threshold)
+        current_start = span['start']
+        current_end = span['end']
+        
+        if (current_start >= false_start and current_end <= false_end):
+            current_start = previous_start + (current_start - false_start)
+            
+        elif (current_start >= false_end and current_end > false_end):
+            current_start = previous_end + (current_start - false_end)
+        
+        (start, end) = findIndex(string, current_start, doc, threshold)
         
         if((start, end) == (0,0)): # No match
             continue
+        
+        false_start, false_end = (span['start'], span['end'])
+        previous_start, previous_end = (start, end)
         
         new_span = {'text': doc[start:end], 'label': span['label'], 'start': start, 'end': end} 
         

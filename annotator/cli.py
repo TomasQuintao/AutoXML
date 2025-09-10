@@ -24,7 +24,7 @@ def main():
     annotate_parser = subparsers.add_parser("annotate", help="Annotate raw text in an existing project")
     annotate_parser.add_argument("datasetID")
     annotate_parser.add_argument("--modelID", default="default")  
-    annotate_parser.add_argument("--example_shots", type=int, default=3)
+    annotate_parser.add_argument("--example-shots", type=int, default=3)
     
     # Define default model for dspy
     set_parser = subparsers.add_parser("set", help="Define a default annotation model")

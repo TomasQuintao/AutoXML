@@ -16,6 +16,7 @@ def runPipeline(datasetID, modelID='default', example_shots=3):
     if modelID == 'default':
         modelID = getModel()
     
+    print("Preparing data...")
     dtd_file, train_xml, raw_xml = prepareData(datasetID)
     
     with open(dtd_file, 'r', encoding='utf-8') as f:
@@ -25,17 +26,20 @@ def runPipeline(datasetID, modelID='default', example_shots=3):
     # if not valid:
         # raise ValueError(f"XML validation failed: {msg}")
     
+    print("Converting data to dspy format...")
     pairs = xml2spans(train_xml, example_shots)
 
     examples = [
                 dspy.Example(raw_text=raw_text, spans=spans).with_inputs("raw_text") 
                 for (raw_text, spans) in pairs
                ]
-
-    agent, lm = genAgent(dtd, examples, modelID)
-    #lm.inspect_history(1)
     
+    print("Generating the annotation agent...")
+    agent, lm = genAgent(dtd, examples, modelID)
+    
+    print("Performing annotation...")
     xml_tree = annotator(agent, raw_xml, dtd_file)
+    lm.inspect_history(1)
     
     final_file = saveData(xml_tree, datasetID)
     
