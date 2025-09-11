@@ -56,7 +56,7 @@ def saveData(xml_tree, datasetID):
     
     return output_file
 
-def xml2spans(xml_file, count=0):
+def xml2spans(xml_file, count):
     global position
     
     xml_string = stripTags(xml_file, string_output=True)
@@ -64,7 +64,7 @@ def xml2spans(xml_file, count=0):
     
     pairs = []
     
-    if count==0:
+    if count==-1:
         count = len(root)
     
     i=0

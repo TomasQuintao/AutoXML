@@ -38,8 +38,8 @@ def runPipeline(datasetID, modelID='default', example_shots=3):
     agent, lm = genAgent(dtd, examples, modelID)
     
     print("Performing annotation...")
-    xml_tree = annotator(agent, raw_xml, dtd_file)
-    lm.inspect_history(1)
+    xml_tree = annotator(agent, raw_xml, dtd_file, lm)
+    #lm.inspect_history(1)
     
     final_file = saveData(xml_tree, datasetID)
     

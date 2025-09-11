@@ -6,7 +6,7 @@ from dtd_parser.functions import parseDTD, assignLayer
 # TODO: - Use the parsed DTD
 #       - keep overlapping spans of the same layer in some way, maybe change adjust index
 
-def annotator(agent, raw_xml, dtd_file):
+def annotator(agent, raw_xml, dtd_file, lm):
     
     with open(dtd_file, "r", encoding="utf-8") as f:
         dtd = f.read()
@@ -35,6 +35,7 @@ def annotator(agent, raw_xml, dtd_file):
         element.set('state', 'raw')
         
         agent_prediction = agent(text)
+        lm.inspect_history(1)
         spans = agent_prediction.spans
         
         # Ensure order
@@ -62,17 +63,13 @@ def annotator(agent, raw_xml, dtd_file):
 def fillElement(full_text, spans, dtd_tree, doc_element):
     
     layers = assignLayer(dtd_tree)
-    layered_spans = {}
+    l = max(layers.values())
+    layered_spans = {layer: [] for layer in range(1, l + 1)}
     
     l=0
     for span in spans:
-        
         layer = layers[span["label"]]
-        
-        if (layer in layered_spans.keys()):
-            layered_spans[layer].append(span)
-        else:
-            layered_spans[layer] = [span]
+        layered_spans[layer].append(span)
         
         if (layer>l):
             l = layer
