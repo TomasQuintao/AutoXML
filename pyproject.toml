@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autoxml"
+version = "0.1.0"
+description = "A CLI tool to manage XML annotation projects"
+authors = [
+    { name="Tomas Araujo", email="a95833@alunos.uminho.pt" }
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "spacy",
+    "dspy",
+	"Flask",
+	"lxml",
+	"platformdirs",
+	"ply"
+    # add other libraries your project uses
+]
+
+[project.scripts]
+autoxml = "annotator.cli:main"
