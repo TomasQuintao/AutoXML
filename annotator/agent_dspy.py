@@ -5,6 +5,7 @@ from spacy.tokens import Doc
 from dspy.evaluate import Evaluate
 
 from utils.span_processing import correctIndex, stripSpans
+from utils.debug_adapter import DebugJSONAdapter
 from dtd_parser.functions import parseDTD, get_labels
 
 def genSignature(dtd):
@@ -51,11 +52,17 @@ class Annotator(dspy.Module):
 
     def forward(self, raw_text: str):
         """Run annotation and apply post-processing"""
-
-        annotation = self.extractor(raw_text=raw_text, dtd=self.dtd)
         
+        try:
+            annotation = self.extractor(raw_text=raw_text, dtd=self.dtd)
+            raw_spans = annotation.spans
+        except Exception as e:
+            print("Warning: DSPy failed to parse structured output:", e)
+            raw_spans = []
+        
+        print(len(raw_spans))
         #print("\nMISALIGNED\n", annotation.spans)
-        aligned_spans = correctIndex(annotation.spans, raw_text, threshold=self.threshold)
+        aligned_spans = correctIndex(raw_spans, raw_text, threshold=self.threshold)
         #print("\nALIGNED\n", aligned_spans)
         spans = stripSpans(aligned_spans)
         
@@ -73,6 +80,7 @@ def genAgent(dtd, examples, modelID, optimization="few_shot"):
         )
 
     lm = dspy.LM(modelID, api_key=api_key, verbose=True)
+    dspy.settings.adapter = DebugJSONAdapter()
     dspy.configure(lm=lm)
     
     annotator = Annotator(dtd)
