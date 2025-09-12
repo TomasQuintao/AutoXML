@@ -8,8 +8,12 @@ __pycache__/
 venv/
 .env/
 
+# Package metadata
+*.egg-info/
+
 # Logs
 *.log
 
+# Miscelaneous
 desktop.ini
 test.py
