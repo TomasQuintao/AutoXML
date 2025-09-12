@@ -3,8 +3,8 @@ from platformdirs import user_data_dir
 import xml.etree.ElementTree as ET
 import os
 
-from utils.dtd_validator import validate_xml
-from dtd_parser.functions import parseDTD, get_labels
+from annotator.utils.dtd_validator import validate_xml
+from annotator.dtd_parser.functions import parseDTD, get_labels
 
 app = Flask(__name__)
 
@@ -100,6 +100,17 @@ def saveDoc(datasetID, index):
     new_tree.write(xml_path, encoding="utf-8", xml_declaration=True)
     
     return jsonify({"success": True, "message": f"File {index} updated."}), 200
+
+@app.route("/shutdown", methods=["POST"])
+def shutdown():
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        print("Werkzeug shutdown unavailable, exiting process")
+        os._exit(0)  # Immediately exit Python process
+    func()
+    return "Server shutting down..."
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

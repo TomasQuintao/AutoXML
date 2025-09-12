@@ -2,7 +2,7 @@ import spacy, os, pathlib
 from spacy.cli.train import train
 from platformdirs import user_data_dir
 
-from project_ops import listProjects
+from annotator.project_ops import listProjects
 
 def trainModel(datasetID, layer, model):
     

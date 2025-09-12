@@ -2,9 +2,9 @@ from platformdirs import user_data_dir
 import xml.etree.ElementTree as ET
 import spacy, re, os
 
-from project_ops import listProjects
-from dtd_parser.functions import parseDTD
-from utils.data import prepareData, saveData, stripTags
+from annotator.project_ops import listProjects
+from annotator.dtd_parser.functions import parseDTD
+from annotator.utils.data import prepareData, saveData, stripTags
 
 # To be decided:
 # - Enforcing the rules of the DTD by eliminating tags

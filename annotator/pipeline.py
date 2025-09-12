@@ -1,11 +1,11 @@
 import dspy
 import xml.etree.ElementTree as ET
 
-from utils.dtd_validator import validate_xml
-from utils.data import prepareData, saveData, xml2spans
-from utils.config_info import getModel
-from agent_dspy import genAgent
-from annotator import annotator
+from annotator.utils.dtd_validator import validate_xml
+from annotator.utils.data import prepareData, saveData, xml2spans
+from annotator.utils.config_info import getModel
+from annotator.agent_dspy import genAgent
+from annotator.annotator import annotator
 
 # TODO: - Verify validity of xml output against dtd, correct OR warn user
 #       - Decide if there is a verification fo the xml aginas dtd now that creatProject does it

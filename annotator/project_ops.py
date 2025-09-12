@@ -1,10 +1,12 @@
 from platformdirs import user_data_dir
-import os, shutil, webbrowser, subprocess, socket, time, re, threading, configparser
+from threading import Thread
+import os, shutil, webbrowser, subprocess, socket, time, re, threading, configparser, signal, requests
 import xml.etree.ElementTree as ET
 
-from utils.port_tools import wait_for_port
-from utils.dtd_validator import validate_xml
-from dtd_parser.functions import fix_attributes
+from annotator.utils.port_tools import wait_for_port
+from annotator.utils.dtd_validator import validate_xml
+from annotator.dtd_parser.functions import fix_attributes
+from annotator.interface import app
 
 def createProject(datasetID, dtd_file, xml_file, raw_data_folder, overwrite=False):
     
@@ -101,45 +103,69 @@ def openProject(datasetID):
         raise FileNotFoundError(f"Project '{datasetID}' does not exist." 
                                 " Use command 'create' to start a project")
     
-    # Start Flask server in a subprocess and capture stdout
-    process = subprocess.Popen(
-        ["py", "interface.py"], 
-        stdout=subprocess.PIPE, 
-        stderr=subprocess.STDOUT, 
-        text=True
-    )
+    # process = subprocess.Popen(
+        # ["py", "-m", "annotator.interface"], 
+        # stdout=subprocess.PIPE, 
+        # stderr=subprocess.STDOUT, 
+        # text=True
+    # )
 
-    host, port = None, None
+    # host, port = None, None
 
-    # Parse Flask server output to get host and port
-    for line in iter(process.stdout.readline, ''):
-        print(line, end='')
-        match = re.search(r"Running on http://([\d\.]+):(\d+)", line)
+    # for line in iter(process.stdout.readline, ''):
+        # print(line, end='')
+        # match = re.search(r"Running on http://([\d\.]+):(\d+)", line)
         
-        if match:
-            host, port = match.group(1), int(match.group(2))
-            break
+        # if match:
+            # host, port = match.group(1), int(match.group(2))
+            # break
 
-    if host is None or port is None:
-        print("Could not detect Flask server host and port.")
-        process.terminate()
-        return
+    # if host is None or port is None:
+        # print("Could not detect Flask server host and port.")
+        # process.terminate()
+        # return
+
+    host, port = "127.0.0.1", 5000
+    url = f"http://{host}:{port}/Projects/{datasetID}"
+
+    flask_thread = Thread(target=lambda: app.run(host=host, port=port, debug=False))
+    flask_thread.start()
+    
+    def handle_sigint(sig, frame):
+        print("\nCtrl+C detected, shutting down Flask server...")
+        try:
+            requests.post(f"http://{host}:{port}/shutdown")
+        except Exception:
+            pass
+        exit(0)
+
+    signal.signal(signal.SIGINT, handle_sigint)
 
     try:
-        # Wait until Flask server is ready
         wait_for_port(host, port)
-        
-        url = f"http://{host}:{port}/Projects/{datasetID}"
-        webbrowser.open(url)
-        print(f"Opening project '{datasetID}' at {url}")
-        
-    except TimeoutError as e:
-        print(e)
-        process.terminate()
+    except TimeoutError:
+        print(f"Flask did not start in {timeout}s. Shutting down...")
+        try:
+            requests.post(f"http://{host}:{port}/shutdown")
+        except Exception:
+            pass
         return
 
-    # Keep process alive until manually closed
-    process.wait()
+    # Open browser after server is ready
+    webbrowser.open(url)
+    print(f"Opening project '{datasetID}' at {url}")
+
+    # Keep main thread alive so Flask thread keeps running
+    try:
+        while flask_thread.is_alive():
+            flask_thread.join(timeout=1)
+    except KeyboardInterrupt:
+        # Fallback if Ctrl+C was not caught by signal
+        print("\nKeyboardInterrupt detected, shutting down Flask server...")
+        try:
+            requests.post(f"http://{host}:{port}/shutdown")
+        except Exception:
+            pass
 
 def setModel(modelID):
     config_dir = user_data_dir('Config', 'AutoXML')

@@ -13,13 +13,19 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "spacy",
+	"spacy-transformers",
     "dspy",
 	"Flask",
 	"lxml",
 	"platformdirs",
-	"ply"
-    # add other libraries your project uses
+	"ply",
+	"RapidFuzz"
 ]
 
 [project.scripts]
 autoxml = "annotator.cli:main"
+
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["annotator*"]

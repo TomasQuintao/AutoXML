@@ -1,1 +1,1 @@
-Two different approaches to automatic annotators
+Two different approaches to automatic XML annotators

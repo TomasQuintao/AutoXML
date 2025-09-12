@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 import re, os, sys
 
-from dtd_parser.functions import parseDTD, assignLayer
+from annotator.dtd_parser.functions import parseDTD, assignLayer
 
 # TODO: - Use the parsed DTD
 #       - keep overlapping spans of the same layer in some way, maybe change adjust index

@@ -49,20 +49,20 @@ def main():
     args = parser.parse_args()
 
     if args.command == "create":
-        from project_ops import createProject
+        from annotator.project_ops import createProject
         createProject(args.datasetID, args.dtd_file, args.xml_file, args.raw_data_folder,
                       overwrite=args.overwrite)
     
     elif args.command == "list":
-        from project_ops import listProjects
+        from annotator.project_ops import listProjects
         listProjects(display=args.display)
         
     elif args.command == "annotate":
-        from pipeline import runPipeline
+        from annotator.pipeline import runPipeline
         runPipeline(args.datasetID, modelID=args.modelID, example_shots=args.example_shots)
         
     elif args.command == "open":
-        from project_ops import openProject
+        from annotator.project_ops import openProject
         openProject(args.datasetID)
     
     elif args.command == "set":
@@ -70,15 +70,15 @@ def main():
         setModel(args.modelID)
     
     elif args.command == "prepare":
-        from layer_splitter import prepareTrainData
+        from annotator.layer_splitter import prepareTrainData
         prepareTrainData(args.datasetID)
     
     elif args.command == "train":
-        from train_layer import trainModel
+        from annotator.train_layer import trainModel
         trainModel(args.datasetID, args.layer, args.model)
     
     elif args.command == "merge":
-        from merger import merge
+        from annotator.merger import merge
         merge(args.datasetID, args.model_list)
 
 if __name__ == "__main__":

@@ -3,9 +3,9 @@ from spacy.tokens import DocBin
 from platformdirs import user_data_dir
 import re, sys, spacy, os
 
-from dtd_parser.functions import parseDTD, assignLayer
-from utils.data import prepareData, stripTags
-from project_ops import listProjects
+from annotator.dtd_parser.functions import parseDTD, assignLayer
+from annotator.utils.data import prepareData, stripTags
+from annotator.project_ops import listProjects
 
 def prepareTrainData(datasetID):
     

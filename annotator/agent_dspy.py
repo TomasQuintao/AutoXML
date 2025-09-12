@@ -4,9 +4,9 @@ from spacy.scorer import Scorer
 from spacy.tokens import Doc
 from dspy.evaluate import Evaluate
 
-from utils.span_processing import correctIndex, stripSpans
-from utils.debug_adapter import DebugJSONAdapter
-from dtd_parser.functions import parseDTD, get_labels
+from annotator.utils.span_processing import correctIndex, stripSpans
+from annotator.utils.debug_adapter import DebugJSONAdapter
+from annotator.dtd_parser.functions import parseDTD, get_labels
 
 def genSignature(dtd):
     ##TODO: Decide if the dtd is provided in the prompt instead of with every example
