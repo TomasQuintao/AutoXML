@@ -35,34 +35,59 @@ Developed on Windows, not sure if it works with other OS
 Small documentation of CLI
 
 ### *create*
-Create an annotation project
+Create an annotation project.
 `autoxml create [projectID] [dtd_path] [xml_path] [folder_path] [--overwrite]`
-- `projectID`
-
+| Argument | Type | Description | 
+|--|--|--|
+| `projectID` | str <small>(Positional)</small> | Name for the project|
+| `dtd_path` | Path <small>(Positional)</small> | Location of the DTD file|
+| `xml_path` | Path <small>(Positional)</small> | Location of the XML training data |
+| `folder_path` | Path <small>(Positional)</small> | Location of the folder containing the text documents |
+| `--overwrite` | bool <small>(Flag)</small> | Overwite an existing project|
 
 ### *list*
-Listing existing projects
+List existing projects.
 `autoxml list`
 
 ### *open*
-Opening the annotation interface
+Open the annotation interface for the specified project.
 `autoxml open [projectID]`
+| Argument | Type | Description | 
+|--|--|--|
+| `projectID` | str <small>(Positional)</small> | Name for the project|
 
 ### *set*
-Defining a default LLM for DSPy
+Define a default LLM model to use for annotation
 `autoxml set [modelID]`
+| Argument | Type | Description | 
+|--|--|--|
+| `modelID` | str <small>(Positional)</small> | ID of a model provided by an LLM API|
 
 ### *annotate*
-Annotating with DSPy version
+Annotate raw documents of a project using DSPy version
 `autoxml annotate [projectID] [--modelID] [--example-shots] `
+| Arguments | Type | Description | 
+|--|--|--|
+| `projectID` | str <small>(Positional)</small> | Name for the project|
+| `--modelID` | Optional[str] <small>(Option)</small> | ID of a model provided by an LLM API|
+| `--example-shots` | Optional[int] <small>(Option)</small> | Number of examples to provide to the LLM. Defaults to 3 |
+
 
 ### *prepare*
-Preparing training data for spaCy
+Prepare layers of training data in spaCy format
 `autoxml prepare [projectID]`
+| Arguments | Type | Description | 
+|--|--|--|
+| `projectID` | str <small>(Positional)</small> | Name for the project|
 
 ### *train*
-Training a spaCy NER model for a layer
+Train a spaCy NER model for a single layer of the XML/DTD
 `autoxml train [projectID] [layer] [model]`
+| Argument | Type | Description | 
+|--|--|--|
+| `projectID` | str <small>(Positional)</small> | Name for the project|
+| `layer` | int <small>(Positional)</small> | Layer of the training data|
+| `model` | (ner\|trf) <small>(Positional)</small> | Pipeline to be trained. ner - spaCy ner; trf - transformer + spaCy ner  |
 
 ### *merge*
 
