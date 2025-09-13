@@ -73,17 +73,21 @@ def fillElement(full_text, spans, dtd_tree, doc_element):
         
         if (layer>l):
             l = layer
-  
-    # Ensuring compliance with the DTD, number of occurrences and order
-    # needs to be looped over llayered_spans
-    #spans = cut_extra(labels, spans, dtd)
+    
+    # No predictions were made
+    if (l==0):
+        doc_element.text = full_text
+    else:
+        # Ensuring compliance with the DTD, number of occurrences and order
+        # needs to be looped over llayered_spans
+        #spans = cut_extra(labels, spans, dtd)
+            
+        # Ensure proper nesting
+        #layered_spans = ensure_nesting(layered_spans, dtd, l)
         
-    # Ensure proper nesting
-    #layered_spans = ensure_nesting(layered_spans, dtd, l)
-    
-    layered_spans = delete_overlaps(layered_spans)
-    
-    doc_element = layers2xml(full_text, layered_spans, l, doc_element)
+        layered_spans = delete_overlaps(layered_spans)
+        
+        doc_element = layers2xml(full_text, layered_spans, l, doc_element)
 
     return doc_element
 

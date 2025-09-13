@@ -66,7 +66,7 @@ def main():
         openProject(args.datasetID)
     
     elif args.command == "set":
-        from project_ops import setModel
+        from annotator.project_ops import setModel
         setModel(args.modelID)
     
     elif args.command == "prepare":
