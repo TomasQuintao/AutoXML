@@ -81,7 +81,10 @@ def listProjects(display=True):
     
     outdir = user_data_dir('Projects', 'AutoXML')
     
-    projects = os.listdir(outdir)
+    try:
+        projects = os.listdir(outdir)
+    except:
+        projects = []
     
     if display:
         if (len(projects) > 0):

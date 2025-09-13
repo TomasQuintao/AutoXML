@@ -29,3 +29,15 @@ autoxml = "annotator.cli:main"
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["annotator*"]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+annotator = [
+    "templates/*.html",
+    "static/*",
+    "static/**/*",
+	"../model_configs/*.cfg"
+]
+
