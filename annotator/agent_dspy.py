@@ -71,12 +71,11 @@ class Annotator(dspy.Module):
 
 def genAgent(dtd, examples, modelID, optimization="few_shot"):
     
-    try:
-        api_key = os.getenv("TOGETHER_AI_API_KEY")
-    except KeyError:
+    api_key = os.getenv("TOGETHER_AI_API_KEY")
+    if not api_key:
         raise RuntimeError(
-            """Error: The environment variable 'TOGETHER_AI_API_KEY' is not set. 
-            Please set it before running this script."""
+            """The environment variable 'TOGETHER_AI_API_KEY' is not set. 
+            Set it before running this script."""
         )
 
     lm = dspy.LM(modelID, api_key=api_key, verbose=True)
