@@ -41,7 +41,7 @@ Developed on Windows (compatibility with other OS not yet tested).
 ## Tutorial
 
 After installing, to start an annotation project use the `autoxml create` command.
-Make sure the data is in the correct format (examples on the *AutoXMl\data folder*).  
+Make sure the data is in the correct format (examples on the *AutoXML\data folder*).  
 
 `autoxml create ex_project data\postcards\postcards.dtd data\postcards\postcards.xml data\postcards\raw_postcards`
 
