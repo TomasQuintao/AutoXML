@@ -9,12 +9,12 @@ declarations : declarations declaration
              | declaration
       
 declaration : '<' '!' ELEMENT TAG content '>'
-            | '<' '!' ATTLIST TAG att_content '>'
-            | '<' '!' ENTITY TAG ent_content '>'
 
 content : child
-        | '(' PCDATA options ) '*'
+        | '(' PCDATA options ')' '*'
         | '(' PCDATA ')' quantifier
+        | EMPTY_ELEM
+        | ANY
         
 child : '(' childElems ')' quantifier
 
@@ -27,23 +27,13 @@ childElem : child
 
 leaf : TAG quantifier
 
-quantifier : '*' | '+' | '?'
+quantifier : '*' 
+           | '+' 
+           | '?'
            | empty
       
 options : options '|' TAG 
         | '|' TAG  
-
-att_content : att_content attrib
-			: attrib
-
-attrib : TAG att_type att_value_declaration
-
-att_type : CDATA
-		 | ID
-
-att_value_declaration : IMPLIED
-                      | REQUIRED
-                      | FIXED
 """
 
 def p_declarations(p):
@@ -71,15 +61,22 @@ def p_content(p):
     """
     content : child
             | '(' PCDATA options ')' '*'
-            | '(' PCDATA ')' quantifier
+            | '(' PCDATA ')'
+            | EMPTY_ELEM
+            | ANY
     """
-    
-    if(len(p)==2):
-        p[0] = {'content_type': 'normal', 'children': p[1]}
-    elif(len(p)==6):
+    if(len(p)==6):
         p[0] = {'content_type': 'mixed', 'children': p[3]}
-    else:
+    elif(len(p)==4):
         p[0] = {'content_type': 'text_only'}
+    elif(len(p)==2):
+        if(p[1]=='EMPTY'):
+            p[0] = {'content_type': 'empty'}
+        elif(p[1]=='ANY'):
+            p[0] = {'content_type': 'free'}
+        else:           
+            p[0] = {'content_type': 'normal', 'children': p[1]}
+    
 
 def p_child(p):
     "child : '(' childElems ')' quantifier"

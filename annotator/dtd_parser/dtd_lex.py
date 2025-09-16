@@ -2,7 +2,9 @@ import ply.yacc as yacc
 import ply.lex as lex
 
 reserved = {
-   'ELEMENT' : 'ELEMENT'
+   'ELEMENT' : 'ELEMENT',
+   'ANY' : 'ANY',
+   'EMPTY' : 'EMPTY_ELEM'
 }
 
 tokens = [
@@ -66,10 +68,8 @@ PARTNUM CDATA #IMPLIED
 PLANT (Pittsburgh|Milwaukee|Chicago) "Chicago"
 INVENTORY (InStock|Backordered|Discontinued) "InStock">
 
-<!ELEMENT SPECIFICATIONS (#PCDATA)>
-<!ATTLIST SPECIFICATIONS
-WEIGHT CDATA #IMPLIED
-POWER CDATA #IMPLIED>
+<!ELEMENT SPECIFICATIONS EMPTY>
+
 
 <!ELEMENT OPTIONS (#PCDATA)>
 <!ATTLIST OPTIONS
@@ -84,7 +84,7 @@ WHOLESALE CDATA #IMPLIED
 STREET CDATA #IMPLIED
 SHIPPING CDATA #IMPLIED>
 
-<!ELEMENT NOTES (#PCDATA)>"""
+<!ELEMENT NOTES ANY>"""
 
 # lexer.input(dtd)
 
