@@ -30,7 +30,7 @@ def genSignature(dtd):
             2. Original Text: Do not alter the text you capture in any way, this includes white space characters.
             3. Hierarchical Annotation: - First identify and annotate major sections.
                                         - Then annotate the finer spans inside each section.
-                                        - Mantain proper nesting according to the DTD.
+                                        - Maintain proper nesting according to the DTD.
         """ 
         
         raw_text : str = dspy.InputField(desc="Raw text to be annotated")
