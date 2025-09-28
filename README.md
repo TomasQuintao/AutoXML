@@ -122,7 +122,7 @@ Create an annotation project.
 | `dtd_path` | Path <small>(Positional)</small> | Location of the DTD file|
 | `xml_path` | Path <small>(Positional)</small> | Location of the XML training data |
 | `folder_path` | Path <small>(Positional)</small> | Location of the folder containing the text documents |
-| `--overwrite` | bool <small>(Flag)</small> | Overwite an existing project|
+| `--overwrite` | bool <small>(Flag)</small> | Overwrite an existing project|
 
 ### *list*
 List existing projects.  
