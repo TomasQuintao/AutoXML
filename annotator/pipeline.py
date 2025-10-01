@@ -4,6 +4,7 @@ import xml.etree.ElementTree as ET
 from annotator.utils.dtd_validator import validate_xml
 from annotator.utils.data import prepareData, saveData, xml2spans
 from annotator.utils.config_info import getModel
+from annotator.utils.logs import create_log_file
 from annotator.agent_dspy import genAgent
 from annotator.annotator import annotator
 
@@ -38,7 +39,10 @@ def runPipeline(datasetID, modelID='default', example_shots=3):
     agent, lm = genAgent(dtd, examples, modelID)
     
     print("Performing annotation...")
-    xml_tree = annotator(agent, raw_xml, dtd_file, lm)
+    
+    log_path = create_log_file(datasetID)
+    xml_tree = annotator(agent, raw_xml, dtd_file, lm, datasetID)
+    print("\nLLM history logged to: ", log_path)
     #lm.inspect_history(1)
     
     final_file = saveData(xml_tree, datasetID)

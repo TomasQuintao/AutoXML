@@ -60,7 +60,7 @@ class Annotator(dspy.Module):
             print("Warning: DSPy failed to parse structured output:", e)
             raw_spans = []
         
-        print(len(raw_spans))
+        #print(len(raw_spans))
         #print("\nMISALIGNED\n", annotation.spans)
         aligned_spans = correctIndex(raw_spans, raw_text, threshold=self.threshold)
         #print("\nALIGNED\n", aligned_spans)
@@ -79,7 +79,7 @@ def genAgent(dtd, examples, modelID, optimization="few_shot"):
         )
 
     lm = dspy.LM(modelID, api_key=api_key, verbose=True)
-    dspy.settings.adapter = DebugJSONAdapter()
+    #dspy.settings.adapter = DebugJSONAdapter()
     dspy.configure(lm=lm)
     
     annotator = Annotator(dtd)

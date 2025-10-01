@@ -2,11 +2,12 @@ import xml.etree.ElementTree as ET
 import re, os, sys
 
 from annotator.dtd_parser.functions import parseDTD, assignLayer
+from annotator.utils.logs import log_history
 
 # TODO: - Use the parsed DTD
 #       - keep overlapping spans of the same layer in some way, maybe change adjust index
 
-def annotator(agent, raw_xml, dtd_file, lm):
+def annotator(agent, raw_xml, dtd_file, lm, datasetID):
     
     with open(dtd_file, "r", encoding="utf-8") as f:
         dtd = f.read()
@@ -35,7 +36,8 @@ def annotator(agent, raw_xml, dtd_file, lm):
         element.set('state', 'raw')
         
         agent_prediction = agent(text)
-        lm.inspect_history(1)
+        #lm.inspect_history(1)
+        log_history(lm.history[-1], datasetID)
         spans = agent_prediction.spans
         
         # Ensure order
