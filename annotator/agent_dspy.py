@@ -69,7 +69,7 @@ class Annotator(dspy.Module):
         return dspy.Prediction(spans=spans)
 
 
-def genAgent(dtd, examples, modelID, optimization="few_shot"):
+def genAgent(dtd, examples, modelID, optimization="few_shot", max_tokens=4000):
     
     api_key = os.getenv("TOGETHER_AI_API_KEY")
     if not api_key:
@@ -78,7 +78,7 @@ def genAgent(dtd, examples, modelID, optimization="few_shot"):
             Set it before running this script."""
         )
 
-    lm = dspy.LM(modelID, api_key=api_key, verbose=True)
+    lm = dspy.LM(modelID, api_key=api_key, verbose=True, max_tokens=max_tokens)
     #dspy.settings.adapter = DebugJSONAdapter()
     dspy.configure(lm=lm)
     

@@ -25,6 +25,7 @@ def main():
     annotate_parser.add_argument("datasetID")
     annotate_parser.add_argument("--modelID", default="default")  
     annotate_parser.add_argument("--example-shots", type=int, default=3)
+    annotate_parser.add_argument("--max-tokens", type=int, default=4000)
     
     # Define default model for dspy
     set_parser = subparsers.add_parser("set", help="Define a default annotation model")
@@ -59,7 +60,8 @@ def main():
         
     elif args.command == "annotate":
         from annotator.pipeline import runPipeline
-        runPipeline(args.datasetID, modelID=args.modelID, example_shots=args.example_shots)
+        runPipeline(args.datasetID, modelID=args.modelID, example_shots=args.example_shots,
+                    max_tokens=args.max_tokens)
         
     elif args.command == "open":
         from annotator.project_ops import openProject
