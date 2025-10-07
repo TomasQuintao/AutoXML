@@ -23,6 +23,7 @@ def main():
     # Annotate project with dspy
     annotate_parser = subparsers.add_parser("annotate", help="Annotate raw text in an existing project")
     annotate_parser.add_argument("datasetID")
+    annotate_parser.add_argument("--api-key", default="default")
     annotate_parser.add_argument("--modelID", default="default")  
     annotate_parser.add_argument("--example-shots", type=int, default=3)
     annotate_parser.add_argument("--max-tokens", type=int, default=4000)
@@ -60,8 +61,8 @@ def main():
         
     elif args.command == "annotate":
         from annotator.pipeline import runPipeline
-        runPipeline(args.datasetID, modelID=args.modelID, example_shots=args.example_shots,
-                    max_tokens=args.max_tokens)
+        runPipeline(args.datasetID, api_key=args.api_key, modelID=args.modelID, 
+                    example_shots=args.example_shots, max_tokens=args.max_tokens)
         
     elif args.command == "open":
         from annotator.project_ops import openProject

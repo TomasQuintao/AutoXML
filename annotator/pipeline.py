@@ -11,12 +11,15 @@ from annotator.annotator import annotator
 # TODO: - Verify validity of xml output against dtd, correct OR warn user
 #       - Decide if there is a verification fo the xml aginas dtd now that creatProject does it
 
-def runPipeline(datasetID, modelID='default', example_shots=3, max_tokens=4000):
+def runPipeline(datasetID, api_key='default', modelID='default', example_shots=3, max_tokens=4000):
     
     
     # Get default model from the config
     if modelID == 'default':
         modelID = getModel()
+    
+    if api_key == 'default':
+        api_key = "TOGETHER_AI_API_KEY"
     
     print("Preparing data...")
     dtd_file, train_xml, raw_xml = prepareData(datasetID)
@@ -37,7 +40,7 @@ def runPipeline(datasetID, modelID='default', example_shots=3, max_tokens=4000):
                ]
     
     print("Generating the annotation agent...")
-    agent, lm = genAgent(dtd, examples, modelID, max_tokens=max_tokens)
+    agent, lm = genAgent(dtd, examples, modelID, api_key, max_tokens=max_tokens)
     
     print("Performing annotation...")
     

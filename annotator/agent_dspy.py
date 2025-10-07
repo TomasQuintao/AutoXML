@@ -69,17 +69,28 @@ class Annotator(dspy.Module):
         return dspy.Prediction(spans=spans)
 
 
-def genAgent(dtd, examples, modelID, optimization="few_shot", max_tokens=4000):
+def genAgent(dtd, examples, modelID, api_key, optimization="few_shot", max_tokens=4000):
     
-    api_key = os.getenv("TOGETHER_AI_API_KEY")
+    api_key = os.getenv(api_key)
     if not api_key:
         raise RuntimeError(
             """The environment variable 'TOGETHER_AI_API_KEY' is not set. 
             Set it before running this script."""
         )
+        
+    model_family = modelID.split("/")[-1].lower() if "/" in modelID else modelID.lower()
+    # Recognize OpenAI reasoning models (o1, o3, o4, gpt-5 family)
+    model_pattern = re.match(r"^(?:o[1345]|gpt-5)(?:-(?:mini|nano))?", model_family)
+    
+    if model_pattern:
+        temperature = 1.0
+        max_tokens = 20000
+    else:
+        temperature = 0.0
 
-    lm = dspy.LM(modelID, api_key=api_key, verbose=True, max_tokens=max_tokens)
-    #dspy.settings.adapter = DebugJSONAdapter()
+    lm = dspy.LM(modelID, temperature=temperature, api_key=api_key,
+                max_tokens=max_tokens, verbose=True)
+    dspy.settings.adapter = DebugJSONAdapter()
     dspy.configure(lm=lm)
     
     annotator = Annotator(dtd)
