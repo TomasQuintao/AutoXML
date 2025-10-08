@@ -25,8 +25,8 @@ pip install .
 ### Configuration
 
 In order to use the LLM version of the annotator, it is required to have access to an LLM API,
-for example [together.ai](https://www.together.ai/) (**only works with together.ai, for now**).
-An API key must be generated and defined as an environment variable named `TOGETHER_AI_API_KEY`.
+either [together.ai](https://www.together.ai/) or [OpenAI](https://openai.com/api/).
+An API key must be generated and defined as an environment variable named `TOGETHER_AI_API_KEY` or `OPEN_AI_API_KEY`.
 
 `setx TOGETHER_AI_API_KEY "your-key-here"` (on windows)
 
@@ -148,9 +148,10 @@ Annotate raw documents of a project using DSPy version
 | Arguments | Type | Description | 
 |--|--|--|
 | `projectID` | str <small>(Positional)</small> | Name for the project|
+| `--api-key` | Optional[str] <small>(Option)</small> | Name of the environment variable containing the API key|
 | `--modelID` | Optional[str] <small>(Option)</small> | ID of a model provided by an LLM API|
 | `--example-shots` | Optional[int] <small>(Option)</small> | Number of examples to provide to the LLM. Defaults to 3 |
-
+| `--max-tokens` | Optional[int] <small>(Option)</small> | Maximum number of LLM output tokens. Defaults to 4000|
 
 ### *prepare*
 Prepare layers of training data in spaCy format  
