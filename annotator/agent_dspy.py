@@ -90,7 +90,7 @@ def genAgent(dtd, examples, modelID, api_key, optimization="few_shot", max_token
 
     lm = dspy.LM(modelID, temperature=temperature, api_key=api_key,
                 max_tokens=max_tokens, verbose=True)
-    dspy.settings.adapter = DebugJSONAdapter()
+    #dspy.settings.adapter = DebugJSONAdapter()
     dspy.configure(lm=lm)
     
     annotator = Annotator(dtd)
