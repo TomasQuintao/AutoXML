@@ -94,6 +94,7 @@ def saveDoc(datasetID, index):
         return jsonify({"success": False, "message": f"Failed save. Original text was altered."}), 200
         
     new_doc.set('state', 'ready')
+    new_doc.tail = '\n\n'
     root[index] = new_doc
     
     new_tree = ET.ElementTree(root)

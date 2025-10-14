@@ -16,7 +16,9 @@ const stateBox = document.getElementById("state-box");
 
 let totalFiles = 0;
 let isLoading = false;
-let state = "ready"
+let state = "ready";
+let root_open = "";
+let root_close = "";
 
 // Save button only enabled when the content changes
 saveBtn.disabled = true
@@ -40,8 +42,17 @@ async function loadDoc(index) {
 		if (!res.ok) throw new Error("Failed to fetch file");
 
 		const data = await res.json();
+		
+		// Removing root tag
+		let full_text = data.text
+		root_open = full_text.match(/^<[^>]+>/)[0]
+		root_close = full_text.match(/<[^>]+>\s*$/)[0]
 
-		codeEl.textContent = data.text;
+		full_text = full_text.replace(root_open, "")
+		full_text = full_text.replace(root_close, "")
+
+		//codeEl.textContent = data.text;
+		codeEl.textContent = full_text;
 
 		highlightCode(codeEl)
 
@@ -79,7 +90,7 @@ loadDoc(fileIndex);
 
 // Saving the edited content
 saveBtn.onclick = async () => {
-    const editedText = codeEl.textContent;
+    const editedText = root_open + codeEl.textContent + root_close;
 
     try {
         const res = await fetch(`/Projects/${datasetID}/save/${fileIndex}`, {
